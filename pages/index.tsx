@@ -23,7 +23,6 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
 );
 
 export const getStaticProps: GetStaticProps<HomeProps> = async context => {
-  // Call an external API endpoint to get posts
   const res = await fetch("https://czechue.usermd.net/");
   const projects: Project[] = await res.json();
 
