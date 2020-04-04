@@ -25,7 +25,6 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
 export const getStaticProps: GetStaticProps<HomeProps> = async context => {
   const res = await fetch("https://czechue.usermd.net/");
   const projects: Project[] = await res.json();
-
   return {
     props: {
       projects
