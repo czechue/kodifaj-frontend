@@ -1,7 +1,7 @@
-import React from "react";
-import { NextPage, GetStaticProps } from "next";
+import React from 'react';
+import { NextPage, GetStaticProps } from 'next';
 import fetch from 'node-fetch';
-import Head from "next/head";
+import Head from 'next/head';
 
 interface Project {
   id: string;
@@ -16,20 +16,23 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
     <Head>
       <title>Create Next App</title>
     </Head>
-    <main>Home Ids:
-      {projects.map(project => <div key={project.id}>{project.id}</div>)}
+    <header>Header</header>
+    <main className="leading-normal text-green-300">
+      Home IDS:
+      {projects.map((project) => (
+        <div key={project.id}>{project.id}</div>
+      ))}
     </main>
   </div>
 );
 
-export const getStaticProps: GetStaticProps<HomeProps> = async context => {
-  const res = await fetch("https://czechue.usermd.net/");
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const res = await fetch('https://czechue.usermd.net/');
   const projects: Project[] = await res.json();
-
   return {
     props: {
-      projects
-    }
+      projects,
+    },
   };
 };
 
