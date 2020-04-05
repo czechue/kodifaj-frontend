@@ -16,7 +16,10 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
     <Head>
       <title>Create Next App</title>
     </Head>
-    <main>Home Ids:
+    <header>
+      Header
+    </header>
+    <main className="leading-normal text-green-300">Home Ids:
       {projects.map(project => <div key={project.id}>{project.id}</div>)}
     </main>
   </div>
