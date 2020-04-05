@@ -18,7 +18,7 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
     </Head>
     <header>Header</header>
     <main className="leading-normal text-green-300">
-      Home Ids:
+      Home IDS:
       {projects.map((project) => (
         <div key={project.id}>{project.id}</div>
       ))}
