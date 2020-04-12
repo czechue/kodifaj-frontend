@@ -16,9 +16,9 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
     <Head>
       <title>Create Next App</title>
     </Head>
-    <header>Header</header>
+    <header>Header {process.env.customKey}</header>
     <main className="leading-normal text-green-300">
-      Home IDS:
+      Home ID:
       {projects.map((project) => (
         <div key={project.id}>{project.id}</div>
       ))}
@@ -27,7 +27,8 @@ const Home: NextPage<HomeProps> = ({ projects }) => (
 );
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const res = await fetch('https://czechue.usermd.net/');
+  const url = process.env.apiUrl as string;
+  const res = await fetch(url);
   const projects: Project[] = await res.json();
   return {
     props: {
