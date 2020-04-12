@@ -14,7 +14,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ projects }) => (
   <div>
     <Head>
-      <title>Create Next App</title>
+      <title>Create Next Appaaa</title>
     </Head>
     <header>Header {process.env.customKey}</header>
     <main className="leading-normal text-green-300">
