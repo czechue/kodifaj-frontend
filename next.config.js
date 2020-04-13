@@ -6,14 +6,14 @@ module.exports = (phase, { defaultConfig }) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       env: {
-        apiUrl: 'http://localhost:8080/',
+        apiUrl: 'http://localhost:8080',
       },
     };
   }
 
   return {
     env: {
-      apiUrl: 'https://czechue.usermd.net/',
+      apiUrl: 'https://czechue.usermd.net',
     },
   };
 };

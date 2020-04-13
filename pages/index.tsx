@@ -17,7 +17,7 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const url = process.env.apiUrl as string;
-  const res = await fetch(url);
+  const res = await fetch(`${url}/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
