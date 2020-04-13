@@ -2,10 +2,14 @@ import React from 'react';
 import { Task } from '../../models/task.types';
 
 interface ListingProps {
-  tasks: Task[];
+  tasks?: Task[];
 }
 
-const Listing: React.FC<ListingProps> = ({ tasks }) => {
+const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
+  if (tasks.length === 0) {
+    return null;
+  }
+
   return (
     <div id="projects-listing">
       <div>
@@ -22,7 +26,9 @@ const Listing: React.FC<ListingProps> = ({ tasks }) => {
         >
           <div>
             <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Filtry</h3>
-            <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Sortowanie</h3>
+            <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">
+              Sortowanie
+            </h3>
           </div>
           <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 lg:col-span-3">
             {tasks.map((task) => (
