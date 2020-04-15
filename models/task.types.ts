@@ -2,7 +2,7 @@ import { User } from './user.types';
 import { Solution } from './solution.types';
 
 export interface Task {
-  id: string;
+  _id: string;
   user: User;
   solutions: Solution[];
   title: string;

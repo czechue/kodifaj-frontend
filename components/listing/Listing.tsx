@@ -32,7 +32,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
           </div>
           <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 lg:col-span-3">
             {tasks.map((task) => (
-              <div key={task.id}>{task.id}</div>
+              <div key={task._id}>{task._id}</div>
             ))}
           </div>
         </div>
