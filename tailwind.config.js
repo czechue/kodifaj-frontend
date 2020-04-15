@@ -1,7 +1,11 @@
 module.exports = {
   theme: {
-    extend: {}
+    extend: {
+      maxWidth: {
+        '8xl': '90rem',
+      },
+    },
   },
   variants: {},
-  plugins: []
+  plugins: [],
 };

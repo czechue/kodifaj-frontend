@@ -1,38 +1,27 @@
 import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import fetch from 'node-fetch';
-import Head from 'next/head';
-
-interface Project {
-  id: string;
-}
+import Layout from '../components/shared/layout/Layout';
+import { Task } from '../models/task.types';
+import Listing from '../components/listing/Listing';
 
 interface HomeProps {
-  projects: Project[];
+  tasks: Task[];
 }
 
-const Home: NextPage<HomeProps> = ({ projects }) => (
-  <div>
-    <Head>
-      <title>Create Next Appxxx</title>
-    </Head>
-    <header>Header {process.env.customKey}</header>
-    <main className="leading-normal text-green-300">
-      Home IDS:
-      {projects.map((project) => (
-        <div key={project.id}>{project.id}</div>
-      ))}
-    </main>
-  </div>
+const Home: NextPage<HomeProps> = ({ tasks }) => (
+  <Layout title="Home page">
+    <Listing tasks={tasks} />
+  </Layout>
 );
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const url = process.env.apiUrl as string;
-  const res = await fetch(url);
-  const projects: Project[] = await res.json();
+  const res = await fetch(`${url}/tasks`);
+  const tasks: Task[] = await res.json();
   return {
     props: {
-      projects,
+      tasks,
     },
   };
 };
