@@ -5,6 +5,10 @@ interface ListingProps {
   tasks?: Task[];
 }
 
+const backgroundStyle = {
+  backgroundImage: `url('https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4')`,
+};
+
 const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
   if (tasks.length === 0) {
     return null;
@@ -30,9 +34,26 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
               Sortowanie
             </h3>
           </div>
-          <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 lg:col-span-3">
+          <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 lg:col-span-3 ml-8 mr-8 mb-8">
             {tasks.map((task) => (
-              <div key={task._id}>{task._id}</div>
+              <section className=" bg-gray-100 rounded-md" key={task._id}>
+                <div
+                  className="bg-gray-300 h-64 relative rounded-t-md bg-cover"
+                  style={{ backgroundImage: `url(${task.images[0]}` }}
+                ></div>
+                <div className="h-32 border-b-2 border-gray-200">
+                  <h4 className="text-center pt-4 ml-2 text-lg">{task.title}</h4>
+                </div>
+                <div className="rounded-b-md">
+                  <ul className="list-none px-1 py-2 text-right">
+                    {task.tags.map((tag, index) => (
+                      <li className="inline px-1 bg-red-300 mr-1 rounded-md shadow-md" key={index}>
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
             ))}
           </div>
         </div>
