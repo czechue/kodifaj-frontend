@@ -5,10 +5,6 @@ interface ListingProps {
   tasks?: Task[];
 }
 
-const backgroundStyle = {
-  backgroundImage: `url('https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4')`,
-};
-
 const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
   if (tasks.length === 0) {
     return null;
@@ -41,7 +37,8 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
                   className="bg-gray-300 h-64 relative rounded-t-md bg-cover"
                   style={{ backgroundImage: `url(${task.images[0]}` }}
                 ></div>
-                <div className="h-32 border-b-2 border-gray-200">
+                <div className="h-32 border-b-2 border-gray-200 relative">
+                  <div className="absolute left-0 top-0 indent z-10"></div>
                   <h4 className="text-center pt-4 ml-2 text-lg">{task.title}</h4>
                 </div>
                 <div className="rounded-b-md">
