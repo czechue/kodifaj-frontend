@@ -11,6 +11,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ tasks }) => (
   <Layout title="Home page">
+    <a href="http://localhost:8080/auth/github">Login</a>
     <Listing tasks={tasks} />
   </Layout>
 );
