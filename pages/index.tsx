@@ -9,16 +9,21 @@ interface HomeProps {
   tasks: Task[];
 }
 
-const Home: NextPage<HomeProps> = ({ tasks }) => (
-  <Layout title="Home page">
-    <a href="http://localhost:8080/auth/github">Login</a>
-    <Listing tasks={tasks} />
-  </Layout>
-);
+const apiUrl = process.env.apiUrl as string;
+
+const Home: NextPage<HomeProps> = ({ tasks }) => {
+  const loginUrl = `${apiUrl}/auth/github`;
+
+  return (
+    <Layout title="Home page">
+      <a href={loginUrl}>Login</a>
+      <Listing tasks={tasks} />
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const url = process.env.apiUrl as string;
-  const res = await fetch(`${url}/tasks`);
+  const res = await fetch(`${apiUrl}/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
