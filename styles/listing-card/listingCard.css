@@ -1,0 +1,15 @@
+.indent::before {
+  position: absolute;
+  top: -16px;
+  left: -14px;
+  content: '';
+  display: block;
+  width: 76px;
+  height: 26px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 76px auto;
+  background-image: url('../../public/indent_img.svg');
+  clip: rect(0px, 74px, 18px, 14px);
+  z-index: 1;
+}
