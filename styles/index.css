@@ -1,7 +1,7 @@
 /* purgecss start ignore */
 @tailwind base;
 
-@import '../styles/listing-card/listingCard.css';
+@import '../styles/listingCard/listingCard.css';
 
 @tailwind components;
 /* purgecss end ignore */
