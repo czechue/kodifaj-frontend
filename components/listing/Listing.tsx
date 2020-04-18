@@ -31,7 +31,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
               Sortowanie
             </h3>
           </div>
-          <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 lg:col-span-3 ml-8 mr-8 mb-8">
+          <div className="grid grid-cols-1 row-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-2 lg:col-span-3 ml-8 mr-8 mb-8">
             {tasks.map((task) => (
               <Card key={task._id} task={task} />
             ))}
