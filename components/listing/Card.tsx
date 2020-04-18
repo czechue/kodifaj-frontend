@@ -7,7 +7,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ task }) => {
   return (
-    <section className=" bg-gray-100 rounded-md">
+    <section className="transform translate-y-0 bg-gray-100 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg">
       <div
         className="bg-gray-300 h-64 relative rounded-t-md bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${task.images[0]}` }}
