@@ -2,7 +2,12 @@ import React from 'react';
 
 const HalfStar: React.FC = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="w-4 h4">
+    <svg
+      data-testid="half-star"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      className="w-4 h4"
+    >
       <defs>
         <linearGradient id="half">
           <stop offset="0%" stopColor="#f56565" />

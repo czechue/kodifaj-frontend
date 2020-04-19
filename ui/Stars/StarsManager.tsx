@@ -13,7 +13,6 @@ const StarsManager: React.FC<StarsProps> = ({ rating }) => {
       return <FullStar key={index} />;
     }
     if (index === Math.floor(rating)) {
-      console.log('teraz' + index);
       if (rating % 1 === 1) {
         return <FullStar key={index} />;
       } else if (rating % 1 > 0.5) {

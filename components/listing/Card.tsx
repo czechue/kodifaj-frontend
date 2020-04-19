@@ -25,11 +25,11 @@ const Card: React.FC<CardProps> = ({ task }) => {
         <h4 className="text-center pt-8 mx-1 text-lg text-gray-700">{task.title}</h4>
       </div>
       <div className="rounded-b-md flex justify-between items-center mx-4 h-10">
-        <StarsManager rating={4.5} />
+        <StarsManager rating={1.123} />
         <ul className="list-none px-1 py-2 text-right">
           {task.tags.map((tag, index) => (
             <li className="inline px-1 py-1 bg-red-200 mr-1 rounded-md shadow-sm w-4" key={index}>
-              <span className="text-sm">{tag}</span>
+              <span className="text-sm">#{tag}</span>
             </li>
           ))}
         </ul>

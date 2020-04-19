@@ -3,6 +3,7 @@ import React from 'react';
 const GeyStar: React.FC = () => {
   return (
     <svg
+      data-testid="gray-star"
       className="w-4 h4 fill-current text-gray-500"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
