@@ -8,13 +8,8 @@ module.exports = {
       gridTemplateColumns: {
         '3md': "1fr 3fr"
       },
-      width: {
-        '300': '300px',
-        '400': '400px',
-      },
       maxWidth: {
-        '8xl': '90rem',
-        '400': '400px',
+        '350': '350px',
       },
       minWidth: {
         '300': '300px',
