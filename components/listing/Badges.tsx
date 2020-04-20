@@ -6,10 +6,10 @@ interface BadgesProps {
 
 const Badges: React.FC<BadgesProps> = ({ tags }) => {
   return (
-    <ul className="list-none py-2 text-right">
+    <ul className="list-none py-1 text-right">
       {tags.map((tag, index) => (
-        <li className="inline px-1 py-1 bg-red-200 mr-1 rounded-md shadow-sm w-4" key={index}>
-          <span className="text-sm">#{tag}</span>
+        <li className="inline px-1 bg-red-200 mr-1 mt-4 rounded-md shadow-sm w-4" key={index}>
+          <span className="text-xs">#{tag}</span>
         </li>
       ))}
     </ul>

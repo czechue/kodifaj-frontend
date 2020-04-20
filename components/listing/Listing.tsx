@@ -23,7 +23,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
       <div className="mt-6 grid grid-cols-1 row-gap-8">
         <div
           id="projects-listing-section"
-          className="border-t border-gray-200 pt-8 grid grid-cols-1 row-gap-6 lg:grid-cols-3md lg:gap-5 xl:grid-cols-4"
+          className="border-t pt-8 grid grid-cols-1 row-gap-6 lg:gap-5 xl:grid-cols-4"
         >
           <div className="xs:text-center sm:text-left">
             <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Filtry</h3>

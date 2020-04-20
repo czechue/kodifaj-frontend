@@ -16,7 +16,11 @@ const StarsManager: React.FC<StarsProps> = ({ rating }) => {
     }
     return <FullStar key={index} variant="empty" />;
   });
-  return <div className="flex">{stars}</div>;
+  return (
+    <div className="flex">
+      {stars} <span className="ml-1 text-xs">({rating.toFixed(1)})</span>
+    </div>
+  );
 };
 
 export default StarsManager;
