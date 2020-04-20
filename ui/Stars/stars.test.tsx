@@ -39,6 +39,15 @@ describe('Stars tests', () => {
     expect(grayStars.length).toBe(4);
     expect(halfStar).toBeNull();
   });
+  it('two stars - rating 2.5', () => {
+    const { getAllByTestId, queryByTestId } = render(<StarsManager rating={2.5} />);
+    const fullStars = getAllByTestId('full-star');
+    const grayStars = getAllByTestId('gray-star');
+    const halfStar = queryByTestId('half-star');
+    expect(fullStars.length).toBe(2);
+    expect(grayStars.length).toBe(3);
+    expect(halfStar).toBeNull();
+  });
   it('five stars - rating 5', () => {
     const { getAllByTestId, queryByTestId } = render(<StarsManager rating={5} />);
     const fullStars = getAllByTestId('full-star');
