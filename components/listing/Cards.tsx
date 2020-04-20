@@ -6,7 +6,7 @@ interface CardsProps {
   tasks: Task[];
 }
 
-const CardsManager: React.FC<CardsProps> = ({ tasks }) => {
+const Cards: React.FC<CardsProps> = ({ tasks }) => {
   return (
     <div className="grid grid-cols-1 row-gap-8 pb-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8">
       {tasks.map((task) => (
@@ -16,4 +16,4 @@ const CardsManager: React.FC<CardsProps> = ({ tasks }) => {
   );
 };
 
-export default CardsManager;
+export default Cards;

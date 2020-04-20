@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from '../../models/task.types';
-import CardsManager from './CardsManager';
+import Cards from './Cards';
 
 interface ListingProps {
   tasks?: Task[];
@@ -31,7 +31,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
               Sortowanie
             </h3>
           </div>
-          <CardsManager tasks={tasks} />
+          <Cards tasks={tasks} />
         </div>
       </div>
     </div>
