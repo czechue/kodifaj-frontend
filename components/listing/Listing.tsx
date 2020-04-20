@@ -20,7 +20,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
           </h2>
         </div>
       </div>
-      <div className="mt-6 grid grid-cols-1 row-gap-8 bg-orange-600">
+      <div className="mt-6 grid grid-cols-1 row-gap-8">
         <div
           id="projects-listing-section"
           className="border-t border-gray-200 pt-8 grid grid-cols-1 row-gap-6 lg:grid-cols-3md lg:gap-5 xl:grid-cols-4"
