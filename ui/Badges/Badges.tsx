@@ -9,7 +9,9 @@ const Badges: React.FC<BadgesProps> = ({ tags }) => {
     <ul className="list-none py-1 text-right">
       {tags.map((tag, index) => (
         <li className="inline px-1 bg-red-200 mr-1 mt-4 rounded-md shadow-sm w-4" key={index}>
-          <span className="text-xs">#{tag}</span>
+          <span data-testid="tag" className="text-xs">
+            #{tag}
+          </span>
         </li>
       ))}
     </ul>

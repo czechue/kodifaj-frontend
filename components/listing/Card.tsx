@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Task } from '../../models/task.types';
 import StarsManager from '../../ui/Stars/StarsManager';
-import Badges from './Badges';
+import Badges from '../../ui/Badges/Badges';
 
 interface CardProps {
   task: Task;
