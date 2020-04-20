@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from '../../models/task.types';
-import Card from './Card';
+import CardsManager from './CardsManager';
 
 interface ListingProps {
   tasks?: Task[];
@@ -25,17 +25,13 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
           id="projects-listing-section"
           className="border-t border-gray-200 pt-8 grid grid-cols-1 row-gap-6 lg:grid-cols-3md lg:gap-5 xl:grid-cols-4"
         >
-          <div className="xs: text-center sm:text-left">
+          <div className="xs:text-center sm:text-left">
             <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Filtry</h3>
             <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">
               Sortowanie
             </h3>
           </div>
-          <div className="grid grid-cols-1 row-gap-8 pb-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8">
-            {tasks.map((task) => (
-              <Card key={task._id} task={task} />
-            ))}
-          </div>
+          <CardsManager tasks={tasks} />
         </div>
       </div>
     </div>
