@@ -1,10 +1,14 @@
 import React from 'react';
 
-const FullStar: React.FC = () => {
+interface StarProps {
+  variant: 'full' | 'empty';
+}
+
+const FullStar: React.FC<StarProps> = ({ variant }) => {
   return (
     <svg
-      data-testid="full-star"
-      className="w-4 h4 fill-current text-red-500"
+      data-testid={`${variant === 'full' ? 'full-star' : 'gray-star'}`}
+      className={`w-4 h4 fill-current ${variant === 'full' ? `text-red-500` : `text-gray-500`}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
     >
