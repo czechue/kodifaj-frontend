@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Task } from '../../models/task.types';
 import StarsManager from '../../ui/Stars/StarsManager';
-import { userInfo } from 'os';
+import Badges from './Badges';
 
 interface CardProps {
   task: Task;
@@ -39,16 +39,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
           </div>
           <div className="rounded-b-md flex justify-between items-center mx-2 h-10">
             <StarsManager rating={1.123} />
-            <ul className="list-none py-2 text-right">
-              {task.tags.map((tag, index) => (
-                <li
-                  className="inline px-1 py-1 bg-red-200 mr-1 rounded-md shadow-sm w-4"
-                  key={index}
-                >
-                  <span className="text-sm">#{tag}</span>
-                </li>
-              ))}
-            </ul>
+            <Badges tags={task.tags} />
           </div>
         </section>
       </Link>
