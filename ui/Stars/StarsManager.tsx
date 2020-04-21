@@ -1,20 +1,16 @@
 import React from 'react';
-import HalfStar from './HalfStar';
-import FullStar from './FullStar';
+import getStarType from './utils/getStarType';
+import Star from './Star';
 
 interface StarsProps {
   rating: number;
 }
 
+const MAX_STARS = 5;
 const StarsManager: React.FC<StarsProps> = ({ rating }) => {
-  const stars = [...Array.from({ length: 5 })].map((_, index) => {
-    if (index < Math.floor(rating) || (index === Math.floor(rating) && rating % 1 === 1)) {
-      return <FullStar key={index} variant="full" />;
-    }
-    if (index === Math.floor(rating) && rating % 1 > 0.5) {
-      return <HalfStar key={index} />;
-    }
-    return <FullStar key={index} variant="empty" />;
+  const stars = [...Array.from({ length: MAX_STARS })].map((_, index) => {
+    const type = getStarType(rating, index);
+    return <Star type={type} key={index} />;
   });
   return (
     <div className="flex">

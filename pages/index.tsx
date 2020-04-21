@@ -4,6 +4,7 @@ import fetch from 'node-fetch';
 import Layout from '../components/shared/layout/Layout';
 import { Task } from '../models/task.types';
 import Listing from '../components/listing/Listing';
+import Header from '../components/Header/Header';
 
 interface HomeProps {
   tasks: Task[];
@@ -11,6 +12,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ tasks }) => (
   <Layout title="Home page">
+    <Header />
     <Listing tasks={tasks} />
   </Layout>
 );
