@@ -2,7 +2,7 @@ import React from 'react';
 import { StarType } from './utils/getStarType';
 
 interface StarProps {
-  type: number;
+  type: StarType;
 }
 
 const Star: React.FC<StarProps> = ({ type }) => {
