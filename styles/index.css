@@ -2,6 +2,7 @@
 @tailwind base;
 
 @import '../styles/listingCard/listingCard.css';
+@import '../styles/hamburger/hamburger.css';
 
 @tailwind components;
 /* purgecss end ignore */
