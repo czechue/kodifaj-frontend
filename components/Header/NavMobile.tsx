@@ -8,7 +8,7 @@ interface NavProps {
 const NavMobile: React.FC<NavProps> = ({ isOpen }) => {
   return (
     <nav
-      className={`md:hidden text-gray-700 fixed w-0 top-0 left-0 transition-all duration-500 bg-gray-300 h-full overflow-x-hidden ${
+      className={`text-gray-700 fixed w-0 top-0 left-0 transition-all duration-500 bg-gray-300 h-full overflow-x-hidden ${
         isOpen ? 'w-full' : 'w-0'
       } `}
     >

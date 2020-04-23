@@ -8,6 +8,12 @@ module.exports = {
       maxWidth: {
         '8xl': '90rem',
       },
+      translate: {
+        '00': '0.1rem'
+      },
+      translate: {
+        '-00': '-0.1rem'
+      }
     },
   },
   variants: {},
