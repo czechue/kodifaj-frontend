@@ -12,11 +12,9 @@ interface HomeProps {
 const apiUrl = process.env.apiUrl as string;
 
 const Home: NextPage<HomeProps> = ({ tasks }) => {
-  const loginUrl = `${apiUrl}/auth/github`;
-
   return (
     <Layout title="Home page">
-      <a href={loginUrl}>Login</a>
+      <a href="/auth/github">Login</a>
       <Listing tasks={tasks} />
     </Layout>
   );
