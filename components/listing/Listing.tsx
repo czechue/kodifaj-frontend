@@ -12,7 +12,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
   }
 
   return (
-    <div className="max-w-8xl mx-auto md:px-4 lg:px-8" id="projects-listing">
+    <div className="max-w-8xl mx-auto sm:mx-4 lg:mx-8" id="projects-listing">
       <div className="sm:flex sm:items-baseline sm:justify-between">
         <h2 className="text-2xl leading-8 font-semibold tracking-wide font-display text-gray-900 sm:text-3xl sm:leading-9">
           Zadania
