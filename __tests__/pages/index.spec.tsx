@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Home from '../../pages';
+import Home from '../../pages/views/Index';
 import { Task } from '../../models/task.types';
 
 test('renders deploy link', () => {
