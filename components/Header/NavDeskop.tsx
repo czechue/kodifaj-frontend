@@ -20,7 +20,7 @@ const NavDesktop: React.FC = () => {
             <a className="">pomoc</a>
           </Link>
         </li>
-        <span className="pl-4">|</span>
+        <span className="pl-8">|</span>
         <li className="pl-8 hover:text-red-500 transition-colors duration-200">
           <Link href="#">
             <a className="">rejestracja</a>
