@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { FaGithub } from 'react-icons/fa';
 
 const NavDesktop: React.FC = () => {
   return (
@@ -21,10 +22,11 @@ const NavDesktop: React.FC = () => {
           </Link>
         </li>
         <span className="pl-8">|</span>
-        <li className="pl-8 hover:text-red-500 transition-colors duration-200">
+        <li className="pl-8 hover:text-red-500 transition-colors duration-200 flex items-center">
           <Link href="#">
             <a className="">rejestracja</a>
           </Link>
+          <FaGithub className="ml-2 text-2xl" />
         </li>
       </ul>
     </nav>

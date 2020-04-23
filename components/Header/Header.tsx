@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    if (width > 768) {
+    if (width >= 768) {
       setIsOpen(false);
     }
   }, [width]);
