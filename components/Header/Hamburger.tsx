@@ -15,7 +15,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toogle }) => {
   const buttonStylesMiddle = clsx('hamburger-bar-middle', isOpen && 'transform opacity-0');
   const buttonStylesBottom = clsx(
     'hamburger-bar',
-    isOpen && 'transform -rotate-45 -translate-x-00 translate-y-2',
+    isOpen && 'transform -rotate-45 translate-x-00 -translate-y-2',
   );
 
   return (
