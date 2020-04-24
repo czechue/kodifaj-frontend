@@ -4,7 +4,7 @@ import { FaGithub } from 'react-icons/fa';
 
 const NavDesktop: React.FC = () => {
   return (
-    <nav className="hidden md:flex">
+    <nav className="flex">
       <ul className="flex text-sm capitalize text-gray-700 font-medium justify-center items-center">
         <li className="hover:text-red-500 transition-colors duration-200">
           <Link href="#">
