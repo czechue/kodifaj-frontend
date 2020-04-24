@@ -25,6 +25,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx", 
-    "ui/Stars/utils/getStarType.ts"
   ]
 }

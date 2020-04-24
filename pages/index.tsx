@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import Layout from '../components/shared/layout/Layout';
 import { Task } from '../models/task.types';
 import Listing from '../components/listing/Listing';
-import Header from '../components/Header/Header';
+import Header from '../components/header/Header';
 
 interface HomeProps {
   tasks: Task[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from '../../models/task.types';
-import Cards from './Cards';
+import Cards from './cards/Cards';
 
 interface ListingProps {
   tasks?: Task[];

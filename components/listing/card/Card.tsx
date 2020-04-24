@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Task } from '../../models/task.types';
-import StarsManager from '../../ui/Stars/StarsManager';
-import Badges from '../../ui/Badges/Badges';
+import { Task } from '../../../models/task.types';
+import Stars from '../../../ui/stars/stars/Stars';
+import Badges from '../../../ui/badges/Badges';
 
 interface CardProps {
   task: Task;
@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
             <Badges tags={task.tags} />
           </div>
           <div className="rounded-b-md px-3 flex justify-between items-center h-12 flex-wrap">
-            <StarsManager rating={4.7} />
+            <Stars rating={4.7} />
             <span className="text-xs text-gray-700 italic">{task.createdAt.slice(0, 10)}</span>
           </div>
         </section>

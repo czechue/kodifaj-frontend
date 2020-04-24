@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './Card';
-import { Task } from '../../models/task.types';
+import Card from '../card/Card';
+import { Task } from '../../../models/task.types';
 
 interface CardsProps {
   tasks: Task[];

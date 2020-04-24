@@ -8,6 +8,7 @@ describe('getStarType helper', () => {
     expect(getStarType(0, 3)).toEqual('EMPTY');
     expect(getStarType(0, 4)).toEqual('EMPTY');
   });
+
   it('one full star - rating 1', () => {
     expect(getStarType(1, 0)).toEqual('FULL');
     expect(getStarType(1, 1)).toEqual('EMPTY');
@@ -15,6 +16,7 @@ describe('getStarType helper', () => {
     expect(getStarType(1, 3)).toEqual('EMPTY');
     expect(getStarType(1, 4)).toEqual('EMPTY');
   });
+
   it('half star - rating 1.6 ', () => {
     expect(getStarType(1.6, 0)).toEqual('FULL');
     expect(getStarType(1.6, 1)).toEqual('HALF');
@@ -22,6 +24,7 @@ describe('getStarType helper', () => {
     expect(getStarType(1.6, 3)).toEqual('EMPTY');
     expect(getStarType(1.6, 4)).toEqual('EMPTY');
   });
+
   it('full stars - rating 5 ', () => {
     expect(getStarType(5, 0)).toEqual('FULL');
     expect(getStarType(5, 1)).toEqual('FULL');
@@ -29,6 +32,7 @@ describe('getStarType helper', () => {
     expect(getStarType(5, 3)).toEqual('FULL');
     expect(getStarType(5, 4)).toEqual('FULL');
   });
+
   it('mixed stars - rating 3.6 ', () => {
     expect(getStarType(3.6, 0)).toEqual('FULL');
     expect(getStarType(3.6, 1)).toEqual('FULL');

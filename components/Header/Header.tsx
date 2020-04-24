@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import NavMobile from './NavMobile';
-import Hamburger from './Hamburger';
-import NavDesktop from './NavDeskop';
+import NavMobile from './navMobile/NavMobile';
+import Hamburger from './hamburger/Hamburger';
+import NavDesktop from './navDesktop/NavDesktop';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

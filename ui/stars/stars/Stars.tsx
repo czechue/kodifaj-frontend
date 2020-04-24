@@ -1,13 +1,14 @@
 import React from 'react';
-import getStarType from './utils/getStarType';
-import Star from './Star';
+import getStarType from '../utils/getStarType/getStarType';
+import Star from '../star/Star';
 
 interface StarsProps {
   rating: number;
 }
 
 const MAX_STARS = 5;
-const StarsManager: React.FC<StarsProps> = ({ rating }) => {
+
+const Stars: React.FC<StarsProps> = ({ rating }) => {
   const stars = [...Array.from({ length: MAX_STARS })].map((_, index) => {
     const type = getStarType(rating, index);
     return <Star type={type} key={index} />;
@@ -19,4 +20,4 @@ const StarsManager: React.FC<StarsProps> = ({ rating }) => {
   );
 };
 
-export default StarsManager;
+export default Stars;

@@ -8,6 +8,7 @@ describe('Badges test', () => {
     const tags = queryByTestId('tag');
     expect(tags).toBeNull();
   });
+
   it('3 element list', () => {
     const { getAllByTestId } = render(<Badges tags={['css', 'html', 'js']} />);
     const tags = getAllByTestId('tag');

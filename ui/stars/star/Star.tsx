@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarType } from './utils/getStarType';
+import { StarType } from '../utils/getStarType/getStarType';
 
 interface StarProps {
   type: StarType;

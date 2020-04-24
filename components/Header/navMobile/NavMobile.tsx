@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa';
-interface NavProps {
+
+interface NavMobileProps {
   isOpen: boolean;
 }
 
-const NavMobile: React.FC<NavProps> = ({ isOpen }) => {
+const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
   return (
     <nav
       className={`text-gray-700 fixed w-0 top-0 left-0 transition-all duration-500 bg-gray-300 h-full overflow-x-hidden ${

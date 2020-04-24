@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import StarsManager from './StarsManager';
+import StarsManager from './Stars';
 
 describe('Stars tests', () => {
   it('no star - rating 0', () => {
@@ -12,6 +12,7 @@ describe('Stars tests', () => {
     expect(fullStars).toBeNull();
     expect(halfStar).toBeNull();
   });
+
   it('one star - rating 1', () => {
     const { getAllByTestId, queryByTestId } = render(<StarsManager rating={1} />);
     const fullStars = getAllByTestId('full-star');
@@ -21,6 +22,7 @@ describe('Stars tests', () => {
     expect(grayStars.length).toBe(4);
     expect(halfStar).toBeNull();
   });
+
   it('one and half star - rating 1.6', () => {
     const { getAllByTestId } = render(<StarsManager rating={1.6} />);
     const fullStars = getAllByTestId('full-star');
@@ -30,6 +32,7 @@ describe('Stars tests', () => {
     expect(halfStar.length).toBe(1);
     expect(grayStars.length).toBe(3);
   });
+
   it('one star - rating 1.123', () => {
     const { getAllByTestId, queryByTestId } = render(<StarsManager rating={1.123} />);
     const fullStars = getAllByTestId('full-star');
@@ -39,6 +42,7 @@ describe('Stars tests', () => {
     expect(grayStars.length).toBe(4);
     expect(halfStar).toBeNull();
   });
+
   it('two stars - rating 2.5', () => {
     const { getAllByTestId, queryByTestId } = render(<StarsManager rating={2.5} />);
     const fullStars = getAllByTestId('full-star');
@@ -48,6 +52,7 @@ describe('Stars tests', () => {
     expect(grayStars.length).toBe(3);
     expect(halfStar).toBeNull();
   });
+
   it('five stars - rating 5', () => {
     const { getAllByTestId, queryByTestId } = render(<StarsManager rating={5} />);
     const fullStars = getAllByTestId('full-star');
