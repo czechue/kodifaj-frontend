@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 interface HamburgerProps {
   isOpen: boolean;
@@ -6,17 +7,22 @@ interface HamburgerProps {
 }
 
 const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toogle }) => {
+  const buttonStyles = clsx('md:hidden z-10', isOpen && 'fixed right-0 mr-4');
+  const buttonStylesTop = clsx(
+    'hamburger-bar',
+    isOpen && 'transform rotate-45 -translate-x-00 translate-y-2',
+  );
+  const buttonStylesMiddle = clsx('hamburger-bar-middle', isOpen && 'transform opacity-0');
+  const buttonStylesBottom = clsx(
+    'hamburger-bar',
+    isOpen && 'transform -rotate-45 -translate-x-00 translate-y-2',
+  );
+
   return (
-    <button className={`md:hidden z-10 ${isOpen && 'fixed right-0 mr-4'}`} onClick={toogle}>
-      <div
-        className={`hamburger-bar ${isOpen && 'transform rotate-45 -translate-x-00 translate-y-2'}`}
-      ></div>
-      <div className={`hamburger-bar-middle  ${isOpen && 'transform opacity-0'}`}></div>
-      <div
-        className={`hamburger-bar ${
-          isOpen && 'transform -rotate-45 translate-x-00 -translate-y-2'
-        }`}
-      ></div>
+    <button className={buttonStyles} onClick={toogle}>
+      <div className={buttonStylesTop}></div>
+      <div className={buttonStylesMiddle}></div>
+      <div className={buttonStylesBottom}></div>
     </button>
   );
 };
