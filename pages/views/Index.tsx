@@ -1,9 +1,9 @@
 import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import fetch from 'node-fetch';
-import Layout from '../components/shared/layout/Layout';
+import Layout from '../../client/components/shared/layout/Layout';
 import { Task } from '../../common/models/task.types';
-import Listing from '../components/listing/Listing';
+import Listing from '../../client/components/listing/Listing';
 
 interface HomeProps {
   tasks: Task[];
