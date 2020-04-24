@@ -6,12 +6,12 @@ import { Task } from '../../common/models/task.types';
 import Listing from '../../client/components/listing/Listing';
 
 interface HomeProps {
-  tasks: Task[];
+  tasks?: Task[];
 }
 
 const apiUrl = process.env.apiUrl as string;
 
-const Home: NextPage<HomeProps> = ({ tasks }) => {
+const Home: NextPage<HomeProps> = ({ tasks = [] }) => {
   return (
     <Layout title="Home page">
       <a href="/auth/github">Login</a>
@@ -21,13 +21,21 @@ const Home: NextPage<HomeProps> = ({ tasks }) => {
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const res = await fetch(`${apiUrl}/api/tasks`);
-  const tasks: Task[] = await res.json();
-  return {
-    props: {
-      tasks,
-    },
-  };
+  try {
+    const res = await fetch(`${apiUrl}/api/tasks`);
+    const tasks: Task[] = await res.json();
+    return {
+      props: {
+        tasks,
+      },
+    };
+  } catch (e) {
+    return {
+      props: {
+        tasks: [],
+      },
+    };
+  }
 };
 
 export default Home;
