@@ -13,7 +13,7 @@ module.exports = (phase, { defaultConfig }) => {
 
   return {
     env: {
-      apiUrl: 'https://czechue.usermd.net',
+      apiUrl: 'http://kodifaj.pl',
     },
   };
 };

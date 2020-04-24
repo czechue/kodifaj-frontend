@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../../models/task.types';
+import { Task } from '../../../common/models/task.types';
 
 interface ListingProps {
   tasks?: Task[];
