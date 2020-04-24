@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Task } from '../../common/models/task.types';
-import Home from '../../pages/views/Index';
+import { Task } from '../common/models/task.types';
+import Home from '../pages/views/Index';
 
 test('renders deploy link', () => {
   const { getByText } = render(<Home tasks={[{ _id: 'foo-id' } as Task]} />);
