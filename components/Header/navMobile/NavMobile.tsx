@@ -1,18 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa';
+import clsx from 'clsx';
 
 interface NavMobileProps {
   isOpen: boolean;
 }
 
 const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
+  const navStyles = clsx(
+    'text-gray-700 fixed w-0 top-0 left-0 transition-all duration-500 bg-gray-300 h-full overflow-x-hidden',
+    isOpen && 'w-full',
+  );
+
   return (
-    <nav
-      className={`text-gray-700 fixed w-0 top-0 left-0 transition-all duration-500 bg-gray-300 h-full overflow-x-hidden ${
-        isOpen ? 'w-full' : 'w-0'
-      } `}
-    >
+    <nav className={navStyles}>
       <ul className="flex flex-col h-full text-2xl sm:text-4xl capitalize font-medium justify-center items-center">
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200">
           <Link href="#">
