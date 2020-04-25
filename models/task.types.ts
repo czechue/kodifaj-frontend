@@ -3,7 +3,7 @@ import { Solution } from './solution.types';
 
 export interface Task {
   _id: string;
-  user: User;
+  _user: User;
   solutions: Solution[];
   title: string;
   repo: string;

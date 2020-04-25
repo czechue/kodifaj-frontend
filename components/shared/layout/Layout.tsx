@@ -8,14 +8,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   return (
-    <div className="font-sans antialiased text-gray-900">
+    <div className="font-sans antialiased text-gray-900 bg-gray-200 min-h-screen">
       <Head>
         <title>{title}</title>
       </Head>
       <main className="leading-normal">
-        <div className="max-w-8xl mx-auto grid grid-cols-1 row-gap-16 px-4 py-4 sm:px-6 sm:py-12 lg:px-8 bg-blue-100">
-          {children}
-        </div>
+        <div className="mx-auto bg-gray-200 grid grid-cols-1 row-gap-16 sm:pb-12">{children}</div>
       </main>
     </div>
   );
