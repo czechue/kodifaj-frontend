@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextPage, GetStaticProps } from 'next';
+import { NextPage, GetServerSideProps } from 'next';
 import fetch from 'node-fetch';
 import Layout from '../components/shared/layout/Layout';
 import { Task } from '../models/task.types';
@@ -17,9 +17,8 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const url = process.env.apiUrl as string;
-  const res = await fetch(`${url}/tasks`);
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const res = await fetch(`${process.env.WEB_URI}/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {

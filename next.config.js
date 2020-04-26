@@ -1,19 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+require('dotenv').config();
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type,@typescript-eslint/no-unused-vars
-module.exports = (phase, { defaultConfig }) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return {
-      env: {
-        apiUrl: 'http://localhost:8080/api',
-      },
-    };
-  }
-
-  return {
-    env: {
-      apiUrl: 'https://czechue.usermd.net/api',
-    },
-  };
+module.exports = {
+  env: {
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL,
+    MONGO_URI: process.env.MONGO_URI,
+    WEB_URI: process.env.WEB_URI,
+    COOKIE_KEY: process.env.COOKIE_KEY,
+  },
 };
