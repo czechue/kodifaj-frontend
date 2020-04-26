@@ -20,9 +20,9 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toogle }) => {
 
   return (
     <button className={buttonStyles} onClick={toogle}>
-      <div className={buttonStylesTop}></div>
-      <div className={buttonStylesMiddle}></div>
-      <div className={buttonStylesBottom}></div>
+      <div className={buttonStylesTop} />
+      <div className={buttonStylesMiddle} />
+      <div className={buttonStylesBottom} />
     </button>
   );
 };

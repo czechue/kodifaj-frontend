@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
 import clsx from 'clsx';
+import { FaGithub } from 'react-icons/fa';
 
 interface NavMobileProps {
   isOpen: boolean;
@@ -31,7 +31,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
             <a className="">pomoc</a>
           </Link>
         </li>
-        <span className="pt-6 border-gray-600 border-b w-6/12"></span>
+        <span className="pt-6 border-gray-600 border-b w-6/12" />
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8 flex items-center">
           <Link href="#">
             <a className="">rejestracja</a>
