@@ -2,7 +2,7 @@ import React from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import fetch from 'node-fetch';
 import Layout from '../components/shared/layout/Layout';
-import { Task } from '../models/task.types';
+import { Task } from '../models/task/task.types';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
 

@@ -1,5 +1,4 @@
-import { User } from './user.types';
-import { Solution } from './solution.types';
+import { User } from '../user/user.types';
 
 export interface Task {
   _id: string;
