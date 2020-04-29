@@ -14,12 +14,15 @@ export default async function database(
     return next();
   }
 
-  await mongoose.connect(process.env.MONGO_URI as string, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(
+    'mongodb://mo1272_kodifaj:Fender15!@195.167.159.159:27017/mo1272_kodifaj',
+    {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+    },
+  );
 
   return next();
 }
