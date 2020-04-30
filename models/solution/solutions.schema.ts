@@ -7,7 +7,7 @@ const solutionSchema: Schema = new Schema({
   phase: String,
   createdAt: { type: Date, default: Date.now },
   _task: { type: Schema.Types.ObjectId, ref: 'tasks' },
-  _user: { type: Schema.Types.ObjectId, ref: 'users' },
+  _user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
-mongoose.model('solutions', solutionSchema);
+export default mongoose.models.Solution || mongoose.model('Solution', solutionSchema);
