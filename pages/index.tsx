@@ -18,7 +18,7 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`kodifaj-frontend-lsfxr7h51.now.sh/api/tasks`);
+  const res = await fetch(`${process.env.WEB_URI}/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {

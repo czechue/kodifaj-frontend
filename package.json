@@ -1,12 +1,6 @@
 {
   "name": "kodifaj-frontend",
   "version": "0.1.0",
-  "private": true,
-  "proxy": {
-    "/api/*": {
-      "target": "http://localhost:3000"
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
