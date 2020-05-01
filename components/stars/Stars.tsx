@@ -1,6 +1,6 @@
 import React from 'react';
-import getStarType from '../utils/getStarType/getStarType';
-import Star from '../star/Star';
+import getStarType from './utils/getStarType/getStarType';
+import Star from './star/Star';
 
 interface StarsProps {
   rating: number;
