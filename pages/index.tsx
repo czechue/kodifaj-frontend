@@ -18,7 +18,10 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/tasks`);
+  const url = process.env.VERCEL_URL;
+  console.log(url);
+
+  const res = await fetch(`https://kodifaj-frontend.now.sh/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
