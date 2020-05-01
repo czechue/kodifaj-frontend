@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (req) => 
   const url = process.env.MONGO_URI;
   console.log('url', url);
 
-  const res = await fetch(`${req.req.headers.referer}api/tasks`);
+  const res = await fetch(`https://${process.env.VERCEL_URL}/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
