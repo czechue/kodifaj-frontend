@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Task } from '../../../models/task.types';
-import Stars from '../../../ui/stars/stars/Stars';
-import Badges from '../../../ui/badges/Badges';
+import { Task } from '../../../models/task/task.types';
+import Stars from '../../stars/Stars';
+import Badges from '../../badges/Badges';
 
 interface CardProps {
   task: Task;
@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
                 style={{
                   backgroundImage: `url(${task._user.photo}`,
                 }}
-              ></span>
+              />
             </div>
             <span className="absolute top-0 pl-12 text-gray-700 italic underline">
               {task._user.login}
