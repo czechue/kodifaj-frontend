@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   return (
     <header className="relative px-4 py-2 flex flex-wrap justify-between bg-gray-300 border-b border-gray-400 w-full items-center z-10">
       <h1>
-        <img className="w-24" src="./logo.png" alt="Kodifaj" />
+        <img className="w-24" src="/logo.png" alt="Kodifaj" />
       </h1>
       <div className="flex items-center md:hidden">
         <Hamburger isOpen={isOpen} toogle={toogle} />
