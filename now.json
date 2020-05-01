@@ -1,0 +1,8 @@
+{
+  "build": {
+    "env": {
+      "VERCEL_URL": "http://localhost:3000",
+      "MONGO_URI": "mongodb://mo1272_kodifaj:Fender15!@195.167.159.159:27017/mo1272_kodifaj"
+    }
+  }
+}

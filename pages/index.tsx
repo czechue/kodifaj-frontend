@@ -13,15 +13,16 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ tasks }) => (
   <Layout title="Home page">
     <Header />
+    {process.env.VERCEL_URL}
     <Listing tasks={tasks} />
   </Layout>
 );
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const url = process.env.VERCEL_URL;
-  console.log(url);
+export const getServerSideProps: GetServerSideProps<HomeProps> = async (req) => {
+  const url = process.env.MONGO_URI;
+  console.log('url', url);
 
-  const res = await fetch(`https://kodifaj-frontend.now.sh/api/tasks`);
+  const res = await fetch(`${req.req.headers.referer}api/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
