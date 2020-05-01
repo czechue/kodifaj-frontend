@@ -1,0 +1,7 @@
+.hamburger-bar {
+  @apply w-6 h-2 border-t-4 border-gray-800 transition-transform duration-500;
+}
+.hamburger-bar-middle {
+  @apply hamburger-bar;
+  transition: opacity 0.5s;
+}
