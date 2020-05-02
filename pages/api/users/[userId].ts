@@ -9,8 +9,12 @@ handler.use(middleware);
 
 handler.get(
   async (req: NextApiRequest, res: NextApiResponse<Document[]>): Promise<void> => {
-    const user = await User.findById(req.query.userId);
-    res.status(200).json(user);
+    try {
+      const user = await User.findById(req.query.userId);
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   },
 );
 

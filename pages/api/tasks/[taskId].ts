@@ -10,15 +10,18 @@ handler.use(middleware);
 
 handler.get(
   async (req: NextApiRequest, res: NextApiResponse<Document[]>): Promise<void> => {
-    const task = await Task.findById(req.query.taskId).populate('_user');
-    const solutions = await Solution.find({ _task: req.query.taskId }).populate('_user');
-
-    return Promise.all([task, solutions]).then(([taskRes, solutionsRes]) => {
-      return res.send({
-        ...taskRes?._doc,
-        solutions: solutionsRes,
+    try {
+      const task = await Task.findById(req.query.taskId).populate('_user');
+      const solutions = await Solution.find({ _task: req.query.taskId }).populate('_user');
+      return Promise.all([task, solutions]).then(([taskRes, solutionsRes]) => {
+        return res.send({
+          ...taskRes?._doc,
+          solutions: solutionsRes,
+        });
       });
-    });
+    } catch (error) {
+      res.status(400).json(error);
+    }
   },
 );
 
