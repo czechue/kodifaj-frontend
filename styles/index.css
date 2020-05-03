@@ -3,6 +3,7 @@
 
 @import './components/listingCard.css';
 @import './components/hamburger.css';
+@import './components/login.css';
 
 @tailwind components;
 /* purgecss end ignore */
