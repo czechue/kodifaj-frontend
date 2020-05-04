@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ task }) => {
   return (
     <div className="flex flex-col items-center">
-      <Link href={`/tasks/${task._id}`}>
+      <Link href="tasks/[taskId]" as={`/tasks/${task._id}`}>
         <section className="mt-4 w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
           <div className="h-64 relative">
             <img
@@ -25,7 +25,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
               <span
                 className="block ml-2 -mt-3 h-8 w-8 rounded-full z-50 relative bg-cover bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: `url(${task._user.photo}`,
+                  backgroundImage: `url(${task._user.photo ? task._user.photo : ''})`,
                 }}
               />
             </div>
