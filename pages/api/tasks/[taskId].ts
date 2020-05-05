@@ -11,8 +11,8 @@ handler.use(middleware);
 handler.get(
   async (req: NextApiRequest, res: NextApiResponse<Document[]>): Promise<void> => {
     try {
-      const task = await Task.findById(req.query.taskId).populate('_user');
-      const solutions = await Solution.find({ _task: req.query.taskId }).populate('_user');
+      const task = await Task.findById(req.query.taskid).populate('_user');
+      const solutions = await Solution.find({ _task: req.query.taskid }).populate('_user');
       return Promise.all([task, solutions]).then(([taskRes, solutionsRes]) => {
         return res.send({
           ...taskRes?._doc,

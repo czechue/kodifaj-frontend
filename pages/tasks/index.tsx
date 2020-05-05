@@ -5,6 +5,7 @@ import Layout from '../../components/shared/layout/Layout';
 import { Task } from '../../models/task/task.types';
 import Listing from '../../components/listing/Listing';
 import Header from '../../components/header/Header';
+import { apiURL } from '../../lib/consts/apiUrl';
 
 interface HomeProps {
   tasks: Task[];
@@ -24,7 +25,7 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`http://${process.env.VERCEL_URL}/api/tasks`);
+  const res = await fetch(`${apiURL}/api/tasks`);
   const tasks: Task[] = await res.json();
   console.log(res);
   return {
