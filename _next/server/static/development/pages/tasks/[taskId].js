@@ -2514,9 +2514,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/tasks/[taskId].tsx":
+/***/ "./pages/tasks/[taskid].tsx":
 /*!**********************************!*\
-  !*** ./pages/tasks/[taskId].tsx ***!
+  !*** ./pages/tasks/[taskid].tsx ***!
   \**********************************/
 /*! exports provided: getServerSideProps, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2533,7 +2533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_shared_layout_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/shared/layout/Layout */ "./components/shared/layout/Layout.tsx");
 /* harmony import */ var _components_header_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/header/Header */ "./components/header/Header.tsx");
 /* harmony import */ var _lib_consts_apiUrl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lib/consts/apiUrl */ "./lib/consts/apiUrl.ts");
-var _jsxFileName = "/Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskId].tsx";
+var _jsxFileName = "/Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskid].tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2583,7 +2583,7 @@ const TaskDetails = ({
 const getServerSideProps = async ({
   params
 }) => {
-  const res = await node_fetch__WEBPACK_IMPORTED_MODULE_1___default()(`${_lib_consts_apiUrl__WEBPACK_IMPORTED_MODULE_5__["apiURL"]}/api/tasks/${params && params.taskId}`);
+  const res = await node_fetch__WEBPACK_IMPORTED_MODULE_1___default()(`${_lib_consts_apiUrl__WEBPACK_IMPORTED_MODULE_5__["apiURL"]}/api/tasks/${params && params.taskid}`);
   const errorCode = res.ok ? false : res.status;
 
   if (!errorCode) {
@@ -2605,12 +2605,12 @@ const getServerSideProps = async ({
 
 /***/ 5:
 /*!****************************************!*\
-  !*** multi ./pages/tasks/[taskId].tsx ***!
+  !*** multi ./pages/tasks/[taskid].tsx ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskId].tsx */"./pages/tasks/[taskId].tsx");
+module.exports = __webpack_require__(/*! /Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskid].tsx */"./pages/tasks/[taskid].tsx");
 
 
 /***/ }),
@@ -2715,4 +2715,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=[taskId].js.map
+//# sourceMappingURL=[taskid].js.map

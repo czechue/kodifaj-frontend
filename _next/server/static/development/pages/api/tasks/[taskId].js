@@ -233,9 +233,9 @@ const UserSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__["Schema"]({
 
 /***/ }),
 
-/***/ "./pages/api/tasks/[taskId].ts":
+/***/ "./pages/api/tasks/[taskid].ts":
 /*!*************************************!*\
-  !*** ./pages/api/tasks/[taskId].ts ***!
+  !*** ./pages/api/tasks/[taskid].ts ***!
   \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -261,9 +261,9 @@ const handler = next_connect__WEBPACK_IMPORTED_MODULE_0___default()();
 handler.use(_middlewares_middleware__WEBPACK_IMPORTED_MODULE_1__["default"]);
 handler.get(async (req, res) => {
   try {
-    const task = await _models_task_task_schema__WEBPACK_IMPORTED_MODULE_2__["default"].findById(req.query.taskId).populate('_user');
+    const task = await _models_task_task_schema__WEBPACK_IMPORTED_MODULE_2__["default"].findById(req.query.taskid).populate('_user');
     const solutions = await _models_solution_solutions_schema__WEBPACK_IMPORTED_MODULE_3__["default"].find({
-      _task: req.query.taskId
+      _task: req.query.taskid
     }).populate('_user');
     return Promise.all([task, solutions]).then(([taskRes, solutionsRes]) => {
       return res.send(_objectSpread({}, taskRes === null || taskRes === void 0 ? void 0 : taskRes._doc, {
@@ -280,12 +280,12 @@ handler.get(async (req, res) => {
 
 /***/ 6:
 /*!*******************************************!*\
-  !*** multi ./pages/api/tasks/[taskId].ts ***!
+  !*** multi ./pages/api/tasks/[taskid].ts ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/api/tasks/[taskId].ts */"./pages/api/tasks/[taskId].ts");
+module.exports = __webpack_require__(/*! /Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/api/tasks/[taskid].ts */"./pages/api/tasks/[taskid].ts");
 
 
 /***/ }),
@@ -313,4 +313,4 @@ module.exports = require("next-connect");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=[taskId].js.map
+//# sourceMappingURL=[taskid].js.map

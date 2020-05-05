@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/tasks/[taskId].js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/tasks/[taskid].js"],{
 
 /***/ "./components/header/Header.tsx":
 /*!**************************************!*\
@@ -1232,23 +1232,23 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5BtaskId%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5BtaskId%5D.tsx&hotRouterUpdates=true!./":
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5Btaskid%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5Btaskid%5D.tsx&hotRouterUpdates=true!./":
 /*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5BtaskId%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5BtaskId%5D.tsx&hotRouterUpdates=true ***!
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5Btaskid%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5Btaskid%5D.tsx&hotRouterUpdates=true ***!
   \************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
     (window.__NEXT_P = window.__NEXT_P || []).push([
-      "/tasks/[taskId]",
+      "/tasks/[taskid]",
       function () {
-        var mod = __webpack_require__(/*! ./pages/tasks/[taskId].tsx */ "./pages/tasks/[taskId].tsx");
+        var mod = __webpack_require__(/*! ./pages/tasks/[taskid].tsx */ "./pages/tasks/[taskid].tsx");
         if (true) {
-          module.hot.accept(/*! ./pages/tasks/[taskId].tsx */ "./pages/tasks/[taskId].tsx", function () {
-            if (!next.router.components["/tasks/[taskId]"]) return;
-            var updatedPage = __webpack_require__(/*! ./pages/tasks/[taskId].tsx */ "./pages/tasks/[taskId].tsx");
-            next.router.update("/tasks/[taskId]", updatedPage);
+          module.hot.accept(/*! ./pages/tasks/[taskid].tsx */ "./pages/tasks/[taskid].tsx", function () {
+            if (!next.router.components["/tasks/[taskid]"]) return;
+            var updatedPage = __webpack_require__(/*! ./pages/tasks/[taskid].tsx */ "./pages/tasks/[taskid].tsx");
+            next.router.update("/tasks/[taskid]", updatedPage);
           });
         }
         return mod;
@@ -13605,9 +13605,9 @@ try {
 
 /***/ }),
 
-/***/ "./pages/tasks/[taskId].tsx":
+/***/ "./pages/tasks/[taskid].tsx":
 /*!**********************************!*\
-  !*** ./pages/tasks/[taskId].tsx ***!
+  !*** ./pages/tasks/[taskid].tsx ***!
   \**********************************/
 /*! exports provided: __N_SSP, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13622,7 +13622,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_shared_layout_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/shared/layout/Layout */ "./components/shared/layout/Layout.tsx");
 /* harmony import */ var _components_header_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/header/Header */ "./components/header/Header.tsx");
 var _this = undefined,
-    _jsxFileName = "/Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskId].tsx";
+    _jsxFileName = "/Users/jundymek/dev/kodifaj/kodifaj-frontend/pages/tasks/[taskid].tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -13674,12 +13674,12 @@ var __N_SSP = true;
 
 /***/ 2:
 /*!****************************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Ftasks%2F%5BtaskId%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5BtaskId%5D.tsx&hotRouterUpdates=true ***!
+  !*** multi next-client-pages-loader?page=%2Ftasks%2F%5Btaskid%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5Btaskid%5D.tsx&hotRouterUpdates=true ***!
   \****************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Ftasks%2F%5BtaskId%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5BtaskId%5D.tsx&hotRouterUpdates=true! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5BtaskId%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5BtaskId%5D.tsx&hotRouterUpdates=true!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Ftasks%2F%5Btaskid%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5Btaskid%5D.tsx&hotRouterUpdates=true! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Ftasks%2F%5Btaskid%5D&absolutePagePath=%2FUsers%2Fjundymek%2Fdev%2Fkodifaj%2Fkodifaj-frontend%2Fpages%2Ftasks%2F%5Btaskid%5D.tsx&hotRouterUpdates=true!./");
 
 
 /***/ }),
@@ -13696,4 +13696,4 @@ module.exports = dll_c2e10d183b950a67d9e7;
 /***/ })
 
 },[[2,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=[taskId].js.map
+//# sourceMappingURL=[taskid].js.map
