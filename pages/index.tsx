@@ -17,7 +17,10 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
   </Layout>
 );
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async (req) => {
+  if (typeof window === 'undefined') {
+    // console.log('sessssion', req);
+  }
   const res = await fetch(`http://${process.env.VERCEL_URL}/api/tasks`);
   const tasks: Task[] = await res.json();
   return {
