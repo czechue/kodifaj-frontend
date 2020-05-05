@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ task }) => {
   return (
     <div className="flex flex-col items-center">
-      <Link href="/tasks/[taskId]" as={`/tasks/${task._id}`} prefetch={false}>
+      <Link href="/tasks/[taskId]" as={`/tasks/${task._id.toString()}`} prefetch={false}>
         <a className="mt-4 w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
           <section>
             <div className="h-64 relative">
