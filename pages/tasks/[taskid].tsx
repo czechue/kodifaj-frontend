@@ -5,7 +5,7 @@ import Error from 'next/error';
 import { Task } from '../../models/task/task.types';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
-import { apiURL } from '../../lib/consts/apiUrl';
+import { API_URL } from '../../lib/consts/apiUrl';
 
 interface TaskProps {
   task?: Task;
@@ -27,7 +27,7 @@ const TaskDetails: NextPage<TaskProps> = ({ errorCode, task }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<TaskProps> = async ({ params }) => {
-  const res = await fetch(`${apiURL}/api/tasks/${params && params.taskId}`);
+  const res = await fetch(`${API_URL}/api/tasks/${params && params.taskId}`);
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {
     const task: Task = await res.json();
