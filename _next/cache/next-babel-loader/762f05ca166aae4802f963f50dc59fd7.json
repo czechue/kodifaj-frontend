@@ -1,1 +1,0 @@
-{"ast":null,"code":"import nextConnect from 'next-connect';\nimport database from './database';\nconst middleware = nextConnect(); // type Middleware = NextConnect | RequestHandler;\n\nmiddleware.use(database);\nexport default middleware;","map":null,"metadata":{},"sourceType":"module"}
