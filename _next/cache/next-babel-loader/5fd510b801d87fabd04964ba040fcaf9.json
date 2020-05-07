@@ -1,0 +1,1 @@
+{"ast":null,"code":"import mongoose, { Schema } from 'mongoose';\nconst UserSchema = new Schema({\n  login: String,\n  githubId: String,\n  photo: String\n});\nexport default mongoose.models.User || mongoose.model('User', UserSchema);","map":null,"metadata":{},"sourceType":"module"}

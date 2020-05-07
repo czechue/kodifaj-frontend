@@ -1,0 +1,1 @@
+{"ast":null,"code":"import nextConnect from 'next-connect';\nimport middleware from '../../middlewares/middleware';\nconst handler = nextConnect();\nhandler.use(middleware);\nhandler.get(async (req, res) => {\n  res.status(204);\n});\nexport default handler;","map":null,"metadata":{},"sourceType":"module"}

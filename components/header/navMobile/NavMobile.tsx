@@ -17,17 +17,17 @@ const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
     <nav className={navStyles}>
       <ul className="flex flex-col h-full text-2xl sm:text-4xl capitalize font-medium justify-center items-center">
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200">
-          <Link href="#">
+          <Link href="/">
             <a className="">zadania</a>
           </Link>
         </li>
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8">
-          <Link href="#">
+          <Link href="/">
             <a className="">ranking</a>
           </Link>
         </li>
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8">
-          <Link href="#">
+          <Link href="/">
             <a className="">pomoc</a>
           </Link>
         </li>
