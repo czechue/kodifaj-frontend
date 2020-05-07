@@ -802,7 +802,7 @@ const Card = ({
       columnNumber: 5
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/tasks/[taskid]",
+    href: "/tasks/[taskId]",
     as: `/tasks/${task._id.toString()}`,
     prefetch: false,
     __self: undefined,

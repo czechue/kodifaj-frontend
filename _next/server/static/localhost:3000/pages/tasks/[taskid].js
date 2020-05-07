@@ -638,7 +638,7 @@ const TaskDetails = ({
 const getServerSideProps = async ({
   params
 }) => {
-  const res = await node_fetch__WEBPACK_IMPORTED_MODULE_1___default()(`${_lib_consts_apiUrl__WEBPACK_IMPORTED_MODULE_5__[/* apiURL */ "a"]}/api/tasks/${params && params.taskid}`);
+  const res = await node_fetch__WEBPACK_IMPORTED_MODULE_1___default()(`${_lib_consts_apiUrl__WEBPACK_IMPORTED_MODULE_5__[/* apiURL */ "a"]}/api/tasks/${params && params.taskId}`);
   const errorCode = res.ok ? false : res.status;
 
   if (!errorCode) {

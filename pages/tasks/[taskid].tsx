@@ -27,7 +27,7 @@ const TaskDetails: NextPage<TaskProps> = ({ errorCode, task }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<TaskProps> = async ({ params }) => {
-  const res = await fetch(`${apiURL}/api/tasks/${params && params.taskid}`);
+  const res = await fetch(`${apiURL}/api/tasks/${params && params.taskId}`);
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {
     const task: Task = await res.json();

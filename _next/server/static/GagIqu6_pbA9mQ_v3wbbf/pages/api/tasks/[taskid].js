@@ -222,7 +222,7 @@ const solutionSchema = new external_mongoose_["Schema"]({
   }
 });
 /* harmony default export */ var solutions_schema = (external_mongoose_default.a.models.Solution || external_mongoose_default.a.model('Solution', solutionSchema));
-// CONCATENATED MODULE: ./pages/api/tasks/[taskid].ts
+// CONCATENATED MODULE: ./pages/api/tasks/[taskId].ts
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -237,9 +237,9 @@ const handler = external_next_connect_default()();
 handler.use(middleware["a" /* default */]);
 handler.get(async (req, res) => {
   try {
-    const task = await task_schema["a" /* default */].findById(req.query.taskid).populate('_user');
+    const task = await task_schema["a" /* default */].findById(req.query.taskId).populate('_user');
     const solutions = await solutions_schema.find({
-      _task: req.query.taskid
+      _task: req.query.taskId
     }).populate('_user');
     return Promise.all([task, solutions]).then(([taskRes, solutionsRes]) => {
       return res.send(_objectSpread({}, taskRes === null || taskRes === void 0 ? void 0 : taskRes._doc, {
@@ -250,7 +250,7 @@ handler.get(async (req, res) => {
     res.status(400).json(error);
   }
 });
-/* harmony default export */ var _taskid_ = __webpack_exports__["default"] = (handler);
+/* harmony default export */ var _taskId_ = __webpack_exports__["default"] = (handler);
 
 /***/ }),
 

@@ -697,7 +697,7 @@ var Card = function Card(_ref) {
       columnNumber: 5
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/tasks/[taskid]",
+    href: "/tasks/[taskId]",
     as: "/tasks/".concat(task._id.toString()),
     prefetch: false,
     __self: _this,

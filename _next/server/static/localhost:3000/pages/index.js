@@ -2079,7 +2079,7 @@ const Card = ({
   return Card_jsx("div", {
     className: "flex flex-col items-center"
   }, Card_jsx(link_default.a, {
-    href: "/tasks/[taskid]",
+    href: "/tasks/[taskId]",
     as: `/tasks/${task._id.toString()}`
   }, Card_jsx("a", {
     className: "mt-4 w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer"

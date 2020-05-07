@@ -27,7 +27,6 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const res = await fetch(`${apiURL}/api/tasks`);
   const tasks: Task[] = await res.json();
-  console.log(res);
   return {
     props: {
       tasks,

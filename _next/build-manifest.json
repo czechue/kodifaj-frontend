@@ -30,7 +30,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/tasks/[taskid]": [
+    "/tasks/[taskId]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

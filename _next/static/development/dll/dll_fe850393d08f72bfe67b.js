@@ -28103,7 +28103,7 @@ var IDLE_PRIORITY = maxSigned31BitInt; // Tasks are stored on a min heap
 var taskQueue = [];
 var timerQueue = []; // Incrementing id counter. Used to maintain insertion order.
 
-var taskidCounter = 1; // Pausing the scheduler is useful for debugging.
+var taskIdCounter = 1; // Pausing the scheduler is useful for debugging.
 var currentTask = null;
 var currentPriorityLevel = NormalPriority; // This is set while performing work, to prevent re-entrancy.
 
@@ -28367,7 +28367,7 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
 
   var expirationTime = startTime + timeout;
   var newTask = {
-    id: taskidCounter++,
+    id: taskIdCounter++,
     callback: callback,
     priorityLevel: priorityLevel,
     startTime: startTime,
