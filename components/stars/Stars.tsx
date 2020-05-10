@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import getStarType from './utils/getStarType/getStarType';
 import Star from './star/Star';
 

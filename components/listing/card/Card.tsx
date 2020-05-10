@@ -9,6 +9,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ task }) => {
+  const imageSrc = task?.images ? task?.images[0] : '';
+
   return (
     <div className="flex flex-col items-center">
       <Link href={`/tasks/${task._id}`}>
@@ -16,7 +18,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
           <div className="h-64 relative">
             <img
               className="h-full w-full object-cover overflow-hidden rounded-t-md"
-              src={task.images[0]}
+              src={imageSrc}
               alt={task.title}
             />
           </div>
