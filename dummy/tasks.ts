@@ -1,9 +1,6 @@
-import nextConnect from 'next-connect';
-import { NextApiRequest, NextApiResponse } from 'next';
-import middleware from '../../middlewares/middleware';
-import { Task } from '../../models/task/task.types';
+import { Task } from '../models/task/task.model';
 
-const tasks = ([
+const index = ([
   {
     images: ['https://source.unsplash.com/user/erondu/400x300'],
     tips: ['Feature/LFE-664 onboarding on user listing bundles'],
@@ -76,26 +73,3 @@ const tasks = ([
     createdAt: '2020-01-07T22:25:43.273Z',
   },
 ] as unknown) as Task[];
-
-const handler = nextConnect();
-handler.use(middleware);
-
-handler.get(
-  async (req: any, res: NextApiResponse<Task[]>): Promise<void> => {
-    // const tasks = await Task.find().populate('_user', 'login');
-    const tasksRes: Task[] = [];
-    await req.db
-      .collection('tasks')
-      .aggregate([
-        { $lookup: { from: 'users', localField: '_user', foreignField: '_id', as: 'user' } },
-      ])
-      .forEach((taskDoc: any) => {
-        console.log('taskDoc', taskDoc);
-        tasksRes.push(taskDoc);
-      })
-      .then((tasks: any) => res.status(200).json(tasksRes))
-      .catch((err: any) => console.log('get task error', err));
-  },
-);
-
-export default handler;
