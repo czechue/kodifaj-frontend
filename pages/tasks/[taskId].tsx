@@ -5,14 +5,14 @@ import Error from 'next/error';
 import { Task } from '../../models/task/task.types';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
-import { API_URL } from '../../lib/consts/apiUrl';
+import { ParsedUrlQuery } from 'querystring';
 
-interface TaskProps {
+interface TaskDetailsProps {
   task?: Task;
   errorCode?: number;
 }
 
-const TaskDetails: NextPage<TaskProps> = ({ errorCode, task }) => {
+const TaskDetails: NextPage<TaskDetailsProps> = ({ errorCode, task }) => {
   return (
     <Layout title="Home page">
       <Header />
@@ -26,8 +26,14 @@ const TaskDetails: NextPage<TaskProps> = ({ errorCode, task }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<TaskProps> = async ({ params }) => {
-  const res = await fetch(`${API_URL}/api/tasks/${params && params.taskId}`);
+interface Params extends ParsedUrlQuery {
+  taskId: string;
+}
+
+export const getServerSideProps: GetServerSideProps<TaskDetailsProps, Params> = async ({
+  params,
+}) => {
+  const res = await fetch(`${process.env.API_URL}/tasks/${params?.taskId}`);
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {
     const task: Task = await res.json();

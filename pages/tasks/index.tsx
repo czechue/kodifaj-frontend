@@ -5,7 +5,6 @@ import Layout from '../../components/shared/layout/Layout';
 import { Task } from '../../models/task/task.types';
 import Listing from '../../components/listing/Listing';
 import Header from '../../components/header/Header';
-import { API_URL } from '../../lib/consts/apiUrl';
 
 interface HomeProps {
   tasks: Task[];
@@ -25,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`${API_URL}/api/tasks`);
+  const res = await fetch(`${process.env.API_URL}tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {

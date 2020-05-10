@@ -5,26 +5,22 @@ import Layout from '../components/shared/layout/Layout';
 import { Task } from '../models/task/task.types';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
+// import { API_URL } from '../lib/consts/apiUrl';
+// import API_URL from '../next.config'
 
 interface HomeProps {
   tasks: Task[];
 }
 
 const Home: NextPage<HomeProps> = ({ tasks }) => (
-  <>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800"
-      rel="stylesheet"
-    />
-    <Layout title="Home page">
-      <Header />
-      <Listing tasks={tasks} />
-    </Layout>
-  </>
+  <Layout title="Home page">
+    <Header />
+    <Listing tasks={tasks} />
+  </Layout>
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`http://${process.env.VERCEL_URL}/api/tasks`);
+  const res = await fetch(`${process.env.API_URL}/tasks`);
   const tasks: Task[] = await res.json();
   return {
     props: {
