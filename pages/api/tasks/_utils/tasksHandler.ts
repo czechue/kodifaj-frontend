@@ -7,8 +7,5 @@ export default async function getAllTasks(db: Db): Promise<void | Task[]> {
     .aggregate([
       { $lookup: { from: 'users', localField: '_user', foreignField: '_id', as: 'user' } },
     ])
-    .toArray()
-    .then((tasks) => {
-      return tasks;
-    });
+    .toArray();
 }
