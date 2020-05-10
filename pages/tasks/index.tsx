@@ -11,16 +11,10 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({ tasks }) => (
-  <>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800"
-      rel="stylesheet"
-    />
-    <Layout title="Home page">
-      <Header />
-      <Listing tasks={tasks} />
-    </Layout>
-  </>
+  <Layout title="Home page">
+    <Header />
+    <Listing tasks={tasks} />
+  </Layout>
 );
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
