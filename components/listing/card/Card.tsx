@@ -4,13 +4,23 @@ import { Task } from '../../../models/task/task.types';
 import Stars from '../../stars/Stars';
 import Badges from '../../badges/Badges';
 
+interface UserProps {
+  _id: string;
+  login: string;
+}
 interface CardProps {
-  task: Task;
+  _id: string;
+  _user: UserProps;
+  images: string[];
+  title: string;
+  tags: string[];
+  createdAt: string;
 }
 
-const Card: React.FC<CardProps> = ({ task: { _id, _user, images, title, tags, createdAt } }) => {
+const Card: React.FC<CardProps> = ({ _id, _user, images, title, tags, createdAt }) => {
   const creationTime = createdAt.slice(0, 10);
-  const userPhoto = _user.photo;
+  const userPhoto =
+    'https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4';
   const userLogin = _user.login;
   return (
     <div className="flex flex-col items-center">
