@@ -1,7 +1,6 @@
 import React from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import fetch from 'node-fetch';
-import Error from 'next/error';
 import { Task } from '../../models/task/task.types';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
@@ -12,16 +11,11 @@ interface TaskDetailsProps {
   errorCode?: number;
 }
 
-const TaskDetails: NextPage<TaskDetailsProps> = ({ errorCode, task }) => {
+const TaskDetails: NextPage<TaskDetailsProps> = ({ task, errorCode }) => {
   return (
-    <Layout title="Home page">
+    <Layout title="Home page" errorCode={errorCode}>
       <Header />
       {task && task.title}
-      {errorCode && (
-        <div className="-my-16">
-          <Error statusCode={errorCode} />
-        </div>
-      )}
     </Layout>
   );
 };
