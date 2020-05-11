@@ -5,6 +5,7 @@ import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
 import { User } from '../../models/user/user.types';
+import UserPage from '../../components/user/User';
 
 interface UserDetailsProps {
   user?: User;
@@ -15,7 +16,7 @@ const UserDetails: NextPage<UserDetailsProps> = ({ user, errorCode }) => {
   return (
     <Layout title="User page" errorCode={errorCode}>
       <Header />
-      {user && user._id}
+      {user && <UserPage user={user} />}
     </Layout>
   );
 };
