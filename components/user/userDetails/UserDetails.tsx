@@ -5,14 +5,13 @@ import { Task } from '../../../models/task/task.types';
 import UserActivities from './userActivities/UserActivities';
 
 interface UserDetailsProps {
-  id: string;
   solutions?: string[];
   tasks?: Task[];
   login: string;
   photo?: string;
 }
 
-const UserDetails: React.FC<UserDetailsProps> = ({ id, solutions, tasks, login, photo }) => {
+const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, photo }) => {
   const [activeTab, setActiveTab] = useState<'Tasks' | 'Solutions'>('Tasks');
 
   return (

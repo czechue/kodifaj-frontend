@@ -10,11 +10,11 @@ interface UserPageProps {
 }
 
 const UserPage: React.FC<UserPageProps> = ({ user, tasks }) => {
-  const { _id, _solutions, login, photo } = user;
+  const { _solutions, login, photo } = user;
   return (
     <div>
       <UserHero login={login} photo={photo} />
-      <UserDetails id={_id} solutions={_solutions} tasks={tasks} login={login} photo={photo} />
+      <UserDetails solutions={_solutions} tasks={tasks} login={login} photo={photo} />
     </div>
   );
 };
