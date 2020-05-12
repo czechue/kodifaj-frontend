@@ -12,9 +12,9 @@ interface UserPageProps {
 const UserPage: React.FC<UserPageProps> = ({ user, tasks }) => {
   const { _id, _solutions, login, photo } = user;
   return (
-    <div className="w-full h-full">
+    <div>
       <UserHero login={login} photo={photo} />
-      <UserDetails id={_id} solutions={_solutions} tasks={tasks} />
+      <UserDetails id={_id} solutions={_solutions} tasks={tasks} login={login} photo={photo} />
     </div>
   );
 };

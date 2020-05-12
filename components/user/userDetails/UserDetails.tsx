@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import TabButton from './tabButton/TabButton';
 import UserTasks from './userTasks/UserTasks';
 import { Task } from '../../../models/task/task.types';
+import UserActivities from './userActivities/UserActivities';
 
 interface UserDetailsProps {
   id: string;
   solutions?: string[];
   tasks?: Task[];
+  login: string;
+  photo?: string;
 }
 
-const UserDetails: React.FC<UserDetailsProps> = ({ id, solutions, tasks }) => {
+const UserDetails: React.FC<UserDetailsProps> = ({ id, solutions, tasks, login, photo }) => {
   const [activeTab, setActiveTab] = useState<'Tasks' | 'Solutions'>('Tasks');
 
   return (
@@ -32,8 +35,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ id, solutions, tasks }) => {
           <div className="w-full md:w-2/3">
             {activeTab === 'Tasks' ? <UserTasks tasks={tasks} /> : <p>Solutions</p>}
           </div>
-          <h3 className="font-bold text-center md:hidden">Dotychczasowa aktywność</h3>
-          <div className="w-full md:w-1/3">33%</div>
+          <UserActivities login={login} photo={photo} />
         </div>
       </div>
     </div>
