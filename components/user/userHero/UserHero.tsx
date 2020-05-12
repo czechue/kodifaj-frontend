@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 interface UserHeroProps {
   login: string;
@@ -15,9 +16,13 @@ const UserHero: React.FC<UserHeroProps> = ({ login, photo }) => {
             alt={`${login} photo`}
             className=" w-16 h-16 md:w-32 md:h-32 rounded-full"
           />
-          <div className="flex flex-col items-start ml-6 md:ml-12 md:mt-2">
+          <div className="flex flex-col items-start ml-6 md:ml-12 -mt-2 md:mt-2">
             <h1 className="text-2xl md:text-4xl font-bold">{login}</h1>
-            <p className="text-xs md:text-sm text-gray-700 -mt-1">przykladowy.email@gmail.com</p>
+            <p className="text-xs md:text-sm text-gray-700 -mt-2">przykladowy.email@gmail.com</p>
+            <div className="flex mt-3 items-center">
+              <FaGithub className="text-md mr-2" />
+              <p className="text-sm">{login}</p>
+            </div>
           </div>
         </div>
         <div className="flex justify-center items-center h-full px-4 md:-mt-8">

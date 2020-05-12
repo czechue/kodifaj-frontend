@@ -9,7 +9,7 @@ interface TabButtonProps {
 
 const TabButton: React.FC<TabButtonProps> = ({ label, setActiveTab, activeTab }) => {
   const tabButtonStyles = clsx(
-    'w-40 border-b border-gray-300',
+    'w-5/12 md:w-40 border-b border-gray-300',
     activeTab === label && 'border-b-2 border-gray-900 font-bold',
   );
 
