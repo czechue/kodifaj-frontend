@@ -10,7 +10,6 @@ interface UserPageProps {
 }
 
 const UserPage: React.FC<UserPageProps> = ({ user, tasks }) => {
-  console.log(tasks);
   const { _id, _solutions, login, photo } = user;
   return (
     <div className="w-full h-full">
