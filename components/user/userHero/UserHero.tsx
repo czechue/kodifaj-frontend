@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import Button from '../../shared/button/Button';
+import Button, { ButtonType } from '../../shared/button/Button';
 
 interface UserHeroProps {
   login: string;
@@ -27,8 +27,8 @@ const UserHero: React.FC<UserHeroProps> = ({ login, photo }) => {
           </div>
         </div>
         <div className="flex justify-center items-center h-full px-4 md:-mt-8">
-          <Button label="Button" />
-          <Button label="Button1" black />
+          <Button>Button1</Button>
+          <Button type={ButtonType.Black}>Button2</Button>
         </div>
       </section>
     </div>
