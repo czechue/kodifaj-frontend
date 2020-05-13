@@ -2,9 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 
 interface TabButtonProps {
-  label: 'Tasks' | 'Solutions';
-  activeTab: 'Tasks' | 'Solutions';
-  setActiveTab: React.Dispatch<React.SetStateAction<'Tasks' | 'Solutions'>>;
+  label: string;
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const TabButton: React.FC<TabButtonProps> = ({ label, setActiveTab, activeTab }) => {
@@ -13,7 +13,7 @@ const TabButton: React.FC<TabButtonProps> = ({ label, setActiveTab, activeTab })
     activeTab === label && 'border-b-2 border-gray-900 font-bold',
   );
 
-  const handleChangeTab = (tab: 'Tasks' | 'Solutions'): void => {
+  const handleChangeTab = (tab: string): void => {
     return setActiveTab(tab);
   };
 

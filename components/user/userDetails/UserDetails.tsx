@@ -12,7 +12,7 @@ interface UserDetailsProps {
 }
 
 const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, photo }) => {
-  const [activeTab, setActiveTab] = useState<'Tasks' | 'Solutions'>('Tasks');
+  const [activeTab, setActiveTab] = useState<string>('Tasks');
 
   return (
     <div>
