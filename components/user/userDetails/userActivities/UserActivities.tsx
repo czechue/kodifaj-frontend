@@ -19,7 +19,7 @@ const UserActivities: React.FC<UserActivitiesProps> = ({ login, photo }) => {
         </p>
         <p className="text-gray-700 text-xl font-thin w-2/12 text-right">33 m</p>
       </div>
-      <div className="border-b-2 mt-4 mx-2"></div>
+      <div className="border-b-2 mt-4 mx-2" />
       <div className="flex items-center justify-between px-2 mt-4">
         <div className="w-2/12">
           <img src={photo} alt={`${login} photo`} className="w-10 h-10 rounded-full mr-8" />
@@ -29,7 +29,7 @@ const UserActivities: React.FC<UserActivitiesProps> = ({ login, photo }) => {
         </p>
         <p className="text-gray-700 text-xl font-thin w-2/12 text-right">10 h</p>
       </div>
-      <div className="border-b-2 mt-4 mx-2"></div>
+      <div className="border-b-2 mt-4 mx-2" />
       <div className="flex items-center justify-between px-2 mt-4">
         <div className="w-2/12">
           <img src={photo} alt={`${login} photo`} className="w-10 h-10 rounded-full mr-8" />
@@ -39,7 +39,7 @@ const UserActivities: React.FC<UserActivitiesProps> = ({ login, photo }) => {
         </p>
         <p className="text-gray-700 text-xl font-thin w-2/12 text-right">11 h</p>
       </div>
-      <div className="border-b-2 mt-4 mx-2"></div>
+      <div className="border-b-2 mt-4 mx-2" />
       <div className="flex items-center justify-between px-2 mt-4">
         <div className="w-2/12">
           <img src={photo} alt={`${login} photo`} className="w-10 h-10 rounded-full mr-8" />
@@ -50,7 +50,7 @@ const UserActivities: React.FC<UserActivitiesProps> = ({ login, photo }) => {
         </div>
         <p className="text-gray-700 text-xl font-thin w-2/12 text-right">1 d</p>
       </div>
-      <div className="border-b-2 mt-4 mx-2"></div>
+      <div className="border-b-2 mt-4 mx-2" />
     </section>
   );
 };

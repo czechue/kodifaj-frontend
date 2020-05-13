@@ -7,7 +7,7 @@ interface TasksProps {
 }
 
 const UserTasks: React.FC<TasksProps> = ({ tasks }) => {
-  return <section>{tasks && <Cards tasks={tasks} isTasksTab />}</section>;
+  return <section>{tasks && <Cards tasks={tasks} classNames="md: grid-cols-2" />}</section>;
 };
 
 export default UserTasks;

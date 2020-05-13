@@ -5,13 +5,12 @@ import clsx from 'clsx';
 
 interface CardsProps {
   tasks: Task[];
-  isTasksTab?: boolean;
+  classNames?: string;
 }
 
-const Cards: React.FC<CardsProps> = ({ tasks, isTasksTab }) => {
+const Cards: React.FC<CardsProps> = ({ tasks, classNames }) => {
   const cardsStyles = clsx(
-    'grid grid-cols-1 row-gap-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6  xl:grid-cols-3 xl:col-span-3 mx-4 mb-8',
-    isTasksTab ? 'md:grid-cols-2' : 'md:grid-cols-3',
+    `grid grid-cols-1 row-gap-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6  xl:grid-cols-3 xl:col-span-3 mx-4 mb-8 md:grid-cols-3 ${classNames}`,
   );
   return (
     <div className={cardsStyles}>
