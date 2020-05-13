@@ -3,6 +3,7 @@ import TabButton from './tabButton/TabButton';
 import UserTasks from './userTasks/UserTasks';
 import { Task } from '../../../models/task/task.types';
 import UserActivities from './userActivities/UserActivities';
+import UserSolutions from './userSolutions/UserSolutions';
 
 interface UserDetailsProps {
   solutions?: string[];
@@ -12,7 +13,7 @@ interface UserDetailsProps {
 }
 
 const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, photo }) => {
-  const [activeTab, setActiveTab] = useState<string>('Tasks');
+  const [activeTab, setActiveTab] = useState<string>('Zadania');
 
   return (
     <div>
@@ -20,8 +21,8 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
         <div className="max-w-8xl mx-auto h-full">
           <div className="flex justify-between">
             <div className="w-full md:w-2/3 flex justify-center md:justify-start md:ml-4">
-              <TabButton label="Tasks" setActiveTab={setActiveTab} activeTab={activeTab} />
-              <TabButton label="Solutions" setActiveTab={setActiveTab} activeTab={activeTab} />
+              <TabButton label="Zadania" setActiveTab={setActiveTab} activeTab={activeTab} />
+              <TabButton label="Rozwiązania" setActiveTab={setActiveTab} activeTab={activeTab} />
             </div>
             <div className="hidden md:block md:w-1/3 md:ml-4">
               <h3 className="font-bold">Dotychczasowa aktywność</h3>
@@ -32,7 +33,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
       <div className="max-w-8xl mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-2/3 md:mr-4">
-            {activeTab === 'Tasks' ? <UserTasks tasks={tasks} /> : <p>Solutions</p>}
+            {activeTab === 'Zadania' ? <UserTasks tasks={tasks} /> : <UserSolutions />}
           </div>
           <UserActivities login={login} photo={photo} />
         </div>
