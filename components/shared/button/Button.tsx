@@ -19,7 +19,7 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
     type === ButtonType.Black && 'bg-gray-900 hover:bg-gray-800 text-white',
   );
   return (
-    <button type="button" className={ButtonStyles}>
+    <button data-testid="button" type="button" className={ButtonStyles}>
       {children}
     </button>
   );
