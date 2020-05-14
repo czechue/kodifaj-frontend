@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from '../../models/user/user.types';
-import UserHero from '../user/userHero/UserHero';
-import UserDetails from '../user/userDetails/UserDetails';
+import UserHero from './hero/Hero';
+import UserDetails from './details/Details';
 import { Task } from '../../models/task/task.types';
 
 interface UserPageProps {
