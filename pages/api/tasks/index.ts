@@ -1,8 +1,8 @@
 import nextConnect from 'next-connect';
-import middleware from '../../../middlewares/middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Task } from '../../../models/task/task.model';
-import getAllTasks from './_utils/tasksHandler';
+import getAllTasks from './_utils/handler';
+import { Task } from '../../../lib/models/task/task';
+import middleware from '../../../lib/middlewares/middleware';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -13,7 +13,7 @@ handler.get(
       .then((tasks) => {
         res.status(200).json(tasks);
       })
-      .catch((err: Error) => console.log('get task error', err));
+      .catch((err: Error) => console.error('get task error', err));
   },
 );
 

@@ -1,5 +1,5 @@
 import { Db } from 'mongodb';
-import { Task } from '../../../../models/task/task.model';
+import { Task } from '../../../../lib/models/task/task';
 
 export default async function getAllTasks(db: Db): Promise<void | Task[]> {
   return await db

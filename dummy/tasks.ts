@@ -1,4 +1,4 @@
-import { Task } from '../models/task/task.model';
+import { Task } from '../lib/models/task/task';
 
 const index = ([
   {

@@ -1,4 +1,4 @@
-import { User } from '../user/user.types';
+import { User } from '../user/user';
 
 export interface Solution {
   comment: string;

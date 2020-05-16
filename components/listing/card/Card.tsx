@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Task } from '../../../models/task/task.model';
+import { Task } from '../../../lib/models/task/task';
 import Stars from '../../stars/Stars';
 import Badges from '../../badges/Badges';
 
