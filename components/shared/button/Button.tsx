@@ -6,13 +6,11 @@ export enum ButtonType {
   Black = 'BLACK',
 }
 interface ButtonProps {
+  children: string;
   type?: ButtonType;
 }
 
-const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  children,
-  type = ButtonType.Default,
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, type = ButtonType.Default }) => {
   const ButtonStyles = clsx(
     'hover:bg-gray-100 transition-colors border h-10 w-32 md:w-40 rounded-md mx-4 shadow-sm transform translate-y-0 transition-transform duration-500 hover:-translate-y-1',
     type === ButtonType.Default && 'bg-white text-gray-700',
