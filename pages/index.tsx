@@ -14,7 +14,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ tasks }) => (
   <Layout title="Home page">
     <Header />
-    <a href="/api/login">Login</a>
+    <a href="/api/auth/login">Login</a>
     <Listing tasks={tasks} />
   </Layout>
 );
@@ -24,18 +24,11 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps, Params> = async () => {
-  if (typeof window === 'undefined') {
-    const res = await fetch(`http://${process.env.VERCEL_URL}/api/tasks`);
-    const tasks: Task[] = await res.json();
-    return {
-      props: {
-        tasks,
-      },
-    };
-  }
+  const res = await fetch(`http://${process.env.VERCEL_URL}/api/tasks`);
+  const tasks: Task[] = await res.json();
   return {
     props: {
-      tasks: [],
+      tasks: tasks ? tasks : [],
     },
   };
 };

@@ -1,9 +1,9 @@
-import auth0 from '../../lib/auth0';
+import auth0 from '../../../lib/auth/auth0';
 import nextConnect from 'next-connect';
-import middleware from '../../lib/middlewares/middleware';
+import middleware from '../../../lib/middlewares/middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ISession } from '@auth0/nextjs-auth0/dist/session/session';
-import { User } from '../../lib/models/user/user';
+import { User } from '../../../lib/models/user/user';
 
 const handler = nextConnect();
 handler.use(middleware);
