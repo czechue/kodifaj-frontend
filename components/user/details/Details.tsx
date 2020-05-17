@@ -22,14 +22,14 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
           <div className="flex justify-between">
             <div className="w-full md:w-2/3 flex justify-center md:justify-start md:ml-4">
               <TabButton
-                TabTitle={TabTitle.tasks}
+                title={TabTitle.tasks}
                 setActiveTab={setActiveTab}
                 isActive={activeTab === TabTitle.tasks}
               >
                 Zadania
               </TabButton>
               <TabButton
-                TabTitle={TabTitle.solutions}
+                title={TabTitle.solutions}
                 setActiveTab={setActiveTab}
                 isActive={activeTab === TabTitle.solutions}
               >
@@ -45,7 +45,11 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
       <div className="max-w-8xl mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-2/3 md:mr-4">
-            {activeTab === TabTitle.tasks ? <UserTasks tasks={tasks} /> : <UserSolutions />}
+            {activeTab === TabTitle.tasks ? (
+              <UserTasks tasks={tasks} />
+            ) : (
+              <UserSolutions solutions={solutions} login={login} photo={photo} />
+            )}
           </div>
           <UserActivities login={login} photo={photo} />
         </div>
