@@ -4,12 +4,12 @@ import fetch from 'node-fetch';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
-import { User } from '../../models/user/user.types';
-import UserPage from '../../components/user/User';
+import { User as UserTypes } from '../../models/user/user.types';
+import User from '../../components/user/User';
 import { Task } from '../../models/task/task.types';
 
 interface UserDetailsProps {
-  user?: User;
+  user?: UserTypes;
   errorCode?: number;
   tasks?: Task[];
 }
@@ -18,7 +18,9 @@ const UserDetails: NextPage<UserDetailsProps> = ({ user, tasks, errorCode }) => 
   return (
     <Layout title="User page" errorCode={errorCode}>
       <Header />
-      {user && <UserPage user={user} tasks={tasks} />}
+      {user && (
+        <User solutions={user._solutions} login={user.login} photo={user.photo} tasks={tasks} />
+      )}
     </Layout>
   );
 };
@@ -27,7 +29,7 @@ interface Params extends ParsedUrlQuery {
   userId: string;
 }
 
-const filterTasks = (tasks: Task[], user: User): Task[] => {
+const filterTasks = (tasks: Task[], user: UserTypes): Task[] => {
   return tasks.filter((task) => user._tasks.includes(task._id));
 };
 
@@ -39,7 +41,7 @@ export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = 
 
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {
-    const user: User = await res.json();
+    const user: UserTypes = await res.json();
     const tasks: Task[] = await res1.json();
     return {
       props: {
