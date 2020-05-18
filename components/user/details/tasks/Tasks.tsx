@@ -11,11 +11,7 @@ const UserTasks: React.FC<TasksProps> = ({ tasks }) => {
     return null;
   }
 
-  return (
-    <section>
-      <Cards tasks={tasks} classNames="md: grid-cols-2" />
-    </section>
-  );
+  return <Cards tasks={tasks} />;
 };
 
 export default UserTasks;

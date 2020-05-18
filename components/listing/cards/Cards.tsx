@@ -1,17 +1,13 @@
 import React from 'react';
 import Card from '../card/Card';
 import { Task } from '../../../models/task/task.types';
-import clsx from 'clsx';
 
 interface CardsProps {
   tasks: Task[];
-  classNames?: string;
 }
 
-const Cards: React.FC<CardsProps> = ({ tasks, classNames }) => {
-  const cardsStyles = clsx(
-    `grid grid-cols-1 row-gap-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6  xl:grid-cols-3 xl:col-span-3 mx-4 mb-8 md:grid-cols-3 ${classNames}`,
-  );
+const Cards: React.FC<CardsProps> = ({ tasks }) => {
+  const cardsStyles = `grid grid-cols-1 sm:grid-cols-2 col-gap-4 row-gap-4 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8`;
   return (
     <div className={cardsStyles}>
       {tasks.map((task) => {

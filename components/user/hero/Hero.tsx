@@ -10,8 +10,8 @@ interface UserHeroProps {
 const UserHero: React.FC<UserHeroProps> = ({ login, photo }) => {
   return (
     <div className="bg-white w-full pb-12 px-4">
-      <section className="max-w-8xl mx-auto flex flex-col md:flex-row justify-between md:items-center">
-        <div className="flex flex-row md:ml-8 py-8">
+      <section className="max-w-8xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center md:px-8">
+        <div className="flex flex-row py-8">
           <img
             src={photo}
             alt={`${login} photo`}
@@ -26,8 +26,7 @@ const UserHero: React.FC<UserHeroProps> = ({ login, photo }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center h-full px-4 md:-mt-8">
-          <Button>Button1</Button>
+        <div className="flex justify-center items-center md:-mt-8">
           <Button type={ButtonType.Black}>Button2</Button>
         </div>
       </section>
