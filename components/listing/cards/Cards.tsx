@@ -7,7 +7,7 @@ interface CardsProps {
 }
 
 const Cards: React.FC<CardsProps> = ({ tasks }) => {
-  const cardsStyles = `grid grid-cols-1 sm:grid-cols-2 col-gap-4 row-gap-4 xl:grid-cols-3 mx-4 mb-8`;
+  const cardsStyles = `grid grid-cols-1 sm:grid-cols-2 col-gap-4 row-gap-4 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8`;
   return (
     <div className={cardsStyles}>
       {tasks.map((task) => {
