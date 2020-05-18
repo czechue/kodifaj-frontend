@@ -22,9 +22,9 @@ const Card: React.FC<CardProps> = ({ _id, _user, images, title, tags, createdAt 
     'https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4';
   const userLogin = _user.login;
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-4">
       <Link href="/tasks/[taskId]" as={`/tasks/${_id}`}>
-        <a className="mt-4 w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
+        <a className="w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
           <section>
             <div className="h-64 relative">
               <img
