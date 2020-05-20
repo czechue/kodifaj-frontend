@@ -30,16 +30,16 @@ if (typeof window === 'undefined') {
 export default config;
 
 export interface ServerConfig extends ClientConfig {
-  AUTH0_CLIENT_SECRET?: string;
-  SESSION_COOKIE_SECRET?: string;
-  SESSION_COOKIE_LIFETIME?: string;
+  AUTH0_CLIENT_SECRET: string;
+  SESSION_COOKIE_SECRET: string;
+  SESSION_COOKIE_LIFETIME: string;
 }
 
 export interface ClientConfig {
   [key: string]: string | undefined;
-  AUTH0_CLIENT_ID?: string;
-  AUTH0_SCOPE?: string;
-  AUTH0_DOMAIN?: string;
-  REDIRECT_URI?: string;
-  POST_LOGOUT_REDIRECT_URI?: string;
+  AUTH0_CLIENT_ID: string | undefined;
+  AUTH0_SCOPE: string | undefined;
+  AUTH0_DOMAIN: string | undefined;
+  REDIRECT_URI: string | undefined;
+  POST_LOGOUT_REDIRECT_URI: string | undefined;
 }

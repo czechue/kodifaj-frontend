@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "0.13.0",
+    "@hapi/joi": "^17.1.1",
+    "@types/hapi__joi": "^17.1.0",
     "@types/mongodb": "3.5.17",
     "clsx": "1.1.0",
     "connect-mongo": "3.2.0",

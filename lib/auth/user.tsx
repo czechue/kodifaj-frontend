@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import fetch from 'isomorphic-unfetch';
+import { RawUserAuth0 } from '../models/user/user';
 
-export async function fetchUser(cookie = '') {
+export async function fetchUser(cookie = ''): Promise<RawUserAuth0 | undefined> {
   if (typeof window !== 'undefined' && window.__user) {
     return window.__user;
   }
 
   const res = await fetch(
-    '/api/me',
+    '/api/auth/me',
     cookie
       ? {
           headers: {
@@ -19,7 +19,7 @@ export async function fetchUser(cookie = '') {
 
   if (!res.ok) {
     delete window.__user;
-    return null;
+    return undefined;
   }
 
   const json = await res.json();
@@ -29,14 +29,16 @@ export async function fetchUser(cookie = '') {
   return json;
 }
 
-export function useFetchUser({ required } = {}) {
+export function useFetchUser(
+  required = false,
+): { user: RawUserAuth0 | undefined; loading: boolean } {
   const [loading, setLoading] = useState(() => !(typeof window !== 'undefined' && window.__user));
   const [user, setUser] = useState(() => {
     if (typeof window === 'undefined') {
-      return null;
+      return undefined;
     }
 
-    return window.__user || null;
+    return window.__user || undefined;
   });
 
   useEffect(
@@ -52,7 +54,7 @@ export function useFetchUser({ required } = {}) {
         if (isMounted) {
           // When the user is not logged in but login is required
           if (required && !user) {
-            window.location.href = '/api/login';
+            window.location.href = '/api/auth/login';
             return;
           }
           setUser(user);

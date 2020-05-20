@@ -1,23 +1,23 @@
 import React from 'react';
-import { NextPage, GetServerSideProps } from 'next';
-import fetch from 'node-fetch';
+import { GetServerSideProps, NextPage } from 'next';
 import Layout from '../components/shared/layout/Layout';
 import { Task } from '../lib/models/task/task';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
+import { useUserState } from './_context/User.context';
 
 interface HomeProps {
   tasks: Task[];
 }
 
-const Home: NextPage<HomeProps> = ({ tasks }) => (
-  <Layout title="Home page">
-    <Header />
-    <a href="/api/auth/login">Login</a>
-    <Listing tasks={tasks} />
-  </Layout>
-);
+const Home: NextPage<HomeProps> = ({ tasks }) => {
+  return (
+    <Layout title="Home page">
+      <Listing tasks={tasks} />
+    </Layout>
+  );
+};
 
 interface Params extends ParsedUrlQuery {
   taskId: string;

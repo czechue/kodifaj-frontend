@@ -3,7 +3,7 @@ import nextConnect from 'next-connect';
 import middleware from '../../../lib/middlewares/middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ISession } from '@auth0/nextjs-auth0/dist/session/session';
-import { User } from '../../../lib/models/user/user';
+import { RawUserAuth0, rawUserAuth0Schema, User } from '../../../lib/models/user/user';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -18,9 +18,15 @@ async function callback(req: NextApiRequest, res: NextApiResponse): Promise<void
       return;
     }
 
-    const existingUser = await req.db.collection('users').findOne({
-      githubId: session.user.sub,
-    } as User);
+    const userAuth0 = session.user as RawUserAuth0;
+
+    if (rawUserAuth0Schema.validate(userAuth0).error) {
+      console.error('RawUserAuth0 - validation error ');
+    }
+
+    const existingUser: User | null = await req.db.collection('users').findOne({
+      githubId: userAuth0.sub,
+    });
 
     if (existingUser) {
       await auth0.handleCallback(req, res, { redirectTo: '/' });
@@ -29,9 +35,9 @@ async function callback(req: NextApiRequest, res: NextApiResponse): Promise<void
 
     try {
       const user: User = {
-        githubId: session.user.sub,
-        login: session.user.nickname,
-        photo: session.user.picture,
+        githubId: userAuth0.sub,
+        login: userAuth0.nickname,
+        photo: userAuth0.picture,
       };
 
       await req.db.collection('users').insertOne(user);
