@@ -1,11 +1,13 @@
 import React from 'react';
 import { Task } from '../../../models/task/task.types';
+import Gallery from './gallery/Gallery';
 
 interface TaskDetailsProps {
   solutions?: string[];
   tasks?: Task[];
   login?: string;
   photo?: string;
+  images?: string[];
 }
 
 const taskFields = [
@@ -38,7 +40,7 @@ const taskFields = [
     ],
   },
 ];
-const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, photo }) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, photo, images }) => {
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">
@@ -62,7 +64,9 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, phot
               );
             })}
           </div>
-          <div className="w-full md:w-1/3">b</div>
+          <div className="w-full md:w-1/3">
+            <Gallery images={images} />
+          </div>
         </div>
       </div>
     </>

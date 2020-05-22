@@ -13,12 +13,13 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
     _user: { login },
     createdAt,
     tags,
+    images,
   } = task;
   console.log(login);
   return (
     <div>
       <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
-      <TaskDetails />
+      <TaskDetails images={images} />
     </div>
   );
 };
