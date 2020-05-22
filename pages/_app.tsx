@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import '../styles/index.css';
 import { RawUserAuth0 } from '../lib/models/user/user';
 import { useFetchUser } from '../lib/auth/user';
-import { UserProvider } from './_context/User.context';
+import { UserProvider } from '../components/context/User.context';
 // import Router from 'next/router';
 // import { AccessTokenRequestOptions } from 'use-auth0-hooks/dist/context/auth0-context';
 

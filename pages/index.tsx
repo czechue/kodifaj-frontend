@@ -5,7 +5,7 @@ import { Task } from '../lib/models/task/task';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
-import { useUserState } from './_context/User.context';
+import { useUserState } from '../components/context/User.context';
 
 interface HomeProps {
   tasks: Task[];
