@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect';
 import { NextApiRequest, NextApiResponse } from 'next';
-import getAllTasks from './_utils/handler';
+import getAllTasks from './_handlers/getAllTasks';
 import { Task } from '../../../lib/models/task/task';
 import middleware from '../../../lib/middlewares/middleware';
 

@@ -34,11 +34,11 @@ async function callback(req: NextApiRequest, res: NextApiResponse): Promise<void
     }
 
     try {
-      const user: User = {
+      const user = {
         githubId: userAuth0.sub,
         login: userAuth0.nickname,
         photo: userAuth0.picture,
-      };
+      } as User;
 
       await req.db.collection('users').insertOne(user);
     } catch (e) {

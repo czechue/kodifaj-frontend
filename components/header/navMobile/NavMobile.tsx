@@ -33,7 +33,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
         </li>
         <span className="pt-6 border-gray-600 border-b w-6/12" />
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8 flex items-center">
-          <Link href="/">
+          <Link href="/login">
             <a className="">rejestracja</a>
           </Link>
           <FaGithub className="pl-2 text-4xl sm:text-6xl" />

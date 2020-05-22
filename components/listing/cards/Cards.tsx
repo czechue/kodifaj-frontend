@@ -7,11 +7,23 @@ interface CardsProps {
 }
 
 const Cards: React.FC<CardsProps> = ({ tasks }) => {
+  const cardsStyles = `grid grid-cols-1 sm:grid-cols-2 col-gap-4 row-gap-4 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8`;
   return (
-    <div className="grid grid-cols-1 row-gap-8 col-gap-8 sm:grid-cols-2 sm:col-gap-5 sm:row-gap-6 md:grid-cols-3 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8">
-      {tasks.map((task) => (
-        <Card key={task._id} task={task} />
-      ))}
+    <div className={cardsStyles}>
+      {tasks.map((task) => {
+        const { _id, _user, images, title, tags, createdAt } = task;
+        return (
+          <Card
+            key={_id}
+            _id={_id}
+            _user={_user}
+            images={images}
+            title={title}
+            tags={tags}
+            createdAt={createdAt}
+          />
+        );
+      })}
     </div>
   );
 };
