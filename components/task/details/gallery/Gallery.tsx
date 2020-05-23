@@ -12,7 +12,14 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {images &&
           images.map((image, index) => {
-            return <img key={index} src={image} alt="Image" className="w-full md:w-48" />;
+            return (
+              <img
+                key={index}
+                src={image}
+                alt="Image"
+                className="w-full relative md:w-48 transform scale-100 transition-transform duration-500 md:hover:scale-150 photo-hover hover:w-full"
+              />
+            );
           })}
       </div>
     </section>
