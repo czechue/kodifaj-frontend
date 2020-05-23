@@ -12,8 +12,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ tasks }) => (
   <Layout title="Home page">
     <Header />
-    {JSON.stringify(tasks)}
-    {/*<Listing tasks={tasks} />*/}
+    <Listing tasks={tasks} />
   </Layout>
 );
 

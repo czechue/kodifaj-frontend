@@ -1,9 +1,5 @@
 import { User } from '../user/user';
 
-interface TaskRawDb {
-  _id: string;
-}
-
 export interface Task {
   _id: string;
   _user: User;
