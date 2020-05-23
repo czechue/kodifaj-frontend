@@ -4,11 +4,6 @@ import Stars from '../../stars/Stars';
 import Badges from '../../badges/Badges';
 import { User } from '../../../lib/models/user/user';
 
-interface UserProps {
-  _id: string;
-  login: string;
-}
-
 interface CardProps {
   _id: string;
   _user: User;
