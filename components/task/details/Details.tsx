@@ -11,11 +11,17 @@ interface TaskDetailsProps {
   login?: string;
   photo?: string;
   images?: string[];
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, photo, images }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
+const TaskDetails: React.FC<TaskDetailsProps> = ({
+  solutions,
+  tasks,
+  login,
+  photo,
+  images,
+  setIsModalVisible,
+}) => {
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">
@@ -29,7 +35,6 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, phot
           </div>
         </div>
       </div>
-      {isModalVisible && <NewSolutionModal setIsModalVisible={setIsModalVisible} />}
     </>
   );
 };

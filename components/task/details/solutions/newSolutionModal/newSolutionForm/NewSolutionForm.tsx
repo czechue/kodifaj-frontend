@@ -1,16 +1,17 @@
 import React, { FormEventHandler, useState, ChangeEvent } from 'react';
 import Button, { ButtonType } from '../../../../../shared/button/Button';
 import Select, { ValueType } from 'react-select';
+import { formStyles } from './formStyles';
 
 export const technologies = [
-  { value: 'html', label: 'html' },
-  { value: 'css', label: 'css' },
-  { value: 'js', label: 'js' },
-  { value: 'nodejs', label: 'nodejs' },
-  { value: 'python', label: 'python' },
-  { value: 'react', label: 'react' },
-  { value: 'vue', label: 'vue' },
-  { value: 'angular', label: 'angular' },
+  { value: 'html', label: '#html' },
+  { value: 'css', label: '#css' },
+  { value: 'js', label: '#js' },
+  { value: 'nodejs', label: '#nodejs' },
+  { value: 'python', label: '#python' },
+  { value: 'react', label: '#react' },
+  { value: 'vue', label: '#vue' },
+  { value: 'angular', label: '#angular' },
 ];
 
 interface Technology {
@@ -48,7 +49,7 @@ const NewSolutionForm: React.FC = () => {
           type="text"
           name="solution"
           id="solution"
-          className="w-full h-10 border rounded-sm"
+          className="w-full h-10 border rounded-sm px-2"
           onChange={handleSolutionChange}
         />
       </div>
@@ -58,13 +59,19 @@ const NewSolutionForm: React.FC = () => {
           type="text"
           name="live"
           id="live"
-          className="w-full h-10 border rounded-sm"
+          className="w-full h-10 border rounded-sm px-2"
           onChange={handleLiveLinkChange}
         />
       </div>
       <div className="flex flex-col pt-4 w-full">
         <label htmlFor="">Użyte technologie</label>
-        <Select options={technologies} onChange={handleSelectedTechnologies} isMulti />
+        <Select
+          options={technologies}
+          onChange={handleSelectedTechnologies}
+          styles={formStyles}
+          placeholder="Wybierz technologie..."
+          isMulti
+        />
       </div>
       <div className="mt-4">
         <Button submit type={ButtonType.Black}>

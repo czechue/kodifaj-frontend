@@ -15,8 +15,7 @@ interface TaskDetailsProps {
 const TaskDetails: NextPage<TaskDetailsProps> = ({ task, errorCode }) => {
   return (
     <Layout title="Home page" errorCode={errorCode}>
-      <Header />
-      {task && <TaskComponent task={task} />}
+      {task ? <TaskComponent task={task} /> : <Header />}
     </Layout>
   );
 };
