@@ -17,7 +17,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                 key={index}
                 src={image}
                 alt="Image"
-                className="w-full relative md:w-48 transform scale-100 transition-transform duration-500 md:hover:scale-150 photo-hover hover:w-full"
+                className="w-full relative md:w-48 transform scale-100 transition-transform duration-500 md:hover:scale-150 hover:z-10"
               />
             );
           })}
