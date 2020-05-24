@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Task } from '../../../models/task/task.types';
 import Gallery from './gallery/Gallery';
 import Solutions from './solutions/Solutions';
 import Description from './description/Description';
+import NewSolutionModal from './solutions/newSolutionModal/NewSolutionModal';
 
 interface TaskDetailsProps {
   solutions?: string[];
@@ -13,6 +14,8 @@ interface TaskDetailsProps {
 }
 
 const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, photo, images }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">
@@ -22,10 +25,11 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, phot
           </div>
           <div className="w-full md:w-1/3">
             <Gallery images={images} />
-            <Solutions solutions={solutions} />
+            <Solutions solutions={solutions} setIsModalVisible={setIsModalVisible} />
           </div>
         </div>
       </div>
+      {isModalVisible && <NewSolutionModal setIsModalVisible={setIsModalVisible} />}
     </>
   );
 };

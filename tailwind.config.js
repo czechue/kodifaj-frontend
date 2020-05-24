@@ -1,6 +1,11 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
   theme: {
+    inset: {
+      '0': 0,
+      auto: 'auto',
+      '1/2': '50%',
+    },
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif'],
     },
@@ -11,11 +16,8 @@ module.exports = {
       maxWidth: {
         '8xl': '90rem',
       },
-      translate: {
-        '00': '0.1rem',
-      },
-      translate: {
-        '-00': '-0.1rem',
+      height: {
+        '4/5': '80%',
       },
     },
   },
