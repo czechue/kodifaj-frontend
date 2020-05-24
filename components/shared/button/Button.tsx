@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 
 export enum ButtonType {
@@ -13,6 +13,7 @@ export enum ButtonSize {
 }
 interface ButtonProps {
   children: string;
+  submit?: boolean;
   type?: ButtonType;
   size?: ButtonSize;
   onClick?: () => void;
@@ -21,6 +22,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
+  submit,
   type = ButtonType.Default,
   size = ButtonSize.Medium,
 }) => {
@@ -33,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
     size === ButtonSize.Big && 'h-12 w-40 md: w:46',
   );
   return (
-    <button type="button" className={ButtonStyles} onClick={onClick}>
+    <button type={submit ? 'submit' : 'button'} className={ButtonStyles} onClick={onClick}>
       {children}
     </button>
   );
