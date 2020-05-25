@@ -10,7 +10,7 @@ interface TaskDetailsProps {
   login?: string;
   photo?: string;
   images?: string[];
-  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setisModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TaskDetails: React.FC<TaskDetailsProps> = ({
@@ -19,7 +19,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({
   login,
   photo,
   images,
-  setIsModalVisible,
+  setisModalOpen,
 }) => {
   return (
     <>
@@ -30,7 +30,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({
           </div>
           <div className="w-full md:w-1/3">
             <Gallery images={images} />
-            <Solutions solutions={solutions} setIsModalVisible={setIsModalVisible} />
+            <Solutions solutions={solutions} setisModalOpen={setisModalOpen} />
           </div>
         </div>
       </div>
