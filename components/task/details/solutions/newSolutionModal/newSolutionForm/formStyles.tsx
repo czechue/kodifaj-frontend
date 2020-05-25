@@ -11,7 +11,7 @@ export const formStyles: StylesConfig = {
     return {
       ...styles,
       borderRadius: '0.125rem',
-      height: '2.5rem',
+      minHeight: '2.5rem',
       border: '1px solid #e2e8f0',
       backgroundColor: '#EDF2F7',
     };

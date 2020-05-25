@@ -43,7 +43,7 @@ const NewSolutionForm: React.FC = () => {
   };
   return (
     <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
-      <div className="w-3/4">
+      <div className="w-full lg:w-3/4">
         <div className="flex flex-col pt-4 w-full">
           <label htmlFor="solutionLinkInput" className="text-xs mb-1 text-gray-600">
             Link do rozwiązania
