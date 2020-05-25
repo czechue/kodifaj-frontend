@@ -1,5 +1,5 @@
 import React, { FormEventHandler, useState, ChangeEvent } from 'react';
-import Button, { ButtonType } from '../../../../../shared/button/Button';
+import Button, { ButtonType } from '../../../../shared/button/Button';
 import Select, { ValueType } from 'react-select';
 import { formStyles } from './formStyles';
 

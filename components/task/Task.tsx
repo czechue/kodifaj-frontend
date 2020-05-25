@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Task } from '../../models/task/task.types';
 import { Hero } from './hero/Hero';
 import TaskDetails from './details/Details';
-import NewSolutionModal from './details/solutions/newSolutionModal/NewSolutionModal';
+import Modal from '../shared/modal/Modal';
 import Header from '../header/Header';
+import NewSolutionForm from './details/solutions/newSolutionForm/NewSolutionForm';
 
 interface TaskProps {
   task: Task;
@@ -25,7 +26,11 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
         <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
         <TaskDetails images={images} setIsModalVisible={setIsModalVisible} />
       </div>
-      {isModalVisible && <NewSolutionModal setIsModalVisible={setIsModalVisible} />}
+      {isModalVisible && (
+        <Modal setIsModalVisible={setIsModalVisible} title="Dodaj swoje rozwiązanie">
+          <NewSolutionForm />
+        </Modal>
+      )}
     </>
   );
 };

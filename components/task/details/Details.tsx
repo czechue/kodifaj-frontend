@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Task } from '../../../models/task/task.types';
 import Gallery from './gallery/Gallery';
 import Solutions from './solutions/Solutions';
 import Description from './description/Description';
-import NewSolutionModal from './solutions/newSolutionModal/NewSolutionModal';
 
 interface TaskDetailsProps {
   solutions?: string[];
