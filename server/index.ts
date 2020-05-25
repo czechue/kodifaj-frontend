@@ -1,5 +1,6 @@
 import next from 'next';
 import express, { Request, Response } from 'express';
+import db from './services/db';
 // import keys from './config/keys';
 // import passport from 'passport';
 import bodyParser from 'body-parser';
@@ -11,8 +12,8 @@ import bodyParser from 'body-parser';
 // import './models/Solution';
 
 // import passportService from './services/passport';
-// import tasksRoutes from './routes/tasks.routes';
-// import endpoints from './endpoints';
+import tasksRoutes from './routes/tasks.routes';
+import endpoints from './endpoints';
 // import authRoutes from './routes/auth.routes';
 
 // mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -37,15 +38,22 @@ app.prepare().then(() => {
   // server.use(passport.initialize());
   // server.use(passport.session());
 
-  // endpoints(server);
+  endpoints(server);
   // authRoutes(app, server);
-  // tasksRoutes(app, server);
+  tasksRoutes(app, server);
 
   server.all('*', (req: Request, res: Response) => {
     return handle(req, res);
   });
 
-  server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port}`);
+
+  db.initDb((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      server.listen(port, () => {
+        console.log(`> Ready on http://localhost:${port}`);
+      });
+    }
   });
 });
