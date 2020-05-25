@@ -11,7 +11,7 @@ interface TaskProps {
 }
 
 const TaskComponent: React.FC<TaskProps> = ({ task }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     title,
     _user: { login },
@@ -21,16 +21,12 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
   } = task;
   return (
     <>
-      <div className={isModalVisible ? 'pointer-events-none opacity-25' : ''}>
-        <Header />
-        <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
-        <TaskDetails images={images} setIsModalVisible={setIsModalVisible} />
-      </div>
-      {isModalVisible && (
-        <Modal setIsModalVisible={setIsModalVisible} title="Dodaj swoje rozwiązanie">
-          <NewSolutionForm />
-        </Modal>
-      )}
+      <Header />
+      <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
+      <TaskDetails images={images} setisModalOpen={setIsModalOpen} />
+      <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
+        <NewSolutionForm />
+      </Modal>
     </>
   );
 };

@@ -4,10 +4,10 @@ import Button, { ButtonType, ButtonSize } from '../../../shared/button/Button';
 
 interface SolutionsProps {
   solutions?: string[];
-  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setisModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Solutions: React.FC<SolutionsProps> = ({ solutions, setIsModalVisible }) => {
+const Solutions: React.FC<SolutionsProps> = ({ solutions, setisModalOpen }) => {
   const numberOfSolutions = solutions ? solutions.length : 0;
   const userPhoto =
     'https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4';
@@ -28,7 +28,7 @@ const Solutions: React.FC<SolutionsProps> = ({ solutions, setIsModalVisible }) =
         <Button
           type={ButtonType.Black}
           size={ButtonSize.Big}
-          onClick={(): void => setIsModalVisible(true)}
+          onClick={(): void => setisModalOpen(true)}
         >
           Dodaj rozwiązanie
         </Button>
