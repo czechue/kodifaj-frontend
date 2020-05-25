@@ -42,41 +42,56 @@ const NewSolutionForm: React.FC = () => {
     console.log(selectedTechnologies);
   };
   return (
-    <form onSubmit={handleSubmit} action="" className="w-6/12 flex flex-col items-center">
-      <div className="flex flex-col pt-4 w-full">
-        <label htmlFor="">Link do rozwiązania</label>
-        <input
-          type="text"
-          name="solution"
-          id="solution"
-          className="w-full h-10 border rounded-sm px-2"
-          onChange={handleSolutionChange}
-        />
+    <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
+      <div className="w-3/4">
+        <div className="flex flex-col pt-4 w-full">
+          <label htmlFor="solutionLinkInput" className="text-xs mb-1 text-gray-600">
+            Link do rozwiązania
+          </label>
+          <input
+            type="text"
+            name="solution"
+            id="solutionLinkInput"
+            className="w-full h-10 border rounded-sm px-2 bg-gray-200"
+            onChange={handleSolutionChange}
+          />
+        </div>
+        <div className="flex flex-col pt-4 w-full">
+          <label htmlFor="liveLinkInput" className="text-xs mb-1 text-gray-600">
+            Link do wersji live
+          </label>
+          <input
+            type="text"
+            name="live"
+            id="liveLinkInput"
+            className="w-full h-10 border rounded-sm px-2 bg-gray-200"
+            onChange={handleLiveLinkChange}
+          />
+        </div>
+        <div className="flex flex-col pt-4 w-full">
+          <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
+            Użyte technologie
+          </label>
+          <Select
+            options={technologies}
+            onChange={handleSelectedTechnologies}
+            styles={formStyles}
+            id="technologiesSelect"
+            placeholder="Wybierz technologie..."
+            isMulti
+          />
+        </div>
       </div>
-      <div className="flex flex-col pt-4 w-full">
-        <label htmlFor="">Link do wersji live</label>
-        <input
-          type="text"
-          name="live"
-          id="live"
-          className="w-full h-10 border rounded-sm px-2"
-          onChange={handleLiveLinkChange}
-        />
-      </div>
-      <div className="flex flex-col pt-4 w-full">
-        <label htmlFor="">Użyte technologie</label>
-        <Select
-          options={technologies}
-          onChange={handleSelectedTechnologies}
-          styles={formStyles}
-          placeholder="Wybierz technologie..."
-          isMulti
-        />
-      </div>
-      <div className="mt-4">
-        <Button submit type={ButtonType.Black}>
-          Wyślij
-        </Button>
+      <div className="w-full border border-gray-200 border-b-1 mt-10" />
+      <div className="mt-10 w-full flex justify-between">
+        <button type="button" className="text-gray-700 hover:underline">
+          Wróć
+        </button>
+        <div className="-mx-4">
+          <Button submit type={ButtonType.Black}>
+            Wyślij
+          </Button>
+        </div>
       </div>
     </form>
   );

@@ -20,7 +20,7 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
   } = task;
   return (
     <>
-      <div className={isModalVisible ? 'pointer-events-none opacity-50' : ''}>
+      <div className={isModalVisible ? 'pointer-events-none opacity-25' : ''}>
         <Header />
         <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
         <TaskDetails images={images} setIsModalVisible={setIsModalVisible} />

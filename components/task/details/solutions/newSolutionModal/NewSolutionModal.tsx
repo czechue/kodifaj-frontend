@@ -7,16 +7,18 @@ interface NewSolutionModalProps {
 
 const NewSolutionModal: React.FC<NewSolutionModalProps> = ({ setIsModalVisible }) => {
   return (
-    <section className="fixed w-4/5 h-4/5 bg-gray-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center shadow-lg">
-      <h2 className="text-4xl font-bold">Dodaj swoje rozwiązanie</h2>
-      <NewSolutionForm />
-      <button
-        type="button"
-        className="absolute top-0 right-0 mr-2 mt-2"
-        onClick={(): void => setIsModalVisible(false)}
-      >
-        X
-      </button>
+    <section className="fixed w-5/12 h-auto py-10 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center shadow-lg">
+      <div className="w-full flex flex-col justify-center items-start px-8">
+        <h2 className="text-3xl font-bold self-start">Dodaj swoje rozwiązanie</h2>
+        <NewSolutionForm />
+        <button
+          type="button"
+          className="absolute top-0 right-0 mr-2 mt-2"
+          onClick={(): void => setIsModalVisible(false)}
+        >
+          X
+        </button>
+      </div>
     </section>
   );
 };
