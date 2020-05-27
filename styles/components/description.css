@@ -1,0 +1,31 @@
+.task-description {
+}
+
+.task-description h1 {
+  color: red;
+}
+
+.task-description h2 {
+  @apply text-4xl font-bold;
+}
+
+.task-description ul {
+  @apply list-outside list-disc pl-4 max-w-3xl;
+}
+
+.task-description ol {
+  @apply list-outside list-decimal pl-4 max-w-3xl;
+}
+
+@screen md {
+  .task-description ul {
+    @apply px-12;
+  }
+  .task-description ol {
+    @apply px-12;
+  }
+}
+
+.task-description li {
+  @apply py-2;
+}

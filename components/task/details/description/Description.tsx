@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const taskFields = [
   {
@@ -31,9 +32,17 @@ const taskFields = [
   },
 ];
 
-const Description: React.FC = () => {
+interface DescriptionProps {
+  content: string;
+}
+
+const Description: React.FC<DescriptionProps> = ({ content }) => {
+  console.log(content);
   return (
     <section>
+      <div className="task-description">
+        <ReactMarkdown source={content} />
+      </div>
       <h3 className="text-4xl font-bold">Treść zadania</h3>
       {taskFields.map((item, index) => {
         return (
