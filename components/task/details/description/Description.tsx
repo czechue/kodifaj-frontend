@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import CodeBlock from '../../../shared/code-block/CodeBlock';
 
 const taskFields = [
   {
@@ -37,29 +38,14 @@ interface DescriptionProps {
 }
 
 const Description: React.FC<DescriptionProps> = ({ content }) => {
-  console.log(content);
   return (
-    <section>
-      <div className="task-description">
-        <ReactMarkdown source={content} />
-      </div>
-      <h3 className="text-4xl font-bold">Treść zadania</h3>
-      {taskFields.map((item, index) => {
-        return (
-          <div key={index}>
-            <p className="font-bold py-4">{item.title}</p>
-            <ul className="list-outside list-disc pl-4 md:px-12 max-w-3xl">
-              {item.listItems.map((listElement, index) => {
-                return (
-                  <li key={index} className="py-2">
-                    {listElement}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        );
-      })}
+    <section className="task-description">
+      <ReactMarkdown
+        source={content}
+        renderers={{
+          code: CodeBlock,
+        }}
+      />
     </section>
   );
 };
