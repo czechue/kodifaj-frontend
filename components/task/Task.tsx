@@ -16,7 +16,6 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
     images,
     content,
   } = task;
-  console.log(login);
   return (
     <div>
       <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
