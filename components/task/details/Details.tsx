@@ -10,17 +10,9 @@ interface TaskDetailsProps {
   login?: string;
   photo?: string;
   images?: string[];
-  setisModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({
-  solutions,
-  tasks,
-  login,
-  photo,
-  images,
-  setisModalOpen,
-}) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, tasks, login, photo, images }) => {
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">
@@ -30,7 +22,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({
           </div>
           <div className="w-full md:w-1/3">
             <Gallery images={images} />
-            <Solutions solutions={solutions} setisModalOpen={setisModalOpen} />
+            <Solutions solutions={solutions} />
           </div>
         </div>
       </div>

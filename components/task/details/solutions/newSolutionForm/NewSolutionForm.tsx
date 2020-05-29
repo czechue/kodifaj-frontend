@@ -20,7 +20,11 @@ interface Technology {
   label: string;
 }
 
-const NewSolutionForm: React.FC = () => {
+interface NewSolutionFormProps {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => {
   const [solutionLink, setSolutionLink] = useState('');
   const [liveLink, setLiveLink] = useState('');
   const [selectedTechnologies, setSelectedTechnologies] = useState<Technology[]>([]);
@@ -111,7 +115,11 @@ const NewSolutionForm: React.FC = () => {
       </div>
       <div className="w-full border border-gray-200 border-b-1 mt-10" />
       <div className="mt-10 w-full flex justify-between">
-        <button type="button" className="text-gray-700 hover:underline">
+        <button
+          type="button"
+          className="text-gray-700 hover:underline"
+          onClick={(): void => setIsModalOpen(false)}
+        >
           Wróć
         </button>
         <div className="-mx-4">
