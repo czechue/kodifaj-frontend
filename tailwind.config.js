@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
+  purge: [
+    "./pages/**/*.*", 
+    "./components/**/*.*", 
+  ],
   theme: {
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif'],
