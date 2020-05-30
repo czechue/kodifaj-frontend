@@ -7,7 +7,7 @@ interface DescriptionProps {
 
 const Description: React.FC<DescriptionProps> = ({ content }) => {
   return (
-    <section className="task-description" data-testid="task-desctiption">
+    <section className="task-description">
       <ReactMarkdown
         source={content}
         renderers={{
