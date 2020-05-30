@@ -15,7 +15,7 @@ export default async function database(
   }
 
   await mongoose.connect(
-    'mongodb://mo1272_kodifaj:Fender15!@195.167.159.159:27017/mo1272_kodifaj',
+    'mongodb://mo1272_kodifaj_p:Cymbalki15!@195.167.159.159:27017/mo1272_kodifaj_p',
     {
       useNewUrlParser: true,
       useFindAndModify: false,

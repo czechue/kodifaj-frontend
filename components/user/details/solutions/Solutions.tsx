@@ -10,7 +10,6 @@ interface UserSolutionsProps {
 }
 
 const UserSolutions: React.FC<UserSolutionsProps> = ({ solutions, login, photo }) => {
-  console.log(solutions);
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-4 mt-4 max-w-screen-sm xl:max-w-full">

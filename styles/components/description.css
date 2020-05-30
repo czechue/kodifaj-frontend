@@ -1,0 +1,44 @@
+.task-description {
+}
+
+.task-description a {
+  @apply text-blue-700 italic;
+}
+
+.task-description h1 {
+  @apply text-4xl font-bold text-center py-4 leading-tight text-red-600;
+}
+
+.task-description h2 {
+  @apply text-2xl font-bold py-2;
+}
+
+.task-description ul {
+  @apply list-outside list-disc pl-4 max-w-3xl;
+}
+
+.task-description ol {
+  @apply list-outside list-decimal pl-4 max-w-3xl;
+}
+
+@screen md {
+  .task-description h1 {
+    @apply text-left text-4xl;
+  }
+
+  .task-description h2 {
+    @apply text-left text-3xl;
+  }
+
+  .task-description ul {
+    @apply px-12;
+  }
+
+  .task-description ol {
+    @apply px-12;
+  }
+}
+
+.task-description li {
+  @apply py-2;
+}

@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Description component renders correctly 1`] = `
+<section
+  className="task-description"
+  data-testid="task-desctiption"
+>
+  <h1>
+    Zadanie "simple carousel"
+  </h1>
+  <p>
+    Źródło: 
+    <a
+      href="https://github.com/czechue/kodifaj-tasks"
+    >
+      https://github.com/czechue/kodifaj-tasks
+    </a>
+  </p>
+  <h2>
+    Treść zadania
+  </h2>
+  <ol>
+    <li>
+      <p>
+        Stwórz strukturę HTML widoku karuzeli oraz napisz odpowiednie reguły CSS, tak aby jak najdokładniej odwzorować wygląd przedstawiony na makiecie (patrz katalog 
+        <code>
+          assets/1920x1080.png
+        </code>
+        ).
+      </p>
+    </li>
+    <li>
+      <p>
+        Akcje na stronie:
+      </p>
+      <ol>
+        <li>
+          <p>
+            Toggle button "Arrows" - pokazuje bądź ukrywa strzałki nawigacyjne karuzeli. (Niewidoczny w najmniejszej rozdzielczości).
+          </p>
+        </li>
+        <li>
+          <p>
+            Kliknięcie w strzałki przesuwa obrazy odpowiednio w lewo lub prawo.
+          </p>
+        </li>
+        <li>
+          <p>
+            Karuzelę można przewijać w nieskończoność (tzw. infinite carousel).
+          </p>
+        </li>
+        <li>
+          <p>
+            Przyciski pod karuzelą są przypisane na stałe do kolejnych obrazów i robią się aktywne (ciemno-niebieskie) w momencie gdy odpowiedni obraz znajduje się w środku karuzeli.
+          </p>
+        </li>
+        <li>
+          <p>
+            Środkowy obraz jest  zawsze powiększony.
+          </p>
+        </li>
+        <li>
+          <p>
+            Klik w obraz inny niż środkowy - ustawia go w środku karuzeli.
+          </p>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <p>
+        Nice to have (poziom zaawansowany)
+      </p>
+      <ol>
+        <li>
+          <p>
+            Kilk w obraz środkowy wyświetla go na warstwie. Obraz główny jest lekko powięszony, pozostałe proporcjonalnie zmniejszone. Zamknięcie modala - po kliknięciu drugi raz w dowolny obszar strony.
+          </p>
+        </li>
+        <li>
+          <p>
+            Zmiany obrazów są animowane.
+          </p>
+        </li>
+        <li>
+          <p>
+            Karuzela jest w pełni "dostępna", może być obsługiwana tylko za pomocą klawiatury.
+          </p>
+        </li>
+        <li>
+          <p>
+            Projekt posiada 100% code coverage.
+          </p>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <h2>
+    Uwagi
+  </h2>
+  <ul>
+    <li>
+      <p>
+        Nie korzystaj z frameworków CSS (bootstrap etc.) ani JS (react, angular, vue etc.)
+      </p>
+    </li>
+    <li>
+      <p>
+        Makiety są tylko poglądowe, odwzorowanie nie musi być pixel-perfect.
+      </p>
+    </li>
+    <li>
+      <p>
+        Użyty font to 
+        <code>
+          Poppins
+        </code>
+        .
+      </p>
+      <div
+        className="my-2 flex flex-col"
+      >
+        <p
+          className="text-xs italic"
+        >
+          js
+        </p>
+        <div
+          className="flex"
+        >
+          <pre
+            style={
+              Object {
+                "background": "#F0F0F0",
+                "color": "#444",
+                "display": "block",
+                "overflowX": "auto",
+                "padding": "0.5em",
+              }
+            }
+          >
+            <code>
+              <span
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                var
+              </span>
+               React = 
+              <span
+                style={
+                  Object {
+                    "color": "#397300",
+                  }
+                }
+              >
+                require
+              </span>
+              (
+              <span
+                style={
+                  Object {
+                    "color": "#880000",
+                  }
+                }
+              >
+                'react'
+              </span>
+              );
+
+
+              <span
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                var
+              </span>
+               Markdown = 
+              <span
+                style={
+                  Object {
+                    "color": "#397300",
+                  }
+                }
+              >
+                require
+              </span>
+              (
+              <span
+                style={
+                  Object {
+                    "color": "#880000",
+                  }
+                }
+              >
+                'react-markdown'
+              </span>
+              );
+            </code>
+          </pre>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+`;
