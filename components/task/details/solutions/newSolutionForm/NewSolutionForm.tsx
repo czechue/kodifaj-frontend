@@ -3,6 +3,7 @@ import Button, { ButtonType } from '../../../../shared/button/Button';
 import Select, { ValueType } from 'react-select';
 import { formStyles } from './formStyles';
 import clsx from 'clsx';
+import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -62,30 +63,12 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
   return (
     <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
       <div className="w-full lg:w-3/4">
-        <div className="flex flex-col pt-4 w-full">
-          <label htmlFor="solutionLinkInput" className="text-xs mb-1 text-gray-600">
-            Link do rozwiązania
-          </label>
-          <input
-            type="text"
-            name="solution"
-            id="solutionLinkInput"
-            className="w-full h-10 border rounded-sm px-2 bg-gray-200"
-            onChange={handleSolutionChange}
-          />
-        </div>
-        <div className="flex flex-col pt-4 w-full">
-          <label htmlFor="liveLinkInput" className="text-xs mb-1 text-gray-600">
-            Link do wersji live
-          </label>
-          <input
-            type="text"
-            name="live"
-            id="liveLinkInput"
-            className="w-full h-10 border rounded-sm px-2 bg-gray-200"
-            onChange={handleLiveLinkChange}
-          />
-        </div>
+        <NewSolutionFormInput id="solutionLinkInput" handleChange={handleSolutionChange}>
+          Link do rozwiązania
+        </NewSolutionFormInput>
+        <NewSolutionFormInput id="liveLinkInput" handleChange={handleLiveLinkChange}>
+          Link do wersji live
+        </NewSolutionFormInput>
         <div className="flex flex-col pt-4 w-full">
           <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
             Użyte technologie
