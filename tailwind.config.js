@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
+  purge: [
+    "./pages/**/*.*", 
+    "./components/**/*.*", 
+  ],
   theme: {
     inset: {
       '0': 0,

@@ -15,12 +15,13 @@ const TaskComponent: React.FC<TaskProps> = ({ task }) => {
     createdAt,
     tags,
     images,
+    content,
   } = task;
   return (
     <>
       <Header />
       <Hero title={title} author={login} creationTime={createdAt} tags={tags} />
-      <TaskDetails images={images} />
+      <TaskDetails images={images} content={content} />
     </>
   );
 };

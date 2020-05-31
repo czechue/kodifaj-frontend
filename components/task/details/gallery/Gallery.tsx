@@ -6,6 +6,7 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const numberOfImages = images ? images.length : 0;
+  if (images?.length === 0) return null;
   return (
     <section>
       <h4 className="text-sm font-bold pb-3">Przykładowe zdjęcia ({numberOfImages})</h4>
