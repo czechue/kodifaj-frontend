@@ -8,12 +8,12 @@ interface CodeBlockProps {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ language = 'javascript', value = '' }) => {
   return (
-    <div className="my-2 flex flex-col">
+    <>
       <p className="text-xs italic">{language}</p>
-      <div className="flex">
-        <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>
-      </div>
-    </div>
+      <SyntaxHighlighter className="max-w-screen-xs sm:max-w-full" language={language}>
+        {value}
+      </SyntaxHighlighter>
+    </>
   );
 };
 
