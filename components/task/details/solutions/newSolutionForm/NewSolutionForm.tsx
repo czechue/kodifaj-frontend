@@ -1,5 +1,5 @@
 import React, { FormEventHandler, useState, ChangeEvent } from 'react';
-import Button, { ButtonType } from '../../../../shared/button/Button';
+import Button, { ButtonLayout } from '../../../../shared/button/Button';
 import Select, { ValueType } from 'react-select';
 import { formStyles } from './formStyles';
 import clsx from 'clsx';
@@ -106,7 +106,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
           Wróć
         </button>
         <div className="-mx-4">
-          <Button submit type={ButtonType.Black}>
+          <Button type="submit" layout={ButtonLayout.Black}>
             Wyślij
           </Button>
         </div>

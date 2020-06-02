@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Stars from '../../../stars/Stars';
-import Button, { ButtonType, ButtonSize } from '../../../shared/button/Button';
+import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button';
 import Modal from '../../../shared/modal/Modal';
 import NewSolutionForm from './newSolutionForm/NewSolutionForm';
 
@@ -29,7 +29,8 @@ const Solutions: React.FC<SolutionsProps> = ({ solutions }) => {
         <div className="border border-b-2 mt-4 mx-2" />
         <div className="text-center my-8">
           <Button
-            type={ButtonType.Black}
+            type="button"
+            layout={ButtonLayout.Black}
             size={ButtonSize.Big}
             onClick={(): void => setIsModalOpen(true)}
           >
