@@ -14,11 +14,16 @@
 }
 
 .task-description ul {
-  @apply list-outside list-disc pl-4 max-w-3xl;
+  @apply list-outside list-disc pl-8 max-w-3xl;
 }
 
 .task-description ol {
-  @apply list-outside list-decimal pl-4 max-w-3xl;
+  @apply list-outside list-decimal pl-8 max-w-3xl;
+}
+
+.task-description li {
+  @apply py-2;
+  hyphens: auto;
 }
 
 @screen md {
@@ -39,6 +44,3 @@
   }
 }
 
-.task-description li {
-  @apply py-2;
-}
