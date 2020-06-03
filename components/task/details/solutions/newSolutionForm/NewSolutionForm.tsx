@@ -1,9 +1,10 @@
-import React, { FormEventHandler, useState, ChangeEvent } from 'react';
+import React from 'react';
 import Button, { ButtonLayout } from '../../../../shared/button/Button';
-import Select, { ValueType } from 'react-select';
+import Select from 'react-select';
 import { formStyles } from './formStyles';
 import clsx from 'clsx';
 import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
+import { Form, Field } from 'react-final-form';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -26,92 +27,112 @@ interface NewSolutionFormProps {
 }
 
 const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => {
-  const [solutionLink, setSolutionLink] = useState('');
-  const [liveLink, setLiveLink] = useState('');
-  const [selectedTechnologies, setSelectedTechnologies] = useState<Technology[]>([]);
-  const [isReviewChecked, setIsReviewChecked] = useState(false);
-
-  const handleSolutionChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setSolutionLink(e.target.value);
+  const handleSubmit = (values: string[]): void => {
+    console.log(JSON.stringify(values));
   };
 
-  const handleLiveLinkChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setLiveLink(e.target.value);
-  };
+  const ReviewCheckboxLabelStyles = (value: boolean | undefined): string =>
+    clsx('w-3/4 text-xs text-right cursor-pointer', value ? 'text-white' : 'text-gray-600');
 
-  const handleSelectedTechnologies = (selectedOpion: ValueType<Technology>): void => {
-    const selectedTechs = selectedOpion as Technology[];
-    setSelectedTechnologies(selectedTechs);
-  };
+  const ReviewCheckboxBoxStyles = (value: boolean | undefined): string =>
+    clsx(
+      'flex w-full h-10 mt-10 border rounded-sm items-center px-4 cursor-pointer',
+      value && 'bg-gray-800 text-white',
+    );
 
-  const handleSubmit: FormEventHandler = (e) => {
-    e.preventDefault();
-  };
-
-  const handleReviewChecked = (): void => {
-    setIsReviewChecked((prevState) => !prevState);
-  };
-
-  const ReviewCheckboxBoxStyles = clsx(
-    'flex w-full h-10 mt-10 border rounded-sm items-center px-4 cursor-pointer',
-    isReviewChecked && 'bg-gray-800 text-white',
-  );
-  const ReviewCheckboxLabelStyles = clsx(
-    'w-3/4 text-xs text-right cursor-pointer',
-    isReviewChecked ? 'text-white' : 'text-gray-600',
-  );
   return (
-    <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
-      <div className="w-full lg:w-3/4">
-        <NewSolutionFormInput id="solutionLinkInput" handleChange={handleSolutionChange}>
-          Link do rozwiązania
-        </NewSolutionFormInput>
-        <NewSolutionFormInput id="liveLinkInput" handleChange={handleLiveLinkChange}>
-          Link do wersji live
-        </NewSolutionFormInput>
-        <div className="flex flex-col pt-4 w-full">
-          <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
-            Użyte technologie
-          </label>
-          <Select
-            options={technologies}
-            onChange={handleSelectedTechnologies}
-            styles={formStyles}
-            id="technologiesSelect"
-            placeholder="Wybierz technologie..."
-            isMulti
-          />
-        </div>
-        <div className={ReviewCheckboxBoxStyles}>
-          <input
-            type="checkbox"
-            name="live"
-            id="reviewCheckbox"
-            className="w-1/4 cursor-pointer"
-            onChange={handleReviewChecked}
-            checked={isReviewChecked}
-          />
-          <label htmlFor="reviewCheckbox" className={ReviewCheckboxLabelStyles}>
-            Prośba o recenzję
-          </label>
-        </div>
-      </div>
-      <div className="w-full border border-gray-200 border-b-1 mt-10" />
-      <div className="mt-10 w-full flex justify-between">
-        <button
-          type="button"
-          className="text-gray-700 hover:underline"
-          onClick={(): void => setIsModalOpen(false)}
-        >
-          Wróć
-        </button>
-        <div className="-mx-4">
-          <Button type="submit" layout={ButtonLayout.Black}>
-            Wyślij
-          </Button>
-        </div>
-      </div>
-    </form>
+    <Form
+      onSubmit={handleSubmit}
+      render={({ handleSubmit, form, submitting, pristine, values }): React.ReactNode => {
+        return (
+          <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
+            <div className="w-full lg:w-3/4">
+              <Field name="solutionLinkInput" component="input">
+                {(props): JSX.Element => (
+                  <NewSolutionFormInput
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  >
+                    Link do rozwiązania
+                  </NewSolutionFormInput>
+                )}
+              </Field>
+              <Field name="liveLinkInput" component="input">
+                {(props): JSX.Element => (
+                  <NewSolutionFormInput
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  >
+                    Link do wersji live
+                  </NewSolutionFormInput>
+                )}
+              </Field>
+              <Field name="technologiesSelect" component="select">
+                {(props): JSX.Element => {
+                  console.log(props);
+                  return (
+                    <div className="flex flex-col pt-4 w-full">
+                      <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
+                        Użyte technologie
+                      </label>
+                      <Select
+                        options={technologies}
+                        styles={formStyles}
+                        id="technologiesSelect"
+                        placeholder="Wybierz technologie..."
+                        isMulti
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                    </div>
+                  );
+                }}
+              </Field>
+              <Field name="reviewCheckbox" component="input" type="checkbox">
+                {(props): JSX.Element => {
+                  console.log(props.input.checked);
+                  return (
+                    <div className={ReviewCheckboxBoxStyles(props.input.checked)}>
+                      <input
+                        type="checkbox"
+                        name={props.input.name}
+                        className="w-1/4 cursor-pointer"
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                      <label
+                        htmlFor="reviewCheckbox"
+                        className={ReviewCheckboxLabelStyles(props.input.checked)}
+                      >
+                        Prośba o recenzję
+                      </label>
+                    </div>
+                  );
+                }}
+              </Field>
+            </div>
+            <div className="w-full border border-gray-200 border-b-1 mt-10" />
+            <div className="mt-10 w-full flex justify-between">
+              <button
+                type="button"
+                className="text-gray-700 hover:underline"
+                onClick={(): void => setIsModalOpen(false)}
+              >
+                Wróć
+              </button>
+              <div className="-mx-4">
+                <Button type="submit" layout={ButtonLayout.Black}>
+                  Wyślij
+                </Button>
+              </div>
+            </div>
+          </form>
+        );
+      }}
+    />
   );
 };
 
