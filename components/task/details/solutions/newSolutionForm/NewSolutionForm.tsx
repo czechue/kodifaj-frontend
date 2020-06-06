@@ -5,6 +5,8 @@ import { formStyles } from './formStyles';
 import clsx from 'clsx';
 import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
 import { Form, Field } from 'react-final-form';
+import { FieldValidator } from 'final-form';
+import { URLValidator } from '../../../../../public/utils/validators';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -31,6 +33,13 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
     console.log(JSON.stringify(values));
   };
 
+  const required = (value: string): string | undefined => (value ? undefined : 'Required');
+
+  function composeValidators(...validators: FieldValidator<string>[]): FieldValidator<string> {
+    return (value, allValues): string | undefined =>
+      validators.reduce((error, validator) => error || validator(value, allValues), undefined);
+  }
+
   const ReviewCheckboxLabelStyles = (value: boolean | undefined): string =>
     clsx('w-3/4 text-xs text-right cursor-pointer', value ? 'text-white' : 'text-gray-600');
 
@@ -47,16 +56,22 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
         return (
           <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
             <div className="w-full lg:w-3/4">
-              <Field name="solutionLinkInput" component="input">
-                {(props): JSX.Element => (
-                  <NewSolutionFormInput
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  >
-                    Link do rozwiązania
-                  </NewSolutionFormInput>
-                )}
+              <Field
+                name="solutionLinkInput"
+                component="input"
+                validate={composeValidators(required, URLValidator)}
+              >
+                {(props): JSX.Element => {
+                  const { name, value, onChange } = props.input;
+                  return (
+                    <>
+                      <NewSolutionFormInput name={name} value={value} onChange={onChange}>
+                        Link do rozwiązania
+                      </NewSolutionFormInput>
+                      {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
+                    </>
+                  );
+                }}
               </Field>
               <Field name="liveLinkInput" component="input">
                 {(props): JSX.Element => (
@@ -71,7 +86,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
               </Field>
               <Field name="technologiesSelect" component="select">
                 {(props): JSX.Element => {
-                  console.log(props);
                   return (
                     <div className="flex flex-col pt-4 w-full">
                       <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
