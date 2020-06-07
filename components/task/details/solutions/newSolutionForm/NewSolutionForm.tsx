@@ -40,10 +40,10 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
       validators.reduce((error, validator) => error || validator(value, allValues), undefined);
   }
 
-  const ReviewCheckboxLabelStyles = (value: boolean | undefined): string =>
+  const ReviewCheckboxLabelStyles = (value?: boolean): string =>
     clsx('w-3/4 text-xs text-right cursor-pointer', value ? 'text-white' : 'text-gray-600');
 
-  const ReviewCheckboxBoxStyles = (value: boolean | undefined): string =>
+  const ReviewCheckboxBoxStyles = (value?: boolean): string =>
     clsx(
       'flex w-full h-10 mt-10 border rounded-sm items-center px-4 cursor-pointer',
       value && 'bg-gray-800 text-white',
@@ -58,10 +58,8 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
             <div className="w-full lg:w-3/4">
               <Field
                 name="solutionLinkInput"
-                component="input"
                 validate={composeValidators(required, URLValidator)}
-              >
-                {(props): JSX.Element => {
+                render={(props): JSX.Element => {
                   const { name, value, onChange } = props.input;
                   return (
                     <>
@@ -72,9 +70,11 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                     </>
                   );
                 }}
-              </Field>
-              <Field name="liveLinkInput" component="input">
-                {(props): JSX.Element => (
+              />
+
+              <Field
+                name="liveLinkInput"
+                render={(props): JSX.Element => (
                   <NewSolutionFormInput
                     name={props.input.name}
                     value={props.input.value}
@@ -83,9 +83,10 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                     Link do wersji live
                   </NewSolutionFormInput>
                 )}
-              </Field>
-              <Field name="technologiesSelect" component="select">
-                {(props): JSX.Element => {
+              />
+              <Field
+                name="technologiesSelect"
+                render={(props): JSX.Element => {
                   return (
                     <div className="flex flex-col pt-4 w-full">
                       <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
@@ -104,10 +105,9 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                     </div>
                   );
                 }}
-              </Field>
+              />
               <Field name="reviewCheckbox" component="input" type="checkbox">
                 {(props): JSX.Element => {
-                  console.log(props.input.checked);
                   return (
                     <div className={ReviewCheckboxBoxStyles(props.input.checked)}>
                       <input
