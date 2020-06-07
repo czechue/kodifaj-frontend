@@ -29,9 +29,29 @@ interface NewSolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface TechnologiesSelect {
+  label: string;
+  value: string;
+}
+interface FormValues {
+  solutionLinkInput: string;
+  liveLinkInput?: string;
+  technologiesSelect: TechnologiesSelect[];
+  reviewCheckbox?: boolean;
+}
+
 const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => {
-  const handleSubmit = (values: string[]): void => {
-    console.log(JSON.stringify(values));
+  function sendSolutions(values: FormValues): FormValues {
+    return values;
+  }
+
+  const onSubmit = async (values: FormValues): Promise<void> => {
+    try {
+      const data = await sendSolutions(values);
+      console.log(JSON.stringify(data));
+    } catch (error) {
+      return error.message;
+    }
   };
 
   function composeValidators(...validators: FieldValidator<string>[]): FieldValidator<string> {
@@ -50,7 +70,8 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
 
   return (
     <Form
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
+      initialValues={{ reviewCheckbox: false }}
       render={({ handleSubmit, form, submitting, pristine, values }): React.ReactNode => {
         return (
           <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
@@ -75,19 +96,23 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                 name="liveLinkInput"
                 validate={URLValidator}
                 render={(props): JSX.Element => (
-                  <NewSolutionFormInput
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  >
-                    Link do wersji live
-                  </NewSolutionFormInput>
+                  <>
+                    <NewSolutionFormInput
+                      name={props.input.name}
+                      value={props.input.value}
+                      onChange={props.input.onChange}
+                    >
+                      Link do wersji live
+                    </NewSolutionFormInput>
+                    {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
+                  </>
                 )}
               />
               <Field
                 name="technologiesSelect"
                 validate={required}
                 render={(props): JSX.Element => {
+                  console.log(props);
                   return (
                     <div className="flex flex-col pt-4 w-full">
                       <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
@@ -116,7 +141,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                         type="checkbox"
                         name={props.input.name}
                         className="w-1/4 cursor-pointer"
-                        value={props.input.value}
                         onChange={props.input.onChange}
                       />
                       <label
@@ -145,6 +169,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                 </Button>
               </div>
             </div>
+            <pre>{JSON.stringify(values, null, 2)}</pre>
           </form>
         );
       }}
