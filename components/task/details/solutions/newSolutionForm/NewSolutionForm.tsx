@@ -6,7 +6,8 @@ import clsx from 'clsx';
 import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
 import { Form, Field } from 'react-final-form';
 import { FieldValidator } from 'final-form';
-import { URLValidator } from '../../../../../public/utils/validators';
+import { URLValidator } from '../../../../../utils/validators/URLValidator';
+import { required } from '../../../../../utils/validators/requiredValidator';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -32,8 +33,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
   const handleSubmit = (values: string[]): void => {
     console.log(JSON.stringify(values));
   };
-
-  const required = (value: string): string | undefined => (value ? undefined : 'Required');
 
   function composeValidators(...validators: FieldValidator<string>[]): FieldValidator<string> {
     return (value, allValues): string | undefined =>
@@ -74,6 +73,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
 
               <Field
                 name="liveLinkInput"
+                validate={URLValidator}
                 render={(props): JSX.Element => (
                   <NewSolutionFormInput
                     name={props.input.name}
@@ -86,6 +86,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
               />
               <Field
                 name="technologiesSelect"
+                validate={required}
                 render={(props): JSX.Element => {
                   return (
                     <div className="flex flex-col pt-4 w-full">
@@ -102,6 +103,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                         value={props.input.value}
                         onChange={props.input.onChange}
                       />
+                      {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
                     </div>
                   );
                 }}
