@@ -13,7 +13,7 @@ export enum ButtonSize {
 }
 interface ButtonProps {
   children: string;
-  type: JSX.IntrinsicElements['button']['type'];
+  type?: 'button' | 'submit' | 'reset';
   submit?: boolean;
   layout?: ButtonLayout;
   size?: ButtonSize;
