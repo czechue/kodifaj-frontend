@@ -1,7 +1,7 @@
 import React from 'react';
 import UserHero from './hero/Hero';
 import UserDetails from './details/Details';
-import { Task } from '../../lib/models/task/task';
+import { Task } from '../../lib/models/task/Task';
 
 interface UserProps {
   solutions?: string[];

@@ -3,7 +3,7 @@ import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
-import { Task } from '../../../lib/models/task/task';
+import { Task } from '../../../lib/models/task/Task';
 
 interface UserDetailsProps {
   solutions?: string[];

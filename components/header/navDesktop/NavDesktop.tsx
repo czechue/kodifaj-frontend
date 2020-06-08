@@ -1,8 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa';
+import { useUser } from '../../context/UserContext';
 
 const NavDesktop: React.FC = () => {
+  const user = useUser();
+
   return (
     <nav className="flex">
       <ul className="flex text-sm capitalize text-gray-700 font-medium justify-center items-center">
@@ -23,10 +26,16 @@ const NavDesktop: React.FC = () => {
         </li>
         <span className="pl-8">|</span>
         <li className="pl-8 hover:text-red-500 transition-colors duration-200 flex items-center">
-          <Link href="/login">
-            <a className="">rejestracja</a>
-          </Link>
-          <FaGithub className="ml-2 text-2xl" />
+          {user ? (
+            <span>{user.login}</span>
+          ) : (
+            <>
+              <Link href="/login">
+                <a className="">rejestracja</a>
+              </Link>
+              <FaGithub className="ml-2 text-2xl" />
+            </>
+          )}
         </li>
       </ul>
     </nav>

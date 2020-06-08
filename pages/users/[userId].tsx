@@ -4,8 +4,8 @@ import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
 import UserComponent from '../../components/user/User';
-import { User } from '../../lib/models/user/user';
-import { Task } from '../../lib/models/task/task';
+import { Task } from '../../lib/models/task/Task';
+import { User } from '../../lib/models/user/User';
 
 interface UserDetailsProps {
   user?: User;
@@ -33,8 +33,14 @@ interface Params extends ParsedUrlQuery {
   userId: string;
 }
 
+// todo: Poprawić na odp. zapytanie z bazy
 const filterTasks = (tasks: Task[], user: User): Task[] => {
-  return tasks.filter((task) => user._tasks.includes(task._id));
+  return tasks.filter((task) => {
+    if (!user || !user._tasks) {
+      return null;
+    }
+    user._tasks.includes(task._id);
+  });
 };
 
 export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = async ({

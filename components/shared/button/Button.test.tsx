@@ -8,6 +8,7 @@ describe('Button component', () => {
     expect(queryByText('Child element')).toHaveTextContent('Child element');
     expect(queryByText('Child element')).toHaveClass('bg-white text-gray-700');
   });
+
   it('should display button with correct type', () => {
     const { queryByText } = render(<Button type={ButtonType.Black}>Child element</Button>);
     expect(queryByText('Child element')).toHaveTextContent('Child element');

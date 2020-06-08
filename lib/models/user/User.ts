@@ -3,6 +3,6 @@ export interface User {
   githubId: string;
   login: string;
   photo?: string;
-  _solutions: string[];
-  _tasks: string[];
+  _solutions?: string[];
+  _tasks?: string[];
 }
