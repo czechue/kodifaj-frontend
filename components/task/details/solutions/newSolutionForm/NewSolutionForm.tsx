@@ -5,9 +5,9 @@ import { formStyles } from './formStyles';
 import clsx from 'clsx';
 import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
 import { Form, Field } from 'react-final-form';
-import { FieldValidator } from 'final-form';
-import { URLValidator } from '../../../../../utils/validators/URLValidator';
+import { correctUrlValidator } from '../../../../../utils/validators/correctUrlValidator';
 import { required } from '../../../../../utils/validators/requiredValidator';
+import { composeValidators } from '../../../../../utils/validators/composeValidators';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -54,11 +54,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
     }
   };
 
-  function composeValidators(...validators: FieldValidator<string>[]): FieldValidator<string> {
-    return (value, allValues): string | undefined =>
-      validators.reduce((error, validator) => error || validator(value, allValues), undefined);
-  }
-
   const ReviewCheckboxLabelStyles = (value?: boolean): string =>
     clsx('w-3/4 text-xs text-right cursor-pointer', value ? 'text-white' : 'text-gray-600');
 
@@ -76,9 +71,12 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
         return (
           <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
             <div className="w-full lg:w-3/4">
-              <Field
+              <Field<string>
                 name="solutionLinkInput"
-                validate={composeValidators(required, URLValidator)}
+                validate={composeValidators(
+                  required('Pole wymagane'),
+                  correctUrlValidator('Wpisz poprawny adres'),
+                )}
                 render={(props): JSX.Element => {
                   const { name, value, onChange } = props.input;
                   return (
@@ -94,7 +92,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
 
               <Field
                 name="liveLinkInput"
-                validate={URLValidator}
                 render={(props): JSX.Element => (
                   <>
                     <NewSolutionFormInput
@@ -110,9 +107,8 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
               />
               <Field
                 name="technologiesSelect"
-                validate={required}
+                validate={composeValidators(required('Wybierz zastosowane technologie'))}
                 render={(props): JSX.Element => {
-                  console.log(props);
                   return (
                     <div className="flex flex-col pt-4 w-full">
                       <label htmlFor="technologiesSelect" className="text-xs mb-1 text-gray-600">
@@ -125,7 +121,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                         placeholder="Wybierz technologie..."
                         isMulti
                         name={props.input.name}
-                        value={props.input.value}
                         onChange={props.input.onChange}
                       />
                       {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
@@ -169,7 +164,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                 </Button>
               </div>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
           </form>
         );
       }}

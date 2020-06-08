@@ -1,1 +1,3 @@
-export const required = (value: any): string | undefined => (value ? undefined : 'Pole wymagane');
+export function required(error: string): (value: string) => string | undefined {
+  return (value: string): string | undefined => (value ? undefined : error);
+}
