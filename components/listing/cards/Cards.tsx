@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../card/Card';
-import { Task } from '../../../models/task/task.types';
+import { Task } from '../../../lib/models/task/Task';
 
 interface CardsProps {
   tasks: Task[];
@@ -8,15 +8,20 @@ interface CardsProps {
 
 const Cards: React.FC<CardsProps> = ({ tasks }) => {
   const cardsStyles = `grid grid-cols-1 sm:grid-cols-2 col-gap-4 row-gap-4 xl:grid-cols-3 xl:col-span-3 mx-4 mb-8`;
+
   return (
     <div className={cardsStyles}>
       {tasks.map((task) => {
-        const { _id, _user, images, title, tags, createdAt } = task;
+        const { _id, user, images, title, tags, createdAt = '' } = task;
+        // todo: poprawic model Usera w Tasku
+        if (!user) {
+          return null;
+        }
         return (
           <Card
             key={_id}
             _id={_id}
-            _user={_user}
+            user={user}
             images={images}
             title={title}
             tags={tags}

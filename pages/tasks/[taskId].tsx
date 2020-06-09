@@ -1,9 +1,8 @@
 import React from 'react';
 import { NextPage, GetServerSideProps } from 'next';
-import fetch from 'node-fetch';
-import { Task } from '../../models/task/task.types';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
+import { Task } from '../../lib/models/task/Task';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
 

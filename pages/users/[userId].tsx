@@ -1,15 +1,14 @@
 import React from 'react';
 import { NextPage, GetServerSideProps } from 'next';
-import fetch from 'node-fetch';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
-import { User as UserTypes } from '../../models/user/user.types';
-import User from '../../components/user/User';
-import { Task } from '../../models/task/task.types';
+import UserComponent from '../../components/user/User';
+import { Task } from '../../lib/models/task/Task';
+import { User } from '../../lib/models/user/User';
 
 interface UserDetailsProps {
-  user?: UserTypes;
+  user?: User;
   errorCode?: number;
   tasks?: Task[];
 }
@@ -19,7 +18,12 @@ const UserDetails: NextPage<UserDetailsProps> = ({ user, tasks, errorCode }) => 
     <Layout title="User page" errorCode={errorCode}>
       <Header />
       {user && (
-        <User solutions={user._solutions} login={user.login} photo={user.photo} tasks={tasks} />
+        <UserComponent
+          solutions={user._solutions}
+          login={user.login}
+          photo={user.photo}
+          tasks={tasks}
+        />
       )}
     </Layout>
   );
@@ -29,8 +33,14 @@ interface Params extends ParsedUrlQuery {
   userId: string;
 }
 
-const filterTasks = (tasks: Task[], user: UserTypes): Task[] => {
-  return tasks.filter((task) => user._tasks.includes(task._id));
+// todo: Poprawić na odp. zapytanie z bazy
+const filterTasks = (tasks: Task[], user: User): Task[] => {
+  return tasks.filter((task) => {
+    if (!user || !user._tasks) {
+      return null;
+    }
+    user._tasks.includes(task._id);
+  });
 };
 
 export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = async ({
@@ -41,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = 
 
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {
-    const user: UserTypes = await res.json();
+    const user: User = await res.json();
     const tasks: Task[] = await res1.json();
     return {
       props: {

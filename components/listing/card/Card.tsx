@@ -2,25 +2,22 @@ import React from 'react';
 import Link from 'next/link';
 import Stars from '../../stars/Stars';
 import Badges from '../../badges/Badges';
+import { User } from '../../../lib/models/user/User';
 
-interface UserProps {
-  _id: string;
-  login: string;
-}
 interface CardProps {
   _id: string;
-  _user: UserProps;
+  user: User;
   images: string[];
   title: string;
   tags: string[];
   createdAt: string;
 }
 
-const Card: React.FC<CardProps> = ({ _id, _user, images, title, tags, createdAt }) => {
+const Card: React.FC<CardProps> = ({ _id, user, images, title, tags, createdAt }) => {
   const creationTime = createdAt.slice(0, 10);
   const userPhoto =
     'https://avatars2.githubusercontent.com/u/21274642?s=400&u=d2f9f822cccbbd841e2c37e2c9b790644f51b8d8&v=4';
-  const userLogin = _user.login;
+  const userLogin = user.login;
   return (
     <div className="flex flex-col items-center mt-4">
       <Link href="/tasks/[taskId]" as={`/tasks/${_id}`}>

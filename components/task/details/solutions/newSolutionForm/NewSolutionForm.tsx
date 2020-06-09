@@ -20,11 +20,6 @@ export const technologies = [
   { value: 'angular', label: '#angular' },
 ];
 
-interface Technology {
-  value: string;
-  label: string;
-}
-
 interface NewSolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -67,7 +62,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
     <Form
       onSubmit={onSubmit}
       initialValues={{ reviewCheckbox: false }}
-      render={({ handleSubmit, form, submitting, pristine, values }): React.ReactNode => {
+      render={({ handleSubmit }): React.ReactNode => {
         return (
           <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
             <div className="w-full lg:w-3/4">

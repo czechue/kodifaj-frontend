@@ -11,7 +11,7 @@ interface TaskDetailsProps {
   content: string;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, content, login, photo, images }) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, content, images }) => {
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">

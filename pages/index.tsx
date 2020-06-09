@@ -1,12 +1,9 @@
 import React from 'react';
-import { NextPage, GetServerSideProps } from 'next';
-import fetch from 'node-fetch';
+import { GetServerSideProps, NextPage } from 'next';
 import Layout from '../components/shared/layout/Layout';
-import { Task } from '../models/task/task.types';
+import { Task } from '../lib/models/task/Task';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
-// import { API_URL } from '../lib/consts/apiUrl';
-// import API_URL from '../next.config'
 
 interface HomeProps {
   tasks: Task[];
@@ -24,7 +21,7 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const tasks: Task[] = await res.json();
   return {
     props: {
-      tasks,
+      tasks: tasks ? tasks : [],
     },
   };
 };

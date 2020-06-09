@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../../models/task/task.types';
+import { Task } from '../../lib/models/task/Task';
 import Cards from './cards/Cards';
 
 interface ListingProps {

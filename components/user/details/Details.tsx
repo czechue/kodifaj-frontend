@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
-import { Task } from '../../../models/task/task.types';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
+import { Task } from '../../../lib/models/task/Task';
 
 interface UserDetailsProps {
   solutions?: string[];

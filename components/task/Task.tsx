@@ -1,8 +1,8 @@
 import React from 'react';
-import { Task } from '../../models/task/task.types';
 import { Hero } from './hero/Hero';
 import TaskDetails from './details/Details';
 import Header from '../header/Header';
+import { Task } from 'lib/models/task/Task';
 
 interface TaskProps {
   task: Task;
@@ -11,7 +11,7 @@ interface TaskProps {
 const TaskComponent: React.FC<TaskProps> = ({ task }) => {
   const {
     title,
-    _user: { login },
+    user: { login },
     createdAt,
     tags,
     images,
