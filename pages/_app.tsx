@@ -35,9 +35,10 @@ class MyApp extends App {
 
   render(): ReactElement {
     const { Component, pageProps } = this.props;
+    const user = pageProps.user ? pageProps.user : null;
 
     return (
-      <UserProvider user={pageProps.user ? pageProps.user : null}>
+      <UserProvider user={user}>
         <Component {...pageProps} />
       </UserProvider>
     );
