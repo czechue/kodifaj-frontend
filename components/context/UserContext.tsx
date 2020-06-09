@@ -9,11 +9,8 @@ export default function UserProvider({ children, user }: UserProviderProps): JSX
 
 export function useUser(): User {
   const context = useContext(UserContext);
-  // if (context === undefined) {
-  //   throw Error('useAppState must be used within a AppStateProvider');
-  // }
-  if (!context) {
-    return { githubId: '', login: '' };
+  if (context === undefined) {
+    throw Error('useAppState must be used within a AppStateProvider');
   }
   return context;
 }

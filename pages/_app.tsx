@@ -37,7 +37,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <UserProvider user={pageProps.user}>
+      <UserProvider user={pageProps.user ? pageProps.user : null}>
         <Component {...pageProps} />
       </UserProvider>
     );

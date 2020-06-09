@@ -40,7 +40,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
           ) : (
             <>
               <Link href="/login">
-                <a className="">rejestracja</a>
+                <a className="">logowanie</a>
               </Link>
               <FaGithub className="pl-2 text-4xl sm:text-6xl" />
             </>
