@@ -13,7 +13,7 @@ const Badges: React.FC<BadgesProps> = ({ tags }) => {
           key={index}
         >
           <span data-testid="tag" className="text-xs">
-            /{tag}
+            #{tag}
           </span>
         </li>
       ))}
