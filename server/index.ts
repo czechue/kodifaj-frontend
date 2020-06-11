@@ -1,6 +1,6 @@
 import next from 'next';
 import express, { Request, Response } from 'express';
-import db from './services/db';
+import { initDb } from './services/db';
 import keys from './config/keys';
 import passport from 'passport';
 import bodyParser from 'body-parser';
@@ -17,9 +17,12 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+initDb((err) => console.log('err', err));
+
 app.prepare().then(() => {
-  const server = express();
   passportService();
+
+  const server = express();
 
   server.use(bodyParser.json());
   server.use(
@@ -40,13 +43,7 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  db.initDb((err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      server.listen(port, () => {
-        console.log(`> Ready on PORT: ${port}`);
-      });
-    }
+  server.listen(port, () => {
+    console.log(`> Ready on PORT: ${port}`);
   });
 });

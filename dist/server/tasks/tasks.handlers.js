@@ -1,14 +1,10 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTask = exports.getTaskById = exports.getAllTasks = void 0;
-const db_1 = __importDefault(require("../services/db"));
 const mongodb_1 = require("mongodb");
+const db_1 = require("../services/db");
 function getAllTasks() {
-    return db_1.default
-        .getDb()
+    return db_1.getDb()
         .db()
         .collection('tasks')
         .aggregate([
@@ -18,8 +14,7 @@ function getAllTasks() {
 }
 exports.getAllTasks = getAllTasks;
 async function getTaskById(taskId) {
-    return await db_1.default
-        .getDb()
+    return await db_1.getDb()
         .db()
         .collection('tasks')
         .aggregate([
@@ -58,7 +53,7 @@ async function getTaskById(taskId) {
 }
 exports.getTaskById = getTaskById;
 async function createTask(newTask) {
-    return await db_1.default.getDb().db().collection('tasks').insertOne(newTask);
+    return await db_1.getDb().db().collection('tasks').insertOne(newTask);
 }
 exports.createTask = createTask;
 //# sourceMappingURL=tasks.handlers.js.map

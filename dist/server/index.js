@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const next_1 = __importDefault(require("next"));
 const express_1 = __importDefault(require("express"));
-const db_1 = __importDefault(require("./services/db"));
+const db_1 = require("./services/db");
 const keys_1 = __importDefault(require("./config/keys"));
 const passport_1 = __importDefault(require("passport"));
 const body_parser_1 = __importDefault(require("body-parser"));
@@ -19,9 +19,10 @@ const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next_1.default({ dev });
 const handle = app.getRequestHandler();
+db_1.initDb((err) => console.log('err', err));
 app.prepare().then(() => {
-    const server = express_1.default();
     passport_service_1.default();
+    const server = express_1.default();
     server.use(body_parser_1.default.json());
     server.use(cookie_session_1.default({
         maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -36,15 +37,8 @@ app.prepare().then(() => {
     server.all('*', (req, res) => {
         return handle(req, res);
     });
-    db_1.default.initDb((err) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            server.listen(port, () => {
-                console.log(`> Ready on PORT: ${port}`);
-            });
-        }
+    server.listen(port, () => {
+        console.log(`> Ready on PORT: ${port}`);
     });
 });
 //# sourceMappingURL=index.js.map
