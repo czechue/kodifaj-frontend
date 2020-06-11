@@ -19,6 +19,8 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+  passportService();
+
   server.use(bodyParser.json());
   server.use(
     cookieSession({
@@ -28,7 +30,6 @@ app.prepare().then(() => {
   );
   server.use(passport.initialize());
   server.use(passport.session());
-  passportService();
 
   tasksController(server);
   usersController(server);
@@ -44,7 +45,7 @@ app.prepare().then(() => {
       console.log(err);
     } else {
       server.listen(port, () => {
-        console.log(`> Ready on http://localhost:${port}`);
+        console.log(`> Ready on PORT: ${port}`);
       });
     }
   });

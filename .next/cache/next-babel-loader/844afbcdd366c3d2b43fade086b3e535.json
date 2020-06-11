@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport Cards from '../../../listing/cards/Cards';\n\nconst UserTasks = ({\n  tasks\n}) => {\n  if (!tasks) {\n    return null;\n  }\n\n  return __jsx(Cards, {\n    tasks: tasks\n  });\n};\n\nexport default UserTasks;","map":null,"metadata":{},"sourceType":"module"}
