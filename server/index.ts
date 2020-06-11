@@ -1,6 +1,5 @@
 import next from 'next';
 import express, { Request, Response } from 'express';
-import { initDb } from './services/db';
 import keys from './config/keys';
 import passport from 'passport';
 import bodyParser from 'body-parser';
@@ -12,12 +11,12 @@ import usersController from './users/users.controller';
 import passportService from './auth/passport.service';
 import authRoutes from './auth/auth.routes';
 
+const initDb = require('./services/db').initDb as (callback: (err: Error | null) => void) => void;
+
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
-initDb((err) => console.log('err', err));
 
 app.prepare().then(() => {
   passportService();
@@ -43,7 +42,13 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(port, () => {
-    console.log(`> Ready on PORT: ${port}`);
+  initDb((err: any) => {
+    if (err) {
+      console.log(err);
+    } else {
+      server.listen(port, () => {
+        console.log(`> Ready on PORT: ${port}`);
+      });
+    }
   });
 });

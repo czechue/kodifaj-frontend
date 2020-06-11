@@ -5,7 +5,7 @@ const mongoDbUrl = 'mongodb://mo1272_kodifaj_p:Cymbalki15!@195.167.159.159:27017
 
 let _db: MongoClient;
 
-export const initDb = (callback: (err: Error | null, db?: MongoClient) => void): void => {
+const initDb = (callback: (err: Error | null, db?: MongoClient) => void): void => {
   if (_db) {
     console.log('Database is already initialized!');
     return callback(null, _db);
@@ -22,9 +22,14 @@ export const initDb = (callback: (err: Error | null, db?: MongoClient) => void):
     });
 };
 
-export const getDb = (): MongoClient => {
+const getDb = (): MongoClient => {
   if (!_db) {
     throw Error('Database not initialzed');
   }
   return _db;
+};
+
+module.exports = {
+  initDb,
+  getDb,
 };

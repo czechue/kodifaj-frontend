@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const next_1 = __importDefault(require("next"));
 const express_1 = __importDefault(require("express"));
-const db_1 = require("./services/db");
 const keys_1 = __importDefault(require("./config/keys"));
 const passport_1 = __importDefault(require("passport"));
 const body_parser_1 = __importDefault(require("body-parser"));
@@ -15,11 +14,11 @@ const tasks_controller_1 = __importDefault(require("./tasks/tasks.controller"));
 const users_controller_1 = __importDefault(require("./users/users.controller"));
 const passport_service_1 = __importDefault(require("./auth/passport.service"));
 const auth_routes_1 = __importDefault(require("./auth/auth.routes"));
+const initDb = require('./services/db').initDb;
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next_1.default({ dev });
 const handle = app.getRequestHandler();
-db_1.initDb((err) => console.log('err', err));
 app.prepare().then(() => {
     passport_service_1.default();
     const server = express_1.default();
@@ -37,8 +36,15 @@ app.prepare().then(() => {
     server.all('*', (req, res) => {
         return handle(req, res);
     });
-    server.listen(port, () => {
-        console.log(`> Ready on PORT: ${port}`);
+    initDb((err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            server.listen(port, () => {
+                console.log(`> Ready on PORT: ${port}`);
+            });
+        }
     });
 });
 //# sourceMappingURL=index.js.map

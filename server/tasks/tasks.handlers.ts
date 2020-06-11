@@ -1,7 +1,7 @@
 import { Task } from '../../lib/models/task/Task';
-import { InsertOneWriteOpResult, ObjectId, WithId } from 'mongodb';
+import { InsertOneWriteOpResult, ObjectId, WithId, MongoClient } from 'mongodb';
 import { CreateTask } from '../../lib/models/task/CreateTask';
-import { getDb } from '../services/db';
+const getDb = require('../services/db').getDb as () => MongoClient;
 
 export function getAllTasks(): Promise<Task[]> {
   return getDb()

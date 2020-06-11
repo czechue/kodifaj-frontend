@@ -1,8 +1,8 @@
 import { CreateUser } from '../../lib/models/user/CreateUser';
 import { User } from '../../lib/models/user/User';
 
-import { InsertOneWriteOpResult, ObjectId, WithId } from 'mongodb';
-import { getDb } from '../services/db';
+import { InsertOneWriteOpResult, ObjectId, WithId, MongoClient } from 'mongodb';
+const getDb = require('../services/db').getDb as () => MongoClient;
 
 export function getUsers(): Promise<User[]> {
   return getDb().db().collection<User>('users').find().toArray();

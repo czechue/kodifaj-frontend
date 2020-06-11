@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTask = exports.getTaskById = exports.getAllTasks = void 0;
 const mongodb_1 = require("mongodb");
-const db_1 = require("../services/db");
+const getDb = require('../services/db').getDb;
 function getAllTasks() {
-    return db_1.getDb()
+    return getDb()
         .db()
         .collection('tasks')
         .aggregate([
@@ -14,7 +14,7 @@ function getAllTasks() {
 }
 exports.getAllTasks = getAllTasks;
 async function getTaskById(taskId) {
-    return await db_1.getDb()
+    return await getDb()
         .db()
         .collection('tasks')
         .aggregate([
@@ -53,7 +53,7 @@ async function getTaskById(taskId) {
 }
 exports.getTaskById = getTaskById;
 async function createTask(newTask) {
-    return await db_1.getDb().db().collection('tasks').insertOne(newTask);
+    return await getDb().db().collection('tasks').insertOne(newTask);
 }
 exports.createTask = createTask;
 //# sourceMappingURL=tasks.handlers.js.map
