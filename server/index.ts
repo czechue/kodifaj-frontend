@@ -11,6 +11,7 @@ import tasksController from './tasks/tasks.controller';
 import usersController from './users/users.controller';
 import passportService from './auth/passport.service';
 import authRoutes from './auth/auth.routes';
+import solutionsController from './solutions/solutions.controller';
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -32,6 +33,7 @@ app.prepare().then(() => {
 
   tasksController(server);
   usersController(server);
+  solutionsController(server);
   authRoutes(app, server);
   tasksRoutes(app, server);
 
