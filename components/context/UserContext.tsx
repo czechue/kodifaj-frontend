@@ -3,7 +3,10 @@ import { User } from '../../lib/models/user/User';
 
 export const UserContext = React.createContext<User | undefined>(undefined);
 
-export default function UserProvider({ children, user }: UserProviderProps): JSX.Element {
+export default function UserProvider({
+  children,
+  user = { githubId: '', login: '', photo: '' },
+}: UserProviderProps): JSX.Element {
   return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 }
 
