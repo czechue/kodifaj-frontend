@@ -1,7 +1,7 @@
 import { Express, Request, Response } from 'express';
 
 import { Solution } from '../../lib/models/solution/Solution';
-import { getSolutions, getSolutionById } from './solutions.handlers';
+import { getSolutions, getSolutionById, createSolution } from './solutions.handlers';
 
 export default function solutionsController(server: Express): void {
   server.get(
@@ -22,6 +22,17 @@ export default function solutionsController(server: Express): void {
       return getSolutionById(solutionId)
         .then((solution) => {
           res.send(solution);
+        })
+        .catch((e) => console.warn(e));
+    },
+  );
+  server.post(
+    '/api/solutions',
+    (req: Request, res: Response): Promise<void | Solution> => {
+      const { repo, demo, comment, taskId, phase, authorId } = req.body;
+      return createSolution(repo, demo, comment, taskId, phase, authorId)
+        .then(() => {
+          console.log(res);
         })
         .catch((e) => console.warn(e));
     },

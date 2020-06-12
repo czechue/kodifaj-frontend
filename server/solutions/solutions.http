@@ -1,0 +1,21 @@
+http://localhost:3000/api/tasks
+
+###
+http://localhost:3000/api/users
+
+###
+http://localhost:3000/api/solutions
+
+###
+
+POST http://localhost:3000/api/solutions HTTP/1.1
+content-type: application/json
+
+{
+    "repo": "sample",
+    "demo": "asdsad",
+    "comment": "komentarz",
+    "phase": "review",
+    "taskId": "5e14e877fa42402079e38e44",
+    "authorId": "5edf6edbd8411b39e5f24e71"
+}
