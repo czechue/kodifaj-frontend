@@ -29,13 +29,15 @@ export async function createSolution(
   authorId: string | undefined,
 ): Promise<InsertOneWriteOpResult<WithId<CreateSolutionRequest>>> {
   const date = new Date();
-  return await db.getDb().db().collection<CreateSolutionRequest>('solutions').insertOne({
+  const taskIdObject = new ObjectId(taskId);
+  const userIdObject = new ObjectId(authorId);
+  return await db.getDb().db().collection('solutions').insertOne({
     repo,
     demo,
     comment,
     phase,
-    _task: taskId,
-    _user: authorId,
+    _task: taskIdObject,
+    _user: userIdObject,
     createdAt: date,
   });
 }
