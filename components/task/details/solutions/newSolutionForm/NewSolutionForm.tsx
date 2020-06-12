@@ -50,7 +50,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
   };
 
   const ReviewCheckboxLabelStyles = (value?: boolean): string =>
-    clsx('w-3/4 text-xs text-right', value ? 'text-white' : 'text-gray-600');
+    clsx('w-full text-xs text-right', value ? 'text-white' : 'text-gray-600');
 
   const ReviewCheckboxBoxStyles = (value?: boolean): string =>
     clsx(
@@ -130,7 +130,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => 
                       <input
                         type="checkbox"
                         name={props.input.name}
-                        className="w-1/4 cursor-pointer"
+                        className="cursor-pointer"
                         onChange={props.input.onChange}
                       />
                       <label
