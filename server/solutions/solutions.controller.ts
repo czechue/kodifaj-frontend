@@ -31,8 +31,8 @@ export default function solutionsController(server: Express): void {
     (req: Request, res: Response): Promise<void | Solution> => {
       const { repo, demo, comment, taskId, phase, authorId } = req.body;
       return createSolution(repo, demo, comment, taskId, phase, authorId)
-        .then(() => {
-          console.log(res);
+        .then((data) => {
+          res.send(data);
         })
         .catch((e) => console.warn(e));
     },

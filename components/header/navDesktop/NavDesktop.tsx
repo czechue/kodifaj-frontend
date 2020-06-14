@@ -5,7 +5,6 @@ import { useUser } from '../../context/UserContext';
 
 const NavDesktop: React.FC = () => {
   const user = useUser();
-  console.log(user);
   return (
     <nav className="flex">
       <ul className="flex text-sm capitalize text-gray-700 font-medium justify-center items-center">

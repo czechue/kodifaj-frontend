@@ -5,13 +5,14 @@ import Description from './description/Description';
 
 interface TaskDetailsProps {
   solutions?: string[];
+  taskId: string;
   login?: string;
   photo?: string;
   images?: string[];
   content: string;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, content, images }) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({ taskId, solutions, content, images }) => {
   return (
     <>
       <div className="max-w-8xl mx-auto px-4 pt-4">
@@ -21,7 +22,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ solutions, content, images })
           </div>
           <div className="w-full md:w-1/3">
             <Gallery images={images} />
-            <Solutions solutions={solutions} />
+            <Solutions solutions={solutions} taskId={taskId} />
           </div>
         </div>
       </div>

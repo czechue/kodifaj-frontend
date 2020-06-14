@@ -6,9 +6,10 @@ import NewSolutionForm from './newSolutionForm/NewSolutionForm';
 
 interface SolutionsProps {
   solutions?: string[];
+  taskId: string;
 }
 
-const Solutions: React.FC<SolutionsProps> = ({ solutions }) => {
+const Solutions: React.FC<SolutionsProps> = ({ solutions, taskId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const numberOfSolutions = solutions ? solutions.length : 0;
   const userPhoto =
@@ -39,7 +40,7 @@ const Solutions: React.FC<SolutionsProps> = ({ solutions }) => {
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <NewSolutionForm setIsModalOpen={setIsModalOpen} />
+        <NewSolutionForm setIsModalOpen={setIsModalOpen} taskId={taskId} />
       </Modal>
     </>
   );

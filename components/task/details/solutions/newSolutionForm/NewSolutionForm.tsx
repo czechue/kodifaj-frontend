@@ -8,6 +8,7 @@ import { Form, Field } from 'react-final-form';
 import { correctUrlValidator } from '../../../../../utils/validators/correctUrlValidator';
 import { required } from '../../../../../utils/validators/requiredValidator';
 import { composeValidators } from '../../../../../utils/validators/composeValidators';
+import { useUser } from '../../../../context/UserContext';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -22,6 +23,7 @@ export const technologies = [
 
 interface NewSolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  taskId: string;
 }
 
 interface TechnologiesSelect {
@@ -35,15 +37,39 @@ interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen }) => {
-  function sendSolutions(values: FormValues): FormValues {
-    return values;
+const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen, taskId }) => {
+  const user = useUser();
+
+  async function postSolutionToDatabase(values: FormValues): Promise<void> {
+    const data = {
+      repo: values.solutionLinkInput,
+      demo: values.liveLinkInput,
+      comment: 'komentarz',
+      phase: values.reviewCheckbox ? 'Do zatwierdzenia' : '',
+      taskId: taskId,
+      authorId: user._id,
+    };
+
+    fetch('/api/solutions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        console.log('Success:', res);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
-  const onSubmit = async (values: FormValues): Promise<void> => {
+  const onSubmit = (values: FormValues): any => {
     try {
-      const data = await sendSolutions(values);
-      console.log(JSON.stringify(data));
+      postSolutionToDatabase(values);
+      setIsModalOpen(false);
     } catch (error) {
       return error.message;
     }

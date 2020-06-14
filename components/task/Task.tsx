@@ -9,12 +9,12 @@ interface TaskProps {
 }
 
 const TaskComponent: React.FC<TaskProps> = ({ task }) => {
-  const { title, _user, createdAt, tags, images, content } = task;
+  const { title, _user, createdAt, tags, images, content, _id } = task;
   return (
     <>
       <Header />
       <Hero title={title} author={_user} creationTime={createdAt} tags={tags} />
-      <TaskDetails images={images} content={content} />
+      <TaskDetails images={images} content={content} taskId={_id} />
     </>
   );
 };

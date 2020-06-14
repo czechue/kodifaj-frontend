@@ -7,7 +7,6 @@ export default function usersController(server: Express): void {
   server.get(
     '/api/users',
     (_req: Request, res: Response): Promise<void | User[]> => {
-      console.log('ppppppppppp');
       return getUsers()
         .then((users) => {
           res.send(users);

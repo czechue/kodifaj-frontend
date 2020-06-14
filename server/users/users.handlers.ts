@@ -19,7 +19,6 @@ export function getUserById(userId: string): Promise<null | User> {
     .collection<User>('users')
     .findOne({ _id: (new ObjectId(userId) as unknown) as string })
     .then((data) => {
-      console.log('x', data);
       return data;
     });
 }
