@@ -25,7 +25,8 @@ export async function createSolution(
   demo: string,
   comment: string,
   taskId: string,
-  phase: string,
+  phase: 'review' | 'done',
+  technologies: string[],
   authorId: string | undefined,
 ): Promise<InsertOneWriteOpResult<WithId<CreateSolutionRequest>>> {
   const date = new Date();
@@ -36,6 +37,7 @@ export async function createSolution(
     demo,
     comment,
     phase,
+    technologies,
     _task: taskIdObject,
     _user: userIdObject,
     createdAt: date,

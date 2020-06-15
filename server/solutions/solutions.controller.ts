@@ -29,8 +29,8 @@ export default function solutionsController(server: Express): void {
   server.post(
     '/api/solutions',
     (req: Request, res: Response): Promise<void | Solution> => {
-      const { repo, demo, comment, taskId, phase, authorId } = req.body;
-      return createSolution(repo, demo, comment, taskId, phase, authorId)
+      const { repo, demo, comment, taskId, phase, technologies, authorId } = req.body;
+      return createSolution(repo, demo, comment, taskId, phase, technologies, authorId)
         .then((data) => {
           res.send(data);
         })

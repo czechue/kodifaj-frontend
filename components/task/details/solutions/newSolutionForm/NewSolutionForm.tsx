@@ -26,7 +26,7 @@ interface NewSolutionFormProps {
   taskId: string;
 }
 
-interface TechnologiesSelect {
+export interface TechnologiesSelect {
   label: string;
   value: string;
 }
@@ -40,12 +40,13 @@ interface FormValues {
 const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen, taskId }) => {
   const user = useUser();
 
-  async function postSolutionToDatabase(values: FormValues): Promise<void> {
+  async function addSolution(values: FormValues): Promise<void> {
     const data = {
       repo: values.solutionLinkInput,
       demo: values.liveLinkInput,
       comment: 'komentarz',
-      phase: values.reviewCheckbox ? 'Do zatwierdzenia' : '',
+      phase: values.reviewCheckbox ? 'review' : 'done',
+      technologies: values.technologiesSelect.map((item) => item.value),
       taskId: taskId,
       authorId: user._id,
     };
@@ -68,7 +69,7 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen, taskI
 
   const onSubmit = (values: FormValues): any => {
     try {
-      postSolutionToDatabase(values);
+      addSolution(values);
       setIsModalOpen(false);
     } catch (error) {
       return error.message;
