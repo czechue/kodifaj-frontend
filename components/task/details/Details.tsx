@@ -2,9 +2,10 @@ import React from 'react';
 import Gallery from './gallery/Gallery';
 import Solutions from './solutions/Solutions';
 import Description from './description/Description';
+import { Solution } from 'lib/models/solution/solution';
 
 interface TaskDetailsProps {
-  solutions?: string[];
+  solutions?: Solution[];
   taskId: string;
   login?: string;
   photo?: string;
