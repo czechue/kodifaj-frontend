@@ -10,8 +10,8 @@ const passport_1 = __importDefault(require("passport"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
 const tasks_routes_1 = __importDefault(require("./tasks/tasks.routes"));
-const tasks_controller_1 = __importDefault(require("./tasks/tasks.controller"));
 const users_controller_1 = __importDefault(require("./users/users.controller"));
+const tasks_controller_1 = __importDefault(require("./tasks/tasks.controller"));
 const passport_service_1 = __importDefault(require("./auth/passport.service"));
 const auth_routes_1 = __importDefault(require("./auth/auth.routes"));
 const initDb = require('./services/db').initDb;
@@ -29,10 +29,10 @@ app.prepare().then(() => {
     }));
     server.use(passport_1.default.initialize());
     server.use(passport_1.default.session());
-    tasks_controller_1.default(server);
-    users_controller_1.default(server);
     auth_routes_1.default(app, server);
     tasks_routes_1.default(app, server);
+    server.use('/api/tasks', tasks_controller_1.default);
+    server.use('/api/users', users_controller_1.default);
     server.all('*', (req, res) => {
         return handle(req, res);
     });
