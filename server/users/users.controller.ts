@@ -1,30 +1,32 @@
-import { Express, Request, Response } from 'express';
-
+import { Request, Response } from 'express';
+const Router = require('express').Router;
 import { getUserById, getUsers } from './users.handlers';
 import { User } from '../../lib/models/user/User';
 
-export default function usersController(server: Express): void {
-  server.get(
-    '/api/users',
-    (_req: Request, res: Response): Promise<void | User[]> => {
-      return getUsers()
-        .then((users) => {
-          res.send(users);
-        })
-        .catch((e) => console.warn(e));
-    },
-  );
+const router = Router();
 
-  server.get(
-    '/api/users/:id',
-    (req: Request, res: Response): Promise<void | User> => {
-      const userId = req?.params?.id;
+router.get(
+  '',
+  (_req: Request, res: Response): Promise<void | User[]> => {
+    return getUsers()
+      .then((users) => {
+        res.send(users);
+      })
+      .catch((e) => console.warn(e));
+  },
+);
 
-      return getUserById(userId)
-        .then((user) => {
-          res.send(user);
-        })
-        .catch((e) => console.warn(e));
-    },
-  );
-}
+router.get(
+  '/:id',
+  (req: Request, res: Response): Promise<void | User> => {
+    const userId = req?.params?.id;
+
+    return getUserById(userId)
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((e) => console.warn(e));
+  },
+);
+
+export default router;

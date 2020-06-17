@@ -1,13 +1,15 @@
 import next from 'next';
 import express, { Request, Response } from 'express';
+
 import keys from './config/keys';
 import passport from 'passport';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import tasksRoutes from './tasks/tasks.routes';
-import tasksController from './tasks/tasks.controller';
 import usersController from './users/users.controller';
+import taskController from './tasks/tasks.controller';
+
 import passportService from './auth/passport.service';
 import authRoutes from './auth/auth.routes';
 
@@ -33,10 +35,11 @@ app.prepare().then(() => {
   server.use(passport.initialize());
   server.use(passport.session());
 
-  tasksController(server);
-  usersController(server);
   authRoutes(app, server);
   tasksRoutes(app, server);
+
+  server.use('/api/tasks', taskController);
+  server.use('/api/users', usersController);
 
   server.all('*', (req: Request, res: Response) => {
     return handle(req, res);

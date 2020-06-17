@@ -1,6 +1,7 @@
 {
   "name": "kodifaj-frontend",
   "version": "0.1.0",
+  "main": "app.js",
   "engines": {
     "node": "12.4.0"
   },

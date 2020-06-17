@@ -1,49 +1,50 @@
-import { Express, Request, Response } from 'express';
-
+import { Request, Response } from 'express';
+const Router = require('express').Router;
 import { Task } from '../../lib/models/task/Task';
 import { createTask, getAllTasks, getTaskById } from './tasks.handlers';
 import { CreateTaskModel } from '../../lib/models/task/CreateTask';
 import { EnhancedRequest } from '../../lib/models/request/Request';
 
-export default function tasksController(server: Express): void {
-  server.get(
-    '/api/tasks',
-    (_req: Request, res: Response): Promise<void | Task[]> => {
-      return getAllTasks()
-        .then((tasks) => {
-          res.send(tasks);
-        })
-        .catch((e) => console.warn(e));
-    },
-  );
+const router = Router();
 
-  server.get(
-    '/api/tasks/:id',
-    async (req: Request, res: Response): Promise<void | null | Task> => {
-      const taskId = req?.params?.id;
+// export default function tasksController(server: Express): void {
+router.get(
+  '',
+  (_req: Request, res: Response): Promise<Task[] | void> => {
+    return getAllTasks()
+      .then((tasks) => {
+        res.send(tasks);
+      })
+      .catch((e) => console.warn(e));
+  },
+);
 
-      return getTaskById(taskId)
-        .then((task) => {
-          res.send(task);
-        })
-        .catch((e) => console.warn(e));
-    },
-  );
+router.get(
+  '/:id',
+  (req: Request, res: Response): Promise<Task | void> => {
+    const taskId = req?.params?.id;
 
-  server.post(
-    '/api/tasks',
-    async (req: EnhancedRequest, res: Response): Promise<void> => {
-      const authorId = req.user?._id;
+    return getTaskById(taskId)
+      .then((task) => {
+        res.send(task);
+      })
+      .catch((e) => console.warn(e));
+  },
+);
 
-      if (!authorId) {
-        res.status(403).send('No authorized');
-        return;
-      }
+router.post('', (req: EnhancedRequest, res: Response): Promise<void> | undefined => {
+  const authorId = req.user?._id;
 
-      const CreateTask = new CreateTaskModel(req.body, authorId);
-      const createdTask = CreateTask.get();
+  if (!authorId) {
+    res.status(403).send('No authorized');
+    return;
+  }
 
-      return createTask(createdTask).then((value) => console.log(value));
-    },
-  );
-}
+  const CreateTask = new CreateTaskModel(req.body, authorId);
+  const createdTask = CreateTask.get();
+
+  return createTask(createdTask).then((value) => console.log(value));
+});
+// }
+
+export default router;
