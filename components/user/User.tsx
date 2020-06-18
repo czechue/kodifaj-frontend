@@ -2,9 +2,10 @@ import React from 'react';
 import UserHero from './hero/Hero';
 import UserDetails from './details/Details';
 import { Task } from '../../lib/models/task/Task';
+import { Solution } from 'lib/models/solution/solution';
 
 interface UserProps {
-  solutions?: string[];
+  solutions?: Solution[];
   login: string;
   photo?: string;
   tasks?: Task[];

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button';
 import Modal from '../../../shared/modal/Modal';
 import NewSolutionForm from './newSolutionForm/NewSolutionForm';
-import SolutionDetails from './solution/Solution';
+import SolutionDetails from '../../../shared/solution/Solution';
 import { Solution } from 'lib/models/solution/solution';
 
 interface SolutionsProps {

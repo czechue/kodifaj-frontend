@@ -12,11 +12,26 @@ export function getSolutionById(solutionId: string): Promise<null | Solution> {
     .getDb()
     .db()
     .collection<Solution>('solutions')
-    .findOne({ _id: (new ObjectId(solutionId) as unknown) as string })
-    .then((data) => {
-      console.log('x', data);
-      return data;
-    });
+    .aggregate([
+      { $match: { _id: new ObjectId(solutionId) } },
+      {
+        $lookup: {
+          from: 'tasks',
+          localField: '_task',
+          foreignField: '_id',
+          as: '_task',
+        },
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: '_user',
+          foreignField: '_id',
+          as: '_user',
+        },
+      },
+    ])
+    .next();
 }
 
 export async function createSolution(

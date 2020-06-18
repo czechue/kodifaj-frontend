@@ -4,9 +4,10 @@ import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
 import { Task } from '../../../lib/models/task/Task';
+import { Solution } from 'lib/models/solution/solution';
 
 interface UserDetailsProps {
-  solutions?: string[];
+  solutions?: Solution[];
   tasks?: Task[];
   login: string;
   photo?: string;
@@ -48,7 +49,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
             {activeTab === TabTitle.tasks ? (
               <UserTasks tasks={tasks} />
             ) : (
-              <UserSolutions solutions={solutions} login={login} photo={photo} />
+              <UserSolutions solutions={solutions} />
             )}
           </div>
           <UserActivities login={login} photo={photo} />

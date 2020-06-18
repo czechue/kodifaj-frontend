@@ -17,10 +17,50 @@ export function getUserById(userId: string): Promise<null | User> {
     .getDb()
     .db()
     .collection<User>('users')
-    .findOne({ _id: (new ObjectId(userId) as unknown) as string })
-    .then((data) => {
-      return data;
-    });
+    .aggregate([
+      { $match: { _id: new ObjectId(userId) } },
+      {
+        $lookup: {
+          from: 'solutions',
+          let: {
+            solutions: '$_solutions',
+          },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ['$_id', '$$solutions'],
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: 'users',
+                localField: '_user',
+                foreignField: '_id',
+                as: '_user',
+              },
+            },
+            {
+              $unwind: '$_user',
+            },
+            {
+              $lookup: {
+                from: 'tasks',
+                localField: '_task',
+                foreignField: '_id',
+                as: '_task',
+              },
+            },
+            {
+              $unwind: '$_task',
+            },
+          ],
+          as: '_solutions',
+        },
+      },
+    ])
+    .next();
 }
 
 export async function createUser(
