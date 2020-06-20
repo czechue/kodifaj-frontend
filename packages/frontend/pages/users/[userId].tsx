@@ -4,8 +4,8 @@ import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
 import UserComponent from '../../components/user/User';
-import { Task } from '../../lib/models/task/Task';
-import { User } from '../../lib/models/user/User';
+import { Task } from '@kodifaj/common';
+import { User } from '@kodifaj/common';
 
 interface UserDetailsProps {
   user?: User;

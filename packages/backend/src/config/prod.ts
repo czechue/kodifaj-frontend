@@ -1,8 +1,6 @@
-import { Keys } from './keys';
-
 export default {
-  githubClientID: process.env.GITHUB_CLIENT_ID,
-  githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  githubClientID: 'Iv1.9b72f91938a2c402',
+  githubClientSecret: '2ddfabd1e421af76cba67ef4b2082d83ab9c07b6',
   mongoURI: 'mongodb://mo1272_kodifaj_p:Cymbalki15!@195.167.159.159:27017/mo1272_kodifaj_p',
-  cookieKey: process.env.COOKIE_KEY,
-} as Keys;
+  cookieKey: '1i2hwiuashdiuahdUASI12QWASGU',
+};

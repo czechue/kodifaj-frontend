@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 import Cards from './cards/Cards';
 
 interface ListingProps {

@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext } from 'react';
-import { User } from '../../lib/models/user/User';
+import { User } from '@kodifaj/common';
 
 export const UserContext = React.createContext<User | undefined>(undefined);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import Layout from '../components/shared/layout/Layout';
-import { Task } from '../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 import Listing from '../components/listing/Listing';
 import Header from '../components/header/Header';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
-import { Task } from '../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
 

@@ -1,3 +1,4 @@
+require('dotenv').config();
 import prodKeys from './prod';
 import devKeys from './dev';
 

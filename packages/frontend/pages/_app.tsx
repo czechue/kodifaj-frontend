@@ -3,7 +3,7 @@ import '../styles/index.css';
 import App, { AppContext } from 'next/app';
 import { IncomingMessage } from 'http';
 import UserProvider from '../components/context/UserContext';
-import { User } from '../lib/models/user/User';
+import { User } from '@kodifaj/common';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: AppContext) {

@@ -13,6 +13,6 @@ module.exports = {
     SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
     REDIRECT_URI: process.env.REDIRECT_URI,
     POST_LOGOUT_REDIRECT_URI: process.env.POST_LOGOUT_REDIRECT_URI,
-    API_URL: `http://localhost:3000/api`,
+    API_URL: `http://localhost:8080/api`,
   },
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import UserHero from './hero/Hero';
 import UserDetails from './details/Details';
-import { Task } from '../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 
 interface UserProps {
   solutions?: string[];

@@ -1,8 +1,7 @@
 import { Express, Request, Response } from 'express';
 import passport from 'passport';
-import Server from 'next/dist/next-server/server/next-server';
 
-export default function authRoutes(_app: Server, server: Express): void {
+export default function authRoutes(server: Express): void {
   server.get(
     '/auth/github',
     passport.authenticate('github', {

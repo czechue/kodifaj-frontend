@@ -2,7 +2,7 @@ import React from 'react';
 import { Hero } from './hero/Hero';
 import TaskDetails from './details/Details';
 import Header from '../header/Header';
-import { Task } from 'lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 
 interface TaskProps {
   task: Task;

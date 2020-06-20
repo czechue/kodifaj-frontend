@@ -29,14 +29,7 @@ const getDb = (): MongoClient => {
   return _db;
 };
 
-const result: DataService = {
+module.exports = {
   initDb,
   getDb,
 };
-
-export default result;
-
-export interface DataService {
-  initDb: (callback: (err: Error | null, db?: MongoClient) => void) => void;
-  getDb: () => MongoClient;
-}

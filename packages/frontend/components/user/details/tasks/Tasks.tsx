@@ -1,6 +1,6 @@
 import React from 'react';
 import Cards from '../../../listing/cards/Cards';
-import { Task } from '../../../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 
 interface TasksProps {
   tasks?: Task[];

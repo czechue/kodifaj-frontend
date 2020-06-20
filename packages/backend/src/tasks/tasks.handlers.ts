@@ -1,11 +1,10 @@
-import db from '../services/db';
 import { Task } from '@kodifaj/common';
-import { InsertOneWriteOpResult, ObjectId, WithId } from 'mongodb';
+import { InsertOneWriteOpResult, ObjectId, WithId, MongoClient } from 'mongodb';
 import { CreateTask } from '@kodifaj/common';
+const getDb = require('../services/db').getDb as () => MongoClient;
 
 export function getAllTasks(): Promise<Task[]> {
-  return db
-    .getDb()
+  return getDb()
     .db()
     .collection<Task>('tasks')
     .aggregate([
@@ -15,8 +14,7 @@ export function getAllTasks(): Promise<Task[]> {
 }
 
 export async function getTaskById(taskId: string): Promise<null | Task> {
-  return await db
-    .getDb()
+  return await getDb()
     .db()
     .collection<Task>('tasks')
     .aggregate([
@@ -57,5 +55,5 @@ export async function getTaskById(taskId: string): Promise<null | Task> {
 export async function createTask(
   newTask: CreateTask,
 ): Promise<InsertOneWriteOpResult<WithId<CreateTask>>> {
-  return await db.getDb().db().collection<CreateTask>('tasks').insertOne(newTask);
+  return await getDb().db().collection<CreateTask>('tasks').insertOne(newTask);
 }
