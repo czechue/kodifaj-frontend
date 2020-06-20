@@ -11,6 +11,7 @@ export interface Solution {
   _task: {
     images: string[];
     title: string;
+    _id: string;
   };
   _user: User;
 }

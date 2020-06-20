@@ -1,14 +1,14 @@
 import React from 'react';
-import Button, { ButtonLayout } from '../../../../shared/button/Button';
+import Button, { ButtonLayout } from '../../button/Button';
 import Select from 'react-select';
-import { formStyles } from '../../../../shared/solutions/newSolutionForm/formStyles';
+import { formStyles } from './formStyles';
 import clsx from 'clsx';
 import { Form, Field } from 'react-final-form';
-import { correctUrlValidator } from '../../../../../utils/validators/correctUrlValidator';
-import { required } from '../../../../../utils/validators/requiredValidator';
-import { composeValidators } from '../../../../../utils/validators/composeValidators';
-import { useUser } from '../../../../context/UserContext';
-import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
+import { correctUrlValidator } from '../../../../utils/validators/correctUrlValidator';
+import { required } from '../../../../utils/validators/requiredValidator';
+import { composeValidators } from '../../../../utils/validators/composeValidators';
+import { useUser } from '../../../context/UserContext';
+import NewSolutionFormInput from 'components/task/details/solutions/newSolutionForm/newSolutionFormInput/NewSolutionFormInput';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -24,12 +24,6 @@ export const technologies = [
 interface NewSolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   taskId: string;
-  repoLink?: string;
-  liveLink?: string;
-  technologies?: string[];
-  reviewCheckbox?: boolean;
-  techs?: string[];
-  phase?: string;
 }
 
 export interface TechnologiesSelect {
@@ -43,14 +37,7 @@ interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
-  setIsModalOpen,
-  taskId,
-  repoLink,
-  liveLink,
-  techs,
-  phase,
-}) => {
+const NewSolutionForm: React.FC<NewSolutionFormProps> = ({ setIsModalOpen, taskId }) => {
   const user = useUser();
 
   async function addSolution(values: FormValues): Promise<void> {
@@ -98,22 +85,10 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
       value && 'bg-gray-800 text-white',
     );
 
-  const getDefaultSelect = (props: string[]): TechnologiesSelect[] => {
-    const initialSelectValues: TechnologiesSelect[] = [];
-    for (let i = 0; i < props.length; i++) {
-      technologies.map((item) => item.value === props[i] && initialSelectValues.push(item));
-    }
-    return initialSelectValues;
-  };
-
   return (
     <Form
       onSubmit={onSubmit}
-      initialValues={{
-        reviewCheckbox: phase && phase === 'review' ? true : false,
-        solutionLinkInput: repoLink,
-        liveLinkInput: liveLink,
-      }}
+      initialValues={{ reviewCheckbox: false }}
       render={({ handleSubmit }): React.ReactNode => {
         return (
           <form onSubmit={handleSubmit} action="" className="w-full flex flex-col items-start">
@@ -167,7 +142,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
                         id="technologiesSelect"
                         placeholder="Wybierz technologie..."
                         isMulti
-                        defaultValue={techs && getDefaultSelect(techs)}
                         name={props.input.name}
                         onChange={props.input.onChange}
                       />
@@ -185,7 +159,6 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
                         name={props.input.name}
                         className="cursor-pointer"
                         onChange={props.input.onChange}
-                        defaultChecked={phase && phase === 'review' ? true : false}
                       />
                       <label
                         htmlFor="reviewCheckbox"
