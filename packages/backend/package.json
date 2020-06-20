@@ -55,5 +55,6 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ]
-  }
+  },
+  "gitHead": "1c01824886f6ad20de238a77a961b0aec7b061db"
 }
