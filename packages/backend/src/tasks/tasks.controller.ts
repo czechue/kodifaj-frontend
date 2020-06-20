@@ -1,9 +1,9 @@
 import { Express, Request, Response } from 'express';
 
-import { Task } from '../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 import { createTask, getAllTasks, getTaskById } from './tasks.handlers';
-import { CreateTaskModel } from '../../lib/models/task/CreateTask';
-import { EnhancedRequest } from '../../lib/models/request/Request';
+import { CreateTaskModel } from '@kodifaj/common';
+import { EnhancedRequest } from '@kodifaj/common';
 
 export default function tasksController(server: Express): void {
   server.get(

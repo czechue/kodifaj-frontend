@@ -1,7 +1,7 @@
 import db from '../services/db';
-import { Task } from '../../lib/models/task/Task';
+import { Task } from '@kodifaj/common';
 import { InsertOneWriteOpResult, ObjectId, WithId } from 'mongodb';
-import { CreateTask } from '../../lib/models/task/CreateTask';
+import { CreateTask } from '@kodifaj/common';
 
 export function getAllTasks(): Promise<Task[]> {
   return db

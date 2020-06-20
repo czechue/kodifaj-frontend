@@ -1,5 +1,5 @@
-import { CreateUser } from '../../lib/models/user/CreateUser';
-import { User } from '../../lib/models/user/User';
+import { CreateUser } from '@kodifaj/common';
+import { User } from '@kodifaj/common';
 
 import db from '../services/db';
 import { InsertOneWriteOpResult, ObjectId, WithId } from 'mongodb';

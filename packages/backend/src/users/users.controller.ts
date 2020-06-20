@@ -1,7 +1,7 @@
 import { Express, Request, Response } from 'express';
 
 import { getUserById, getUsers } from './users.handlers';
-import { User } from '../../lib/models/user/User';
+import { User } from '@kodifaj/common';
 
 export default function usersController(server: Express): void {
   server.get(
