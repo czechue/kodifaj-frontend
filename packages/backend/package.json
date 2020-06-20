@@ -25,7 +25,7 @@
     "passport-github2": "^0.1.12"
   },
   "devDependencies": {
-    "@kodifaj/common": "0.1.0",
+    "@kodifaj/common": "^0.1.0",
     "@types/hapi__joi": "17.1.0",
     "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
