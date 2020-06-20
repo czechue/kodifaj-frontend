@@ -16,15 +16,17 @@
     "@types/passport-github2": "^1.2.4",
     "autoprefixer": "^9.8.0",
     "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.7",
-    "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12"
   },
   "devDependencies": {
+    "@kodifaj/common": "^0.1.0",
+    "@types/hapi__joi": "^17.1.0",
     "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
@@ -42,9 +44,7 @@
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
-    "typescript": "^3.8.3",
-    "@types/hapi__joi": "^17.1.0",
-    "@kodifaj/common": "0.1.0"
+    "typescript": "^3.8.3"
   },
   "husky": {
     "hooks": {
