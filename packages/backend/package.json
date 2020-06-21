@@ -1,6 +1,6 @@
 {
   "name": "@kodifaj/backend",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc --project tsconfig.backend.json",
@@ -28,7 +28,7 @@
     "passport-github2": "^0.1.12"
   },
   "devDependencies": {
-    "@kodifaj/common": "^0.2.4",
+    "@kodifaj/common": "^0.2.5",
     "@types/hapi__joi": "17.1.0",
     "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.31.0",

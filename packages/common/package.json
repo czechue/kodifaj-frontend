@@ -1,6 +1,6 @@
 {
   "name": "@kodifaj/common",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Common files for backend and frontend projects",
   "main": "dist/index.js",
   "publishConfig": {
