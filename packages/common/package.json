@@ -17,5 +17,5 @@
     "express": "^4.17.1",
     "passport-github2": "^0.1.12"
   },
-  "gitHead": "a368f1dfb0b281636d97ec303befbb0fbb3b090d"
+  "gitHead": "e74e955384479750f31342bdc3b7ad83821a9f30"
 }
