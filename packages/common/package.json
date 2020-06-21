@@ -2,7 +2,7 @@
   "name": "@kodifaj/common",
   "version": "0.1.0",
   "description": "Common files for backend and frontend projects",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc --project tsconfig.common.json"
   },
