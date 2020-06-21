@@ -6,6 +6,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@types/jest": "^25.2.3",
     "@types/react-select": "^3.0.13",
@@ -57,5 +60,5 @@
       "eslint --fix"
     ]
   },
-  "gitHead": "5dabe3637f0c2cb3554bfe3eef01daf17d36ec66"
+  "gitHead": "a368f1dfb0b281636d97ec303befbb0fbb3b090d"
 }
