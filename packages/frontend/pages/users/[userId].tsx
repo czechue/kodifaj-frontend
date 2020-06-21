@@ -36,10 +36,7 @@ interface Params extends ParsedUrlQuery {
 // todo: Poprawić na odp. zapytanie z bazy
 const filterTasks = (tasks: Task[], user: User): Task[] => {
   return tasks.filter((task) => {
-    if (!user || !user._tasks) {
-      return null;
-    }
-    user._tasks.includes(task._id);
+    return user?._tasks?.includes(task._id);
   });
 };
 
