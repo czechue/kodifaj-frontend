@@ -1,6 +1,7 @@
 {
   "name": "@kodifaj/backend",
   "version": "0.1.2",
+  "private": "false",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc --project tsconfig.backend.json",
@@ -56,5 +57,5 @@
       "eslint --fix"
     ]
   },
-  "gitHead": "1c01824886f6ad20de238a77a961b0aec7b061db"
+  "gitHead": "c797bfac326efd1547f113d4b176ae772947bb64"
 }
