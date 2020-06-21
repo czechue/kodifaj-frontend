@@ -22,5 +22,13 @@
     "lib": ["DOM", "DOM.Iterable", "ES2019", "ES2019.Object"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "dangerfile.ts"
+  ]
 }
