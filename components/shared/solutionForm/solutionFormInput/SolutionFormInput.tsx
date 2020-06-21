@@ -1,13 +1,13 @@
 import React from 'react';
 
-interface NewSolutionFormInputProps {
+interface SolutionFormInputProps {
   children: string;
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const NewSolutionFormInput: React.FC<NewSolutionFormInputProps> = ({
+const SolutionFormInput: React.FC<SolutionFormInputProps> = ({
   name,
   value,
   onChange,
@@ -30,4 +30,4 @@ const NewSolutionFormInput: React.FC<NewSolutionFormInputProps> = ({
   );
 };
 
-export default NewSolutionFormInput;
+export default SolutionFormInput;

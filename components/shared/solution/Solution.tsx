@@ -6,7 +6,7 @@ import { MdLiveTv } from 'react-icons/md';
 import clsx from 'clsx';
 import { useUser } from 'components/context/UserContext';
 import Modal from '../modal/Modal';
-import NewSolutionForm from 'components/task/details/solutions/newSolutionForm/NewSolutionForm';
+import SolutionForm from 'components/shared/solutionForm/SolutionForm';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
@@ -75,7 +75,7 @@ const SolutionDetails: React.FC<SolutionProps> = ({
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <NewSolutionForm
+        <SolutionForm
           setIsModalOpen={setIsModalOpen}
           taskId={taskId}
           repoLink={repo}

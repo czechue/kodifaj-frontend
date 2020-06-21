@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button';
 import Modal from '../../../shared/modal/Modal';
-import NewSolutionForm from './newSolutionForm/NewSolutionForm';
-import SolutionDetails from '../../../shared/solution/Solution';
 import { Solution } from 'lib/models/solution/solution';
+import SolutionDetails from 'components/shared/solution/Solution';
+import NewSolutionForm from 'components/shared/solutionForm/SolutionForm';
 
 interface SolutionsProps {
   solutions?: Solution[];

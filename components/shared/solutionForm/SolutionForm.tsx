@@ -1,14 +1,14 @@
 import React from 'react';
-import Button, { ButtonLayout } from '../../../../shared/button/Button';
+import Button, { ButtonLayout } from '../button/Button';
 import Select from 'react-select';
-import { formStyles } from '../../../../shared/solutions/newSolutionForm/formStyles';
 import clsx from 'clsx';
 import { Form, Field } from 'react-final-form';
-import { correctUrlValidator } from '../../../../../utils/validators/correctUrlValidator';
-import { required } from '../../../../../utils/validators/requiredValidator';
-import { composeValidators } from '../../../../../utils/validators/composeValidators';
-import { useUser } from '../../../../context/UserContext';
-import NewSolutionFormInput from './newSolutionFormInput/NewSolutionFormInput';
+import { correctUrlValidator } from '../../../utils/validators/correctUrlValidator';
+import { required } from '../../../utils/validators/requiredValidator';
+import { composeValidators } from '../../../utils/validators/composeValidators';
+import { useUser } from '../../context/UserContext';
+import SolutionFormInput from './solutionFormInput/SolutionFormInput';
+import { formStyles } from './formStyles';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -21,7 +21,7 @@ export const technologies = [
   { value: 'angular', label: '#angular' },
 ];
 
-interface NewSolutionFormProps {
+interface SolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   taskId: string;
   repoLink?: string;
@@ -43,7 +43,7 @@ interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
+const SolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
   taskId,
   repoLink,
@@ -128,9 +128,9 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
                   const { name, value, onChange } = props.input;
                   return (
                     <>
-                      <NewSolutionFormInput name={name} value={value} onChange={onChange}>
+                      <SolutionFormInput name={name} value={value} onChange={onChange}>
                         Link do rozwiązania
-                      </NewSolutionFormInput>
+                      </SolutionFormInput>
                       {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
                     </>
                   );
@@ -141,13 +141,13 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
                 name="liveLinkInput"
                 render={(props): JSX.Element => (
                   <>
-                    <NewSolutionFormInput
+                    <SolutionFormInput
                       name={props.input.name}
                       value={props.input.value}
                       onChange={props.input.onChange}
                     >
                       Link do wersji live
-                    </NewSolutionFormInput>
+                    </SolutionFormInput>
                     {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
                   </>
                 )}
@@ -220,4 +220,4 @@ const NewSolutionForm: React.FC<NewSolutionFormProps> = ({
   );
 };
 
-export default NewSolutionForm;
+export default SolutionForm;
