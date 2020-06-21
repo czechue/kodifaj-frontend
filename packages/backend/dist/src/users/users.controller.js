@@ -20,4 +20,3 @@ router.get('/:id', (req, res) => {
         .catch((e) => console.warn(e));
 });
 exports.default = router;
-//# sourceMappingURL=users.controller.js.map

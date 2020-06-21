@@ -20,4 +20,3 @@ function authRoutes(server) {
     });
 }
 exports.default = authRoutes;
-//# sourceMappingURL=auth.routes.js.map

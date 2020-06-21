@@ -37,4 +37,3 @@ initDb((err) => {
         });
     }
 });
-//# sourceMappingURL=index.js.map

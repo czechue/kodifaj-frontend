@@ -44,7 +44,6 @@
     "babel-jest": "^26.0.1",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
-    "lint-staged": "^10.2.7",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
     "tailwindcss": "^1.4.6",
@@ -54,11 +53,6 @@
     "hooks": {
       "pre-commit": "tsc --noEmit && lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
   },
   "gitHead": "e74e955384479750f31342bdc3b7ad83821a9f30"
 }

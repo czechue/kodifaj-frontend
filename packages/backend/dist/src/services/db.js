@@ -32,4 +32,3 @@ module.exports = {
     initDb,
     getDb,
 };
-//# sourceMappingURL=db.js.map

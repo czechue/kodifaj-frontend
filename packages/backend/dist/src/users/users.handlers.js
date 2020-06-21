@@ -25,4 +25,3 @@ async function createUser(newUser) {
     return await getDb().db().collection('users').insertOne(newUser);
 }
 exports.createUser = createUser;
-//# sourceMappingURL=users.handlers.js.map
