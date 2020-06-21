@@ -18,7 +18,7 @@ const Solutions: React.FC<SolutionsProps> = ({ solutions, taskId }) => {
     <>
       <section className="mt-4">
         <h4 className="text-sm font-bold pb-3">Rozwiązania ({numberOfSolutions})</h4>
-        <div className="flex flex-col  justify-between">
+        <div className="flex flex-col items-center">
           {solutions &&
             solutions.map((solution, index) => <SolutionDetails key={index} solution={solution} />)}
         </div>

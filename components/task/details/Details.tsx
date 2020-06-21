@@ -16,7 +16,7 @@ interface TaskDetailsProps {
 const TaskDetails: React.FC<TaskDetailsProps> = ({ taskId, solutions, content, images }) => {
   return (
     <>
-      <div className="max-w-8xl mx-auto px-4 pt-4">
+      <div className="w-full max-w-8xl mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-2/3 md:mr-4">
             <Description content={content} />
