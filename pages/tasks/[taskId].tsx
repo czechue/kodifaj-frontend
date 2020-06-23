@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { Task } from '../../lib/models/task/Task';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
+import { Solution } from 'lib/models/solution/solution';
 
 interface TaskDetailsProps {
-  task?: Task;
+  task: Task;
   errorCode?: number;
 }
 
 const TaskDetails: NextPage<TaskDetailsProps> = ({ task, errorCode }) => {
+  const [currentTask, setCurrentTask] = useState(task);
+
+  function updateSolutions(solutions: Solution[]): void {
+    setCurrentTask({ ...currentTask, _solutions: solutions });
+  }
+
   return (
     <Layout title="Home page" errorCode={errorCode}>
-      {task ? <TaskComponent task={task} /> : <Header />}
+      {task ? <TaskComponent updateSolutions={updateSolutions} {...currentTask} /> : <Header />}
     </Layout>
   );
 };
@@ -23,9 +30,7 @@ interface Params extends ParsedUrlQuery {
   taskId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<TaskDetailsProps, Params> = async ({
-  params,
-}) => {
+export const getServerSideProps: GetServerSideProps<any, Params> = async ({ params }) => {
   const res = await fetch(`${process.env.API_URL}/tasks/${params?.taskId}`);
   const errorCode = res.ok ? false : res.status;
   if (!errorCode) {

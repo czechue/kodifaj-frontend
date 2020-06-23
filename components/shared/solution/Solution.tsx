@@ -7,7 +7,7 @@ import { MdLiveTv } from 'react-icons/md';
 import clsx from 'clsx';
 import { useUser } from 'components/context/UserContext';
 import Modal from '../modal/Modal';
-import NewSolutionForm from 'components/shared/solutionForm/SolutionForm';
+import SolutionForm from 'components/shared/solutionForm/SolutionForm';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
@@ -15,11 +15,13 @@ export enum SolutionDetailsLayout {
 }
 interface SolutionProps {
   solution: Solution;
+  updateSolutions?: (solutions: Solution[]) => void;
   layout?: SolutionDetailsLayout;
 }
 
 const SolutionDetails: React.FC<SolutionProps> = ({
   solution,
+  updateSolutions,
   layout = SolutionDetailsLayout.Default,
 }) => {
   const {
@@ -39,6 +41,8 @@ const SolutionDetails: React.FC<SolutionProps> = ({
 
   const currentUser = useUser();
   const isEditable = currentUser && currentUser._id === _id;
+
+  console.log(solution);
 
   return (
     <>
@@ -83,13 +87,14 @@ const SolutionDetails: React.FC<SolutionProps> = ({
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <NewSolutionForm
+        <SolutionForm
           setIsModalOpen={setIsModalOpen}
           taskId={taskId}
           repoLink={repo}
           liveLink={demo}
           techs={technologies}
           phase={phase}
+          updateSolutions={updateSolutions && updateSolutions}
         />
       </Modal>
     </>

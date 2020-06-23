@@ -9,6 +9,7 @@ import { composeValidators } from '../../../utils/validators/composeValidators';
 import { useUser } from '../../context/UserContext';
 import SolutionFormInput from './solutionFormInput/SolutionFormInput';
 import { formStyles } from './formStyles';
+import { Solution } from 'lib/models/solution/solution';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -30,6 +31,7 @@ interface SolutionFormProps {
   reviewCheckbox?: boolean;
   techs?: string[];
   phase?: string;
+  updateSolutions?: (solutions: Solution[]) => void;
 }
 
 export interface TechnologiesSelect {
@@ -50,6 +52,7 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   liveLink,
   techs,
   phase,
+  updateSolutions,
 }) => {
   const user = useUser();
 
@@ -64,14 +67,13 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
       authorId: user._id,
     };
 
-    fetch('/api/solutions', {
+    return fetch('/api/solutions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-      .then((data) => data.json())
       .then((res) => {
         console.log('Success:', res);
       })
@@ -80,10 +82,30 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
       });
   }
 
+  async function getSolutions(): Promise<Solution[]> {
+    return await fetch(`/api/tasks/${taskId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => data._solutions)
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   const onSubmit = (values: FormValues): void => {
     try {
-      addSolution(values);
-      setIsModalOpen(false);
+      if (updateSolutions) {
+        addSolution(values)
+          .then(() => getSolutions())
+          .then((res) => updateSolutions(res))
+          .finally(() => setIsModalOpen(false));
+      } else {
+        console.log('Brak możliwości dodania');
+      }
     } catch (error) {
       return error.message;
     }

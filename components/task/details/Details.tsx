@@ -11,9 +11,16 @@ interface TaskDetailsProps {
   photo?: string;
   images?: string[];
   content: string;
+  updateSolutions: (solutions: Solution[]) => void;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({ taskId, solutions, content, images }) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({
+  taskId,
+  solutions,
+  content,
+  images,
+  updateSolutions,
+}) => {
   return (
     <>
       <div className="w-full max-w-8xl mx-auto px-4 pt-4">
@@ -23,7 +30,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ taskId, solutions, content, i
           </div>
           <div className="w-full md:w-1/3">
             <Gallery images={images} />
-            <Solutions solutions={solutions} taskId={taskId} />
+            <Solutions solutions={solutions} taskId={taskId} updateSolutions={updateSolutions} />
           </div>
         </div>
       </div>
