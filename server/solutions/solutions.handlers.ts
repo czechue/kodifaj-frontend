@@ -1,7 +1,7 @@
 import { Solution } from 'lib/models/solution/Solution';
 
 import db from '../services/db';
-import { ObjectId } from 'mongodb';
+import { ObjectId, UpdateWriteOpResult } from 'mongodb';
 
 export function getSolutions(): Promise<Solution[]> {
   return db.getDb().db().collection<Solution>('solutions').find().toArray();
@@ -72,4 +72,33 @@ export async function createSolution(
         .collection('users')
         .findOneAndUpdate({ _id: userIdObject }, { $push: { _solutions: result.insertedId } });
     });
+}
+
+export async function updateSolution(
+  solutionId: string,
+  repo: string,
+  demo: string,
+  comment: string,
+  phase: 'review' | 'done',
+  technologies: string[],
+): Promise<UpdateWriteOpResult> {
+  const date = new Date();
+  const solutionObjectId = new ObjectId(solutionId);
+  return await db
+    .getDb()
+    .db()
+    .collection('solutions')
+    .updateOne(
+      { _id: solutionObjectId },
+      {
+        $set: {
+          repo,
+          demo,
+          comment,
+          phase,
+          technologies,
+          createdAt: date,
+        },
+      },
+    );
 }

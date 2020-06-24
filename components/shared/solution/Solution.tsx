@@ -25,6 +25,7 @@ const SolutionDetails: React.FC<SolutionProps> = ({
   layout = SolutionDetailsLayout.Default,
 }) => {
   const {
+    _id: solutionId,
     repo,
     demo,
     phase,
@@ -41,8 +42,6 @@ const SolutionDetails: React.FC<SolutionProps> = ({
 
   const currentUser = useUser();
   const isEditable = currentUser && currentUser._id === _id;
-
-  console.log(solution);
 
   return (
     <>
@@ -94,6 +93,7 @@ const SolutionDetails: React.FC<SolutionProps> = ({
           liveLink={demo}
           techs={technologies}
           phase={phase}
+          solutionId={solutionId}
           updateSolutions={updateSolutions && updateSolutions}
         />
       </Modal>

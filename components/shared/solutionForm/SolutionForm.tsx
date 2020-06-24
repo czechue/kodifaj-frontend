@@ -31,6 +31,7 @@ interface SolutionFormProps {
   reviewCheckbox?: boolean;
   techs?: string[];
   phase?: string;
+  solutionId?: string;
   updateSolutions?: (solutions: Solution[]) => void;
 }
 
@@ -52,9 +53,35 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   liveLink,
   techs,
   phase,
+  solutionId,
   updateSolutions,
 }) => {
   const user = useUser();
+
+  async function updateSolution(values: FormValues): Promise<void> {
+    const data = {
+      repo: values.solutionLinkInput,
+      demo: values.liveLinkInput,
+      comment: 'komentarz',
+      phase: values.reviewCheckbox ? 'review' : 'done',
+      technologies: values.technologiesSelect.map((item) => item.value),
+    };
+
+    return fetch(`/api/solutions/${solutionId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.log('Success:', res);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   async function addSolution(values: FormValues): Promise<void> {
     const data = {
@@ -99,10 +126,17 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   const onSubmit = (values: FormValues): void => {
     try {
       if (updateSolutions) {
-        addSolution(values)
-          .then(() => getSolutions())
-          .then((res) => updateSolutions(res))
-          .finally(() => setIsModalOpen(false));
+        if (!solutionId) {
+          addSolution(values)
+            .then(() => getSolutions())
+            .then((res) => updateSolutions(res))
+            .finally(() => setIsModalOpen(false));
+        } else {
+          updateSolution(values)
+            .then(() => getSolutions())
+            .then((res) => updateSolutions(res))
+            .finally(() => setIsModalOpen(false));
+        }
       } else {
         console.log('Brak możliwości dodania');
       }
