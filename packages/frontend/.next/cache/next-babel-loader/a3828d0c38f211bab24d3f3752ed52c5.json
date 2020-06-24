@@ -1,1 +1,0 @@
-{"ast":null,"code":"export function required(error) {\n  return function (value) {\n    return value ? undefined : error;\n  };\n}","map":null,"metadata":{},"sourceType":"module"}
