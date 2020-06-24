@@ -10,6 +10,9 @@ import { useUser } from '../../context/UserContext';
 import SolutionFormInput from './solutionFormInput/SolutionFormInput';
 import { formStyles } from './formStyles';
 import { Solution } from 'lib/models/solution/solution';
+import { addSolution } from './utils/addSolution';
+import { updateSolution } from './utils/updateSolution';
+import { getSolutions } from './utils/getSolutions';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -39,7 +42,7 @@ export interface TechnologiesSelect {
   label: string;
   value: string;
 }
-interface FormValues {
+export interface FormValues {
   solutionLinkInput: string;
   liveLinkInput?: string;
   technologiesSelect: TechnologiesSelect[];
@@ -58,84 +61,19 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
 }) => {
   const user = useUser();
 
-  async function updateSolution(values: FormValues): Promise<void> {
-    const data = {
-      repo: values.solutionLinkInput,
-      demo: values.liveLinkInput,
-      comment: 'komentarz',
-      phase: values.reviewCheckbox ? 'review' : 'done',
-      technologies: values.technologiesSelect.map((item) => item.value),
-    };
-
-    return fetch(`/api/solutions/${solutionId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        console.log('Success:', res);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
-
-  async function addSolution(values: FormValues): Promise<void> {
-    const data = {
-      repo: values.solutionLinkInput,
-      demo: values.liveLinkInput,
-      comment: 'komentarz',
-      phase: values.reviewCheckbox ? 'review' : 'done',
-      technologies: values.technologiesSelect.map((item) => item.value),
-      taskId: taskId,
-      authorId: user._id,
-    };
-
-    return fetch('/api/solutions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        console.log('Success:', res);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
-
-  async function getSolutions(): Promise<Solution[]> {
-    return await fetch(`/api/tasks/${taskId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => data._solutions)
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
-
   const onSubmit = (values: FormValues): void => {
     try {
       if (updateSolutions) {
         if (!solutionId) {
-          addSolution(values)
-            .then(() => getSolutions())
+          addSolution(values, taskId, user)
+            .then(() => getSolutions(taskId))
             .then((res) => updateSolutions(res))
-            .finally(() => setIsModalOpen(false));
+            .then(() => setIsModalOpen(false));
         } else {
-          updateSolution(values)
-            .then(() => getSolutions())
+          updateSolution(values, solutionId)
+            .then(() => getSolutions(taskId))
             .then((res) => updateSolutions(res))
-            .finally(() => setIsModalOpen(false));
+            .then(() => setIsModalOpen(false));
         }
       } else {
         console.log('Brak możliwości dodania');
@@ -192,7 +130,6 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
                   );
                 }}
               />
-
               <Field
                 name="liveLinkInput"
                 render={(props): JSX.Element => (
