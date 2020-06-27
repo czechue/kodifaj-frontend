@@ -24,7 +24,7 @@ export default function passportService(passport: PassportStatic): void {
       {
         clientID: keys.githubClientID,
         clientSecret: keys.githubClientSecret,
-        callbackURL: '/auth/github/callback',
+        callbackURL: keys.githubRedirectUrl,
       },
       async (
         _accessToken: string,

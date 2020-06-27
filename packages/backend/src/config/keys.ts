@@ -12,4 +12,5 @@ export interface Keys {
   githubRedirectUrl: string;
   mongoURI: string;
   cookieKey: string;
+  appUrl: string;
 }

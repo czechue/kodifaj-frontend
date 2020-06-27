@@ -1,4 +1,5 @@
 import { Express, Request, Response } from 'express';
+import keys from '../config/keys';
 const Router = require('express').Router;
 import passport from 'passport';
 
@@ -18,7 +19,7 @@ router.get(
   (_req: Request, res: Response) => {
     console.log('redirect', _req.user);
 
-    res.redirect('http://localhost:3000');
+    res.redirect(keys.appUrl);
   },
 );
 
