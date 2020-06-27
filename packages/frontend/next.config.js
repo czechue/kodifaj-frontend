@@ -13,7 +13,10 @@ module.exports = {
     SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
     REDIRECT_URI: process.env.REDIRECT_URI,
     POST_LOGOUT_REDIRECT_URI: process.env.POST_LOGOUT_REDIRECT_URI,
-    APP_URL: process.env.NODE_ENV === 'production' ? `https://kodifaj.pl` : 'http://localhost:8080',
+    AUTH_URL:
+      process.env.NODE_ENV === 'production'
+        ? `https://api.kodifaj.pl/auth/github`
+        : 'http://localhost:8080/auth/github',
     API_URL:
       process.env.NODE_ENV === 'production'
         ? `https://api.kodifaj.pl/api`

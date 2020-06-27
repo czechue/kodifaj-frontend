@@ -9,6 +9,7 @@ export default keys;
 export interface Keys {
   githubClientID: string;
   githubClientSecret: string;
+  githubRedirectUrl: string;
   mongoURI: string;
   cookieKey: string;
 }

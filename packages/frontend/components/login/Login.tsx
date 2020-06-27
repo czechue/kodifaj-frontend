@@ -2,7 +2,8 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 export const Login: React.FC = () => {
-  const githubUrl = `${process.env.APP_URL}/auth/github`;
+  const githubUrl = `${process.env.AUTH_URL}`;
+
   return (
     <section className="login-wrapper flex flex-col -mt-16 items-center justify-center w-full max-w-md mx-auto">
       <h1 className="font-sans text-gray-900 text-4xl sm:text-5xl mb-10 font-bold tracking-tighter text-center">
