@@ -28,9 +28,10 @@ router.get('/api/logout', (req: Request, res: Response) => {
 });
 
 router.get('/api/current_user', (req: Request, res: Response) => {
-  console.log('api curr user', req.user);
-
-  res.send(req.user);
+  if (req.user) {
+    res.send(req.user);
+  }
+  res.status(403).send({});
 });
 
 export default router;

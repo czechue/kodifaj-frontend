@@ -10,14 +10,17 @@ class MyApp extends App {
 
     if (Component.getInitialProps) {
       const props = await Component.getInitialProps(ctx);
-      const res = await fetch(`${process.env.API_URL}/current_user`, {
-        credentials: 'include',
-        headers: { cookie: String(ctx?.req?.headers.cookie) },
-      });
-      const currentUser = await res.json();
 
-      pageProps.user = currentUser;
-      pageProps = Object.assign(pageProps, props);
+      if (ctx.req) {
+        const res = await fetch(`${process.env.API_URL}/current_user`, {
+          credentials: 'include',
+          headers: { cookie: String(ctx?.req?.headers.cookie) },
+        });
+        const currentUser = await res.json();
+
+        pageProps.user = currentUser;
+        pageProps = Object.assign(pageProps, props);
+      }
     }
 
     return { pageProps };
