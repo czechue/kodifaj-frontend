@@ -10,14 +10,11 @@ const GitHubStrategy = require('passport-github2').Strategy;
 
 export default function passportService(passport: PassportStatic): void {
   passport.serializeUser((user: User, done) => {
-    console.log('user1', user);
-
     done(undefined, user._id);
   });
 
   passport.deserializeUser((id, done) => {
     getUserById(id as string).then((user) => {
-      console.log('user2', user);
       done(undefined, user);
     });
   });
