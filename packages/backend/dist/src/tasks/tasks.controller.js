@@ -5,7 +5,7 @@ const tasks_handlers_1 = require("./tasks.handlers");
 const common_1 = require("@kodifaj/common");
 const router = Router();
 // export default function tasksController(server: Express): void {
-router.get('', (_req, res) => {
+router.get('', (req, res) => {
     return tasks_handlers_1.getAllTasks()
         .then((tasks) => {
         res.send(tasks);

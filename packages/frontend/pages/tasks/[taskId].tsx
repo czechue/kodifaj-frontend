@@ -8,39 +8,24 @@ import TaskComponent from '../../components/task/Task';
 
 interface TaskDetailsProps {
   task?: Task;
-  errorCode?: number;
 }
 
-const TaskDetails: NextPage<TaskDetailsProps> = ({ task, errorCode }) => {
-  return (
-    <Layout title="Home page" errorCode={errorCode}>
-      {task ? <TaskComponent task={task} /> : <Header />}
-    </Layout>
-  );
+const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
+  return <Layout title="Home page">{task ? <TaskComponent task={task} /> : <Header />}</Layout>;
 };
 
 interface Params extends ParsedUrlQuery {
   taskId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<TaskDetailsProps, Params> = async ({
-  params,
-}) => {
-  const res = await fetch(`${process.env.API_URL}/tasks/${params?.taskId}`);
+TaskDetails.getInitialProps = async (ctx) => {
+  const res = await fetch(`${process.env.API_URL}/tasks/${ctx.query.taskId}`);
   const errorCode = res.ok ? false : res.status;
-  if (!errorCode) {
-    const task: Task = await res.json();
-    return {
-      props: {
-        task,
-      },
-    };
-  } else
-    return {
-      props: {
-        errorCode,
-      },
-    };
+
+  const task: Task = await res.json();
+  return {
+    task,
+  };
 };
 
 export default TaskDetails;

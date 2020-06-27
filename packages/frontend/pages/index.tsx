@@ -16,13 +16,14 @@ const Home: NextPage<HomeProps> = ({ tasks }) => (
   </Layout>
 );
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`${process.env.API_URL}/tasks`);
+Home.getInitialProps = async ({ req }) => {
+  const res = await fetch(`${process.env.API_URL}/tasks`, {
+    credentials: 'include',
+    ...(req && { headers: { cookie: String(req.headers.cookie) } }),
+  });
   const tasks: Task[] = await res.json();
   return {
-    props: {
-      tasks: tasks ? tasks : [],
-    },
+    tasks: tasks ? tasks : [],
   };
 };
 

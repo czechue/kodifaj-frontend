@@ -1,28 +1,36 @@
 import { Express, Request, Response } from 'express';
+const Router = require('express').Router;
 import passport from 'passport';
 
-export default function authRoutes(server: Express): void {
-  server.get(
-    '/auth/github',
-    passport.authenticate('github', {
-      scope: ['read:user', 'public_repo'],
-    }),
-  );
+const router = Router();
 
-  server.get(
-    '/auth/github/callback',
-    passport.authenticate('github'),
-    (_req: Request, res: Response) => {
-      res.redirect('/');
-    },
-  );
+router.get(
+  '/auth/github',
+  passport.authenticate('github', {
+    scope: ['read:user', 'public_repo'],
+    session: true,
+  }),
+);
 
-  server.get('/api/logout', (req: Request, res: Response) => {
-    req.logout();
-    res.redirect('/');
-  });
+router.get(
+  '/auth/github/callback',
+  passport.authenticate('github'),
+  (_req: Request, res: Response) => {
+    console.log('redirect', _req.user);
 
-  server.get('/api/current_user', (req: Request, res: Response) => {
-    res.send(req.user);
-  });
-}
+    res.redirect('http://localhost:3000');
+  },
+);
+
+router.get('/api/logout', (req: Request, res: Response) => {
+  req.logout();
+  res.redirect('/');
+});
+
+router.get('/api/current_user', (req: Request, res: Response) => {
+  console.log('api curr user', req.user);
+
+  res.send(req.user);
+});
+
+export default router;
