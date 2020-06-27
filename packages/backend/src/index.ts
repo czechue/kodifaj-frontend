@@ -2,6 +2,7 @@ import express from 'express';
 
 import keys from './config/keys';
 import passport from 'passport';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 
@@ -16,11 +17,17 @@ const initDb = require('./services/db').initDb as (callback: (err: Error | null)
 const port = process.env.PORT || 8080;
 const dev = process.env.NODE_ENV !== 'production';
 
-passportService();
-
 const server = express();
 
+server.set('trust proxy', true);
 server.use(bodyParser.json());
+server.use(
+  cors({
+    origin: ['http://localhost:3000', 'https://kodifaj.pl'],
+    credentials: true,
+  }),
+);
+
 server.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -29,8 +36,9 @@ server.use(
 );
 server.use(passport.initialize());
 server.use(passport.session());
+passportService(passport);
 
-authRoutes(server);
+server.use(authRoutes);
 server.use('/api/tasks', taskController);
 server.use('/api/users', usersController);
 

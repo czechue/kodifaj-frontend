@@ -10,7 +10,7 @@ const router = Router();
 // export default function tasksController(server: Express): void {
 router.get(
   '',
-  (_req: Request, res: Response): Promise<Task[] | void> => {
+  (req: Request, res: Response): Promise<Task[] | void> => {
     return getAllTasks()
       .then((tasks) => {
         res.send(tasks);
