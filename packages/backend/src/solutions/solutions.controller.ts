@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 router.get(
-  '/api/solutions',
+  '',
   (_req: Request, res: Response): Promise<void | Solution[]> => {
     return getSolutions()
       .then((solutions) => {
@@ -23,7 +23,7 @@ router.get(
 );
 
 router.get(
-  '/api/solutions/:id',
+  '/:id',
   (req: Request, res: Response): Promise<void | Solution> => {
     const solutionId = req?.params?.id;
 
@@ -36,7 +36,7 @@ router.get(
 );
 
 router.post(
-  '/api/solutions',
+  '',
   (req: Request, res: Response): Promise<void | Solution> => {
     const { repo, demo, comment, taskId, phase, technologies, authorId } = req.body;
     return createSolution(repo, demo, comment, taskId, phase, technologies, authorId)
@@ -48,7 +48,7 @@ router.post(
 );
 
 router.put(
-  '/api/solutions/:id',
+  '/:id',
   (req: Request, res: Response): Promise<void | Solution> => {
     const solutionId = req?.params?.id;
     const { repo, demo, comment, phase, technologies } = req.body;
