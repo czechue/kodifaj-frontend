@@ -1,6 +1,7 @@
 npm-debug.log
 .next
 out
+dist
 previous-size-snapshot.json
 current-size-snapshot.json
 size-snapshot.json
