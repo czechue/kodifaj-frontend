@@ -16,7 +16,19 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2019",
-    "module": "commonjs"
+    "noEmit": true,
+    "module": "ESNext",
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ES2019", "ES2019.Object"]
   },
-  "exclude": ["**/node_modules", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "dangerfile.ts"
+  ]
 }
