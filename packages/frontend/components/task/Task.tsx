@@ -9,6 +9,10 @@ interface TaskProps {
 }
 
 const TaskComponent: React.FC<TaskProps> = ({ task }) => {
+  if (!task) {
+    return null;
+  }
+
   const { title, _user, createdAt, tags, images, content } = task;
   return (
     <>

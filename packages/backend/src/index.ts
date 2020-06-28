@@ -28,11 +28,13 @@ server.use(
   }),
 );
 
+console.log('IS DEV', dev);
+
 server.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
-    domain: '.kodifaj.pl',
+    domain: dev ? 'localhost' : 'kodifaj.pl',
   }),
 );
 server.use(passport.initialize());

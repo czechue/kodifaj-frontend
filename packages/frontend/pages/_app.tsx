@@ -2,25 +2,13 @@ import React, { ReactElement } from 'react';
 import '../styles/index.css';
 import App, { AppContext } from 'next/app';
 import UserProvider from '../components/context/UserContext';
-import { User } from '@kodifaj/common';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps: { user?: User } = {};
+    let pageProps = {};
 
     if (Component.getInitialProps) {
-      const props = await Component.getInitialProps(ctx);
-
-      if (ctx.req) {
-        const res = await fetch(`${process.env.API_URL}/current_user`, {
-          credentials: 'include',
-          headers: { cookie: String(ctx?.req?.headers.cookie) },
-        });
-        const currentUser = await res.json();
-
-        pageProps.user = currentUser;
-        pageProps = Object.assign(pageProps, props);
-      }
+      pageProps = await Component.getInitialProps(ctx);
     }
 
     return { pageProps };
@@ -28,10 +16,9 @@ class MyApp extends App {
 
   render(): ReactElement {
     const { Component, pageProps } = this.props;
-    const user = pageProps.user ? pageProps.user : null;
 
     return (
-      <UserProvider user={user}>
+      <UserProvider>
         <Component {...pageProps} />
       </UserProvider>
     );

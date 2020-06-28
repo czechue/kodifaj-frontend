@@ -31,8 +31,9 @@ router.get('/api/logout', (req: Request, res: Response) => {
 router.get('/api/current_user', (req: Request, res: Response) => {
   if (req.user) {
     res.send(req.user);
+  } else {
+    res.status(403).send({});
   }
-  res.status(403).send({});
 });
 
 export default router;
