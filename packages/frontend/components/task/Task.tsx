@@ -5,7 +5,7 @@ import Header from '../header/Header';
 import { Task, Solution } from '@kodifaj/common';
 
 interface TaskProps extends Task {
-  updateSolutions: (solutions: Solution[]) => void;
+  updateSolutions?: (solutions: Solution[]) => void;
 }
 
 const TaskComponent: React.FC<TaskProps> = ({

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { NextPage, GetServerSideProps } from 'next';
+import React from 'react';
+import { NextPage } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { Task } from '@kodifaj/common';
@@ -10,18 +10,8 @@ interface TaskDetailsProps {
   task?: Task;
 }
 
-const TaskDetails: NextPage<TaskDetailsProps> = (props) => {
-  console.log('11', props);
-
-  useEffect(() => {
-    console.log('effect');
-  }, [props]);
-
-  return (
-    <Layout title="Home page">
-      {props.task ? <TaskComponent task={props.task} /> : <Header />}
-    </Layout>
-  );
+const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
+  return <Layout title="Home page">{task ? <TaskComponent {...task} /> : <Header />}</Layout>;
 };
 
 interface Params extends ParsedUrlQuery {

@@ -3,6 +3,7 @@ import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button'
 import Modal from '../../../shared/modal/Modal';
 import { Solution } from '@kodifaj/common';
 import SolutionDetails from '../../../shared/solution/Solution';
+import NewSolutionForm from './newSolutionForm/NewSolutionForm';
 
 interface SolutionsProps {
   solutions?: Solution[];

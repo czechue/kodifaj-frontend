@@ -52,7 +52,7 @@ export interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const SolutionForm: React.FC<SolutionFormProps> = ({
+const NewSolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
   taskId,
   repoLink,
@@ -216,4 +216,4 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   );
 };
 
-export default SolutionForm;
+export default NewSolutionForm;
