@@ -5,7 +5,7 @@ import Header from '../header/Header';
 import { Task, Solution } from '@kodifaj/common';
 
 interface TaskProps extends Task {
-  updateSolutions?: (solutions: Solution[]) => void;
+  updateSolutions: (solutions: Solution[]) => void;
 }
 
 const TaskComponent: React.FC<TaskProps> = ({
@@ -16,7 +16,7 @@ const TaskComponent: React.FC<TaskProps> = ({
   images,
   content,
   _id,
-  _solutions,
+  solutions,
   updateSolutions,
 }) => {
   if (!_id) {
@@ -31,7 +31,7 @@ const TaskComponent: React.FC<TaskProps> = ({
         images={images}
         content={content}
         taskId={_id}
-        solutions={_solutions}
+        solutions={solutions}
         updateSolutions={updateSolutions}
       />
     </>

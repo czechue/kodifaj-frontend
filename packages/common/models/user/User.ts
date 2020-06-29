@@ -1,4 +1,4 @@
-import { Solution } from '../solution/solution';
+import { Solution } from '../solution/Solution';
 
 export interface User {
   _id?: string;

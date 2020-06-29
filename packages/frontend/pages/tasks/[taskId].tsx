@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NextPage } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
-import { Task } from '@kodifaj/common';
+import { Task, Solution } from '@kodifaj/common';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
 
 interface TaskDetailsProps {
-  task?: Task;
+  task: Task;
 }
 
 const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
-  return <Layout title="Home page">{task ? <TaskComponent {...task} /> : <Header />}</Layout>;
+  const [currentTask, setCurrentTask] = useState<Task>(task);
+
+  function updateSolutions(solutions: Solution[]): void {
+    setCurrentTask((prevState) => ({ ...prevState, solutions }));
+  }
+
+  return (
+    <Layout title="Home page">
+      {task ? <TaskComponent updateSolutions={updateSolutions} {...currentTask} /> : <Header />}
+    </Layout>
+  );
 };
 
 interface Params extends ParsedUrlQuery {

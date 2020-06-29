@@ -38,7 +38,7 @@ interface SolutionFormProps {
   techs?: string[];
   phase?: string;
   solutionId?: string;
-  updateSolutions?: (solutions: Solution[]) => void;
+  updateSolutions: (solutions: Solution[]) => void;
 }
 
 export interface TechnologiesSelect {
