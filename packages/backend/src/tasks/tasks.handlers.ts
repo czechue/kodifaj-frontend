@@ -44,6 +44,17 @@ export async function getTaskById(taskId: string): Promise<null | Task> {
             {
               $unwind: '$_user',
             },
+            {
+              $lookup: {
+                from: 'tasks',
+                localField: '_task',
+                foreignField: '_id',
+                as: '_task',
+              },
+            },
+            {
+              $unwind: '$_task',
+            },
           ],
           as: '_solutions',
         },

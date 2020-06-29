@@ -1,10 +1,10 @@
 import React from 'react';
 import UserHero from './hero/Hero';
 import UserDetails from './details/Details';
-import { Task } from '@kodifaj/common';
+import { Task, Solution } from '@kodifaj/common';
 
 interface UserProps {
-  solutions?: string[];
+  solutions?: Solution[];
   login: string;
   photo?: string;
   tasks?: Task[];

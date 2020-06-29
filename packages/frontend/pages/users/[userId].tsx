@@ -40,6 +40,7 @@ const filterTasks = (tasks: Task[], user: User): Task[] => {
   });
 };
 
+// todo: change it to getInitialProps
 export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = async ({
   params,
 }) => {

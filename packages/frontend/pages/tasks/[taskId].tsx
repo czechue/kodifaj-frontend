@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
-import { NextPage, GetServerSideProps } from 'next';
+import React, { useState } from 'react';
+import { NextPage } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
-import { Task } from '@kodifaj/common';
+import { Task, Solution } from '@kodifaj/common';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
 
 interface TaskDetailsProps {
-  task?: Task;
+  task: Task;
 }
 
-const TaskDetails: NextPage<TaskDetailsProps> = (props) => {
-  console.log('11', props);
+const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
+  const [currentTask, setCurrentTask] = useState<Task>(task);
 
-  useEffect(() => {
-    console.log('effect');
-  }, [props]);
+  function updateSolutions(solutions: Solution[]): void {
+    setCurrentTask((prevState) => ({ ...prevState, solutions }));
+  }
 
   return (
     <Layout title="Home page">
-      {props.task ? <TaskComponent task={props.task} /> : <Header />}
+      {task ? <TaskComponent updateSolutions={updateSolutions} {...currentTask} /> : <Header />}
     </Layout>
   );
 };
@@ -30,33 +30,13 @@ interface Params extends ParsedUrlQuery {
 
 TaskDetails.getInitialProps = async (ctx) => {
   const url = `${process.env.API_URL}/tasks/${ctx.query.taskId}`;
-
-  if (ctx) {
-    console.log('a');
-
-    const cookie = String(ctx?.req?.headers.cookie);
-    const res = await fetch(url, {
-      credentials: 'include',
-      headers: { cookie },
-    });
-
-    const task: Task = await res.json();
-
-    console.log('aa task', task);
-
-    return {
-      task,
-    };
-  }
-  console.log('b');
-
+  const cookie = String(ctx?.req?.headers.cookie);
   const res = await fetch(url, {
     credentials: 'include',
+    ...(ctx.req && { headers: { cookie } }),
   });
 
   const task: Task = await res.json();
-
-  console.log('bb', task);
 
   return {
     task,

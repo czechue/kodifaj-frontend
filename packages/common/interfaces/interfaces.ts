@@ -26,11 +26,13 @@ export interface Solution {
   createdAt: string;
   demo: string;
   phase: 'review' | 'done';
+  technologies?: string[];
   repo: string;
   _id: string;
   _task: {
     images: string[];
     title: string;
+    _id: string;
   };
   _user: User;
 }

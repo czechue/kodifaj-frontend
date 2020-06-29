@@ -1,5 +1,5 @@
-import { User } from './User';
 import { Profile } from 'passport-github2';
+import { User } from '../../interfaces/interfaces';
 
 export interface CreateUser {
   githubId: string;

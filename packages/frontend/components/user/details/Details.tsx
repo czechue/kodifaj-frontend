@@ -3,10 +3,10 @@ import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
-import { Task } from '@kodifaj/common';
+import { Task, Solution } from '@kodifaj/common';
 
 interface UserDetailsProps {
-  solutions?: string[];
+  solutions?: Solution[];
   tasks?: Task[];
   login: string;
   photo?: string;
@@ -48,7 +48,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
             {activeTab === TabTitle.tasks ? (
               <UserTasks tasks={tasks} />
             ) : (
-              <UserSolutions solutions={solutions} login={login} photo={photo} />
+              <UserSolutions solutions={solutions} />
             )}
           </div>
           <UserActivities login={login} photo={photo} />

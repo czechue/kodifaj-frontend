@@ -8,6 +8,7 @@ import cookieSession from 'cookie-session';
 
 import usersController from './users/users.controller';
 import taskController from './tasks/tasks.controller';
+import solutionsController from './solutions/solutions.controller';
 
 import passportService from './auth/passport.service';
 import authRoutes from './auth/auth.routes';
@@ -44,6 +45,7 @@ passportService(passport);
 server.use(authRoutes);
 server.use('/api/tasks', taskController);
 server.use('/api/users', usersController);
+server.use('/api/solutions', solutionsController);
 
 initDb((err: any) => {
   if (err) {

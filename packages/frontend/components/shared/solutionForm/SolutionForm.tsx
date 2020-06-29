@@ -1,21 +1,18 @@
 import React from 'react';
-
+import Button, { ButtonLayout } from '../button/Button';
 import Select from 'react-select';
 import clsx from 'clsx';
 import { Form, Field } from 'react-final-form';
+import { correctUrlValidator } from '../../../utils/validators/correctUrlValidator';
+import { required } from '../../../utils/validators/requiredValidator';
+import { composeValidators } from '../../../utils/validators/composeValidators';
+import { useUser } from '../../context/UserContext';
+import SolutionFormInput from './solutionFormInput/SolutionFormInput';
+import { formStyles } from './formStyles';
+import { addSolution } from './utils/addSolution';
+import { updateSolution } from './utils/updateSolution';
+import { getSolutions } from './utils/getSolutions';
 import { Solution } from '@kodifaj/common';
-
-// todo: these functions shouldnt be in shared folder for sure
-import { getSolutions } from '../../../../shared/solutionForm/utils/getSolutions';
-import { useUser } from '../../../../context/UserContext';
-import { addSolution } from '../../../../shared/solutionForm/utils/addSolution';
-import { updateSolution } from '../../../../shared/solutionForm/utils/updateSolution';
-import { composeValidators } from '../../../../../utils/validators/composeValidators';
-import { required } from '../../../../../utils/validators/requiredValidator';
-import { correctUrlValidator } from '../../../../../utils/validators/correctUrlValidator';
-import SolutionFormInput from '../../../../shared/solutionForm/solutionFormInput/SolutionFormInput';
-import { formStyles } from '../../../../shared/solutionForm/formStyles';
-import Button, { ButtonLayout } from '../../../../shared/button/Button';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -38,7 +35,7 @@ interface SolutionFormProps {
   techs?: string[];
   phase?: string;
   solutionId?: string;
-  updateSolutions: (solutions: Solution[]) => void;
+  updateSolutions?: (solutions: Solution[]) => void;
 }
 
 export interface TechnologiesSelect {
@@ -52,7 +49,7 @@ export interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const NewSolutionForm: React.FC<SolutionFormProps> = ({
+const SolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
   taskId,
   repoLink,
@@ -65,6 +62,7 @@ const NewSolutionForm: React.FC<SolutionFormProps> = ({
   const user = useUser();
 
   const onSubmit = (values: FormValues): void => {
+    // todo: do zrefactorowania
     try {
       if (updateSolutions) {
         if (!solutionId) {
@@ -216,4 +214,4 @@ const NewSolutionForm: React.FC<SolutionFormProps> = ({
   );
 };
 
-export default NewSolutionForm;
+export default SolutionForm;

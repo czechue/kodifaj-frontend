@@ -3,7 +3,7 @@ import { PassportStatic } from 'passport';
 import { Profile } from 'passport-github2';
 import { VerifyCallback } from 'passport-oauth2';
 import { User } from '@kodifaj/common';
-import { createUser, getUser, getUserById } from '../users/users.handlers';
+import { createUser, getUser, getSimpleUserById } from '../users/users.handlers';
 import { CreateUserModel } from '@kodifaj/common';
 
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -14,7 +14,7 @@ export default function passportService(passport: PassportStatic): void {
   });
 
   passport.deserializeUser((id, done) => {
-    getUserById(id as string).then((user) => {
+    getSimpleUserById(id as string).then((user) => {
       done(undefined, user);
     });
   });

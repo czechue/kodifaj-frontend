@@ -12,7 +12,7 @@ export function getUser(user: Partial<User>): Promise<null | User> {
   return getDb().db().collection<User>('users').findOne(user);
 }
 
-export function getUserById(userId: string): Promise<null | User> {
+export function getSimpleUserById(userId: string): Promise<null | User> {
   return getDb()
     .db()
     .collection<User>('users')
@@ -20,6 +20,56 @@ export function getUserById(userId: string): Promise<null | User> {
     .then((data) => {
       return data;
     });
+}
+
+export function getUserById(userId: string): Promise<null | User> {
+  return getDb()
+    .db()
+    .collection<User>('users')
+    .aggregate([
+      { $match: { _id: new ObjectId(userId) } },
+      {
+        $lookup: {
+          from: 'solutions',
+          let: {
+            solutions: '$_solutions',
+          },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ['$_id', '$$solutions'],
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: 'users',
+                localField: '_user',
+                foreignField: '_id',
+                as: '_user',
+              },
+            },
+            {
+              $unwind: '$_user',
+            },
+            {
+              $lookup: {
+                from: 'tasks',
+                localField: '_task',
+                foreignField: '_id',
+                as: '_task',
+              },
+            },
+            {
+              $unwind: '$_task',
+            },
+          ],
+          as: '_solutions',
+        },
+      },
+    ])
+    .next();
 }
 
 export async function createUser(

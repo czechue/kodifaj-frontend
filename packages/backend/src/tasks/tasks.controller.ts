@@ -7,7 +7,6 @@ import { EnhancedRequest } from '@kodifaj/common';
 
 const router = Router();
 
-// export default function tasksController(server: Express): void {
 router.get(
   '',
   (req: Request, res: Response): Promise<Task[] | void> => {
@@ -15,7 +14,10 @@ router.get(
       .then((tasks) => {
         res.send(tasks);
       })
-      .catch((e) => console.warn(e));
+      .catch((e) => {
+        res.status(500);
+        console.log(e);
+      });
   },
 );
 
@@ -45,6 +47,5 @@ router.post('', (req: EnhancedRequest, res: Response): Promise<void> | undefined
 
   return createTask(createdTask).then((value) => console.log(value));
 });
-// }
 
 export default router;
