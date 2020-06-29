@@ -15,8 +15,9 @@ router.get(
         res.send(tasks);
       })
       .catch((e) => {
-        console.warn(e)});
         res.status(500);
+        console.log(e);
+      });
   },
 );
 
