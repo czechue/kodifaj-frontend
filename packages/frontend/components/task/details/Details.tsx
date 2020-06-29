@@ -2,7 +2,7 @@ import React from 'react';
 import Gallery from './gallery/Gallery';
 import Solutions from './solutions/Solutions';
 import Description from './description/Description';
-import { Solution } from 'lib/models/solution/solution';
+import { Solution } from '@kodifaj/common';
 
 interface TaskDetailsProps {
   solutions?: Solution[];

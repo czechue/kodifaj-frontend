@@ -9,10 +9,10 @@ import { composeValidators } from '../../../utils/validators/composeValidators';
 import { useUser } from '../../context/UserContext';
 import SolutionFormInput from './solutionFormInput/SolutionFormInput';
 import { formStyles } from './formStyles';
-import { Solution } from 'lib/models/solution/solution';
 import { addSolution } from './utils/addSolution';
 import { updateSolution } from './utils/updateSolution';
 import { getSolutions } from './utils/getSolutions';
+import { Solution } from '@kodifaj/common';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -62,6 +62,7 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   const user = useUser();
 
   const onSubmit = (values: FormValues): void => {
+    // todo: do zrefactorowania
     try {
       if (updateSolutions) {
         if (!solutionId) {

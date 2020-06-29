@@ -1,12 +1,7 @@
 import React from 'react';
 import UserHero from './hero/Hero';
 import UserDetails from './details/Details';
-<<<<<<< HEAD:components/user/User.tsx
-import { Task } from '../../lib/models/task/Task';
-import { Solution } from 'lib/models/solution/solution';
-=======
-import { Task } from '@kodifaj/common';
->>>>>>> new-master:packages/frontend/components/user/User.tsx
+import { Task, Solution } from '@kodifaj/common';
 
 interface UserProps {
   solutions?: Solution[];

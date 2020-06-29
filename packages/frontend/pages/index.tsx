@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import Layout from '../components/shared/layout/Layout';
 import { Task } from '@kodifaj/common';
 import Listing from '../components/listing/Listing';

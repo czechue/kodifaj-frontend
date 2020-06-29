@@ -1,6 +1,6 @@
 import React from 'react';
-import SolutionDetails, { SolutionDetailsLayout } from 'components/shared/solution/Solution';
-import { Solution } from 'lib/models/solution/solution';
+import { Solution } from '@kodifaj/common';
+import SolutionDetails, { SolutionDetailsLayout } from '../../../shared/solution/Solution';
 
 interface UserSolutionsProps {
   solutions?: Solution[];

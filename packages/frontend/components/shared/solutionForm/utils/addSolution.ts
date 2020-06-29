@@ -1,5 +1,5 @@
 import { FormValues } from '../SolutionForm';
-import { User } from 'lib/models/user/user';
+import { User } from '@kodifaj/common';
 
 export async function addSolution(values: FormValues, taskId: string, user: User): Promise<void> {
   const data = {

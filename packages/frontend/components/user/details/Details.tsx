@@ -3,12 +3,7 @@ import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
-<<<<<<< HEAD:components/user/details/Details.tsx
-import { Task } from '../../../lib/models/task/Task';
-import { Solution } from 'lib/models/solution/solution';
-=======
-import { Task } from '@kodifaj/common';
->>>>>>> new-master:packages/frontend/components/user/details/Details.tsx
+import { Task, Solution } from '@kodifaj/common';
 
 interface UserDetailsProps {
   solutions?: Solution[];

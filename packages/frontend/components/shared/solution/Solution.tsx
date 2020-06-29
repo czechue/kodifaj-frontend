@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Solution } from 'lib/models/solution/solution';
-import Badges from 'components/badges/Badges';
 import { FaGithub } from 'react-icons/fa';
 import { FaEdit } from 'react-icons/fa';
 import { MdLiveTv } from 'react-icons/md';
 import clsx from 'clsx';
-import { useUser } from 'components/context/UserContext';
 import Modal from '../modal/Modal';
-import SolutionForm from 'components/shared/solutionForm/SolutionForm';
+import { Solution } from '@kodifaj/common';
+import Badges from '../../badges/Badges';
+import { useUser } from '../../context/UserContext';
+import SolutionForm from '../solutionForm/SolutionForm';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',

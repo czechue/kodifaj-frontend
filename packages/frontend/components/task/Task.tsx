@@ -2,18 +2,12 @@ import React from 'react';
 import { Hero } from './hero/Hero';
 import TaskDetails from './details/Details';
 import Header from '../header/Header';
-<<<<<<< HEAD:components/task/Task.tsx
-import { Task } from 'lib/models/task/Task';
-import { Solution } from 'lib/models/solution/solution';
-=======
-import { Task } from '@kodifaj/common';
->>>>>>> new-master:packages/frontend/components/task/Task.tsx
+import { Task, Solution } from '@kodifaj/common';
 
 interface TaskProps extends Task {
   updateSolutions: (solutions: Solution[]) => void;
 }
 
-<<<<<<< HEAD:components/task/Task.tsx
 const TaskComponent: React.FC<TaskProps> = ({
   title,
   _user,
@@ -25,14 +19,10 @@ const TaskComponent: React.FC<TaskProps> = ({
   _solutions,
   updateSolutions,
 }) => {
-=======
-const TaskComponent: React.FC<TaskProps> = ({ task }) => {
-  if (!task) {
+  if (!_id) {
     return null;
   }
 
-  const { title, _user, createdAt, tags, images, content } = task;
->>>>>>> new-master:packages/frontend/components/task/Task.tsx
   return (
     <>
       <Header />

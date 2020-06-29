@@ -30,33 +30,13 @@ interface Params extends ParsedUrlQuery {
 
 TaskDetails.getInitialProps = async (ctx) => {
   const url = `${process.env.API_URL}/tasks/${ctx.query.taskId}`;
-
-  if (ctx) {
-    console.log('a');
-
-    const cookie = String(ctx?.req?.headers.cookie);
-    const res = await fetch(url, {
-      credentials: 'include',
-      headers: { cookie },
-    });
-
-    const task: Task = await res.json();
-
-    console.log('aa task', task);
-
-    return {
-      task,
-    };
-  }
-  console.log('b');
-
+  const cookie = String(ctx?.req?.headers.cookie);
   const res = await fetch(url, {
     credentials: 'include',
+    ...(ctx.req && { headers: { cookie } }),
   });
 
   const task: Task = await res.json();
-
-  console.log('bb', task);
 
   return {
     task,

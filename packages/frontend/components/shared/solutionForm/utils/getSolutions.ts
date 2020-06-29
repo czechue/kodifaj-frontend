@@ -1,4 +1,4 @@
-import { Solution } from 'lib/models/solution/solution';
+import { Solution } from '@kodifaj/common';
 
 export async function getSolutions(taskId: string): Promise<Solution[]> {
   return await fetch(`/api/tasks/${taskId}`, {

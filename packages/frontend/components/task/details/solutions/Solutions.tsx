@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button';
 import Modal from '../../../shared/modal/Modal';
-import { Solution } from 'lib/models/solution/solution';
-import SolutionDetails from 'components/shared/solution/Solution';
-import NewSolutionForm from 'components/shared/solutionForm/SolutionForm';
+import { Solution } from '@kodifaj/common';
+import SolutionDetails from '../../../shared/solution/Solution';
 
 interface SolutionsProps {
   solutions?: Solution[];
