@@ -16,7 +16,7 @@ const TaskComponent: React.FC<TaskProps> = ({
   images,
   content,
   _id,
-  solutions,
+  _solutions,
   updateSolutions,
 }) => {
   if (!_id) {
@@ -31,7 +31,7 @@ const TaskComponent: React.FC<TaskProps> = ({
         images={images}
         content={content}
         taskId={_id}
-        solutions={solutions}
+        solutions={_solutions}
         updateSolutions={updateSolutions}
       />
     </>

@@ -5,7 +5,7 @@ export interface Task {
   _id: string;
   _user: string;
   user: User;
-  _solutions: string[];
+  _solutions: Solution[];
   solutions: Solution[];
   title: string;
   repo: string;

@@ -9,7 +9,7 @@ export async function updateSolution(values: FormValues, solutionId: string): Pr
     technologies: values.technologiesSelect.map((item) => item.value),
   };
 
-  return fetch(`/api/solutions/${solutionId}`, {
+  return fetch(`${process.env.API_URL}/solutions/${solutionId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

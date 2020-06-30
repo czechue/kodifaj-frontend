@@ -14,7 +14,7 @@ const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
   const [currentTask, setCurrentTask] = useState<Task>(task);
 
   function updateSolutions(solutions: Solution[]): void {
-    setCurrentTask((prevState) => ({ ...prevState, solutions }));
+    setCurrentTask((prevState) => ({ ...prevState, _solutions:solutions }));
   }
 
   return (
