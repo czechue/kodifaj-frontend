@@ -5,22 +5,20 @@ import Header from '../../components/header/Header';
 import { Task, Solution } from '@kodifaj/common';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
+import TaskProvider from '../../components/context/TaskDetailContext';
 
 interface TaskDetailsProps {
   task: Task;
 }
 
 const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
-  const [currentTask, setCurrentTask] = useState<Task>(task);
-
-  function updateSolutions(solutions: Solution[]): void {
-    setCurrentTask((prevState) => ({ ...prevState, _solutions:solutions }));
-  }
-
+  
   return (
-    <Layout title="Home page">
-      {task ? <TaskComponent updateSolutions={updateSolutions} {...currentTask} /> : <Header />}
-    </Layout>
+    <TaskProvider initTask={task}>
+      <Layout title="Home page">
+        <TaskComponent />
+      </Layout>
+    </TaskProvider>
   );
 };
 

@@ -21,7 +21,6 @@ interface SolutionProps {
 
 const SolutionDetails: React.FC<SolutionProps> = ({
   solution,
-  updateSolutions,
   layout = SolutionDetailsLayout.Default,
 }) => {
   const {
@@ -88,13 +87,11 @@ const SolutionDetails: React.FC<SolutionProps> = ({
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
         <SolutionForm
           setIsModalOpen={setIsModalOpen}
-          taskId={taskId}
           repoLink={repo}
           liveLink={demo}
           techs={technologies}
           phase={phase}
           solutionId={solutionId}
-          updateSolutions={updateSolutions && updateSolutions}
         />
       </Modal>
     </>

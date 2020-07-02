@@ -8,7 +8,7 @@ export async function getSolutions(taskId: string): Promise<Solution[]> {
     },
   })
     .then((res) => res.json())
-    .then((data) => data._solutions)
+    .then((data) => data)
     .catch((error) => {
       console.error('Error:', error);
     });
