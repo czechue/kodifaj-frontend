@@ -12,7 +12,7 @@ export async function addSolution(values: FormValues, taskId: string, user: User
     authorId: user._id,
   };
 
-  return fetch('/api/solutions', {
+  return fetch(`${process.env.API_URL}/solutions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

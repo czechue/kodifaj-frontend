@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../../../shared/code-block/CodeBlock';
-interface DescriptionProps {
-  content: string;
-}
+import { useTaskState } from '../../../context/TaskDetailContext';
 
-const Description: React.FC<DescriptionProps> = ({ content }) => {
+const Description: React.FC = () => {
+  const { content } = useTaskState();
+  
   return (
     <section className="task-description">
       <ReactMarkdown

@@ -24,7 +24,7 @@ server.set('trust proxy', true);
 server.use(bodyParser.json());
 server.use(
   cors({
-    origin: ['http://localhost:3000', 'https://kodifaj.pl'],
+    origin: ['http://localhost:3000', 'https://kodifaj.pl', 'http://localhost:8080'],
     credentials: true,
   }),
 );
