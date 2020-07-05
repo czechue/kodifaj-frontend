@@ -4,16 +4,13 @@ import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
 import { Task, Solution } from '@kodifaj/common';
+import { useUserDetailState } from '../../context/UserDetailContext';
 
-interface UserDetailsProps {
-  solutions?: Solution[];
-  tasks?: Task[];
-  login: string;
-  photo?: string;
-}
 
-const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, photo }) => {
+const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TabTitle.tasks);
+
+  const {_solutions, _tasks: tasks, login, photo} = useUserDetailState();
 
   return (
     <>
@@ -48,7 +45,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
             {activeTab === TabTitle.tasks ? (
               <UserTasks tasks={tasks} />
             ) : (
-              <UserSolutions solutions={solutions} />
+              <UserSolutions />
             )}
           </div>
           <UserActivities login={login} photo={photo} />

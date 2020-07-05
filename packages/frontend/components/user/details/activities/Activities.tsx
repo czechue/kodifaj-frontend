@@ -1,12 +1,10 @@
 import React from 'react';
 import Stars from '../../../stars/Stars';
+import { useUserDetailState } from '../../../context/UserDetailContext';
 
-interface UserActivitiesProps {
-  login: string;
-  photo?: string;
-}
+const UserActivities: React.FC = () => {
+  const { login, photo } = useUserDetailState();
 
-const UserActivities: React.FC<UserActivitiesProps> = ({ login, photo }) => {
   return (
     <section className="w-full md:w-1/3 mt-8 md:mt-0">
       <h3 className="font-bold text-center md:hidden">Dotychczasowa aktywność</h3>

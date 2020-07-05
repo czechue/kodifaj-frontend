@@ -6,26 +6,26 @@ import { ParsedUrlQuery } from 'querystring';
 import UserComponent from '../../components/user/User';
 import { Task } from '@kodifaj/common';
 import { User } from '@kodifaj/common';
+import UserDetailProvider from '../../components/context/UserDetailContext';
 
 interface UserDetailsProps {
-  user?: User;
+  user: User;
   errorCode?: number;
   tasks?: Task[];
 }
 
-const UserDetails: NextPage<UserDetailsProps> = ({ user, tasks, errorCode }) => {
+const UserDetails: NextPage<UserDetailsProps> = ({tasks, user, errorCode }) => {
   return (
-    <Layout title="User page" errorCode={errorCode}>
-      <Header />
-      {user && (
-        <UserComponent
-          solutions={user._solutions}
-          login={user.login}
-          photo={user.photo}
-          tasks={tasks}
-        />
-      )}
-    </Layout>
+    <UserDetailProvider initUser={user}>
+      <Layout title="User page" errorCode={errorCode}>
+        <Header />
+        {user && (
+          <UserComponent
+            tasks={tasks}
+          />
+        )}
+      </Layout>
+    </UserDetailProvider>
   );
 };
 
