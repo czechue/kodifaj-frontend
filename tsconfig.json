@@ -16,7 +16,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2019",
-    "module": "commonjs"
+    "module": "commonjs",
+    "jsx": "react",
   },
   "exclude": ["**/node_modules", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"]
 }

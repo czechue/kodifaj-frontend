@@ -1,10 +1,8 @@
 import React from 'react';
+import { useTaskState } from '../../../context/TaskDetailContext';
 
-interface GalleryProps {
-  images?: string[];
-}
-
-const Gallery: React.FC<GalleryProps> = ({ images }) => {
+const Gallery: React.FC = () => {
+  const { images } = useTaskState();
   const numberOfImages = images ? images.length : 0;
   if (images?.length === 0) return null;
   return (

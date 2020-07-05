@@ -13,6 +13,12 @@ import { addSolution } from './utils/addSolution';
 import { updateSolution } from './utils/updateSolution';
 import { getSolutions } from './utils/getSolutions';
 import { Solution } from '@kodifaj/common';
+import {
+  TaskDispatchContext,
+  TaskContext,
+  useTaskState,
+  useTaskDispatch,
+} from '../../context/TaskDetailContext';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -27,7 +33,6 @@ export const technologies = [
 
 interface SolutionFormProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  taskId: string;
   repoLink?: string;
   liveLink?: string;
   technologies?: string[];
@@ -35,7 +40,6 @@ interface SolutionFormProps {
   techs?: string[];
   phase?: string;
   solutionId?: string;
-  updateSolutions?: (solutions: Solution[]) => void;
 }
 
 export interface TechnologiesSelect {
@@ -51,33 +55,29 @@ export interface FormValues {
 
 const SolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
-  taskId,
   repoLink,
   liveLink,
   techs,
   phase,
   solutionId,
-  updateSolutions,
 }) => {
   const user = useUser();
+  const updateTaskSolutions = useTaskDispatch();
+  const { _id: taskId } = useTaskState();
 
   const onSubmit = (values: FormValues): void => {
     // todo: do zrefactorowania
     try {
-      if (updateSolutions) {
-        if (!solutionId) {
-          addSolution(values, taskId, user)
-            .then(() => getSolutions(taskId))
-            .then((res) => updateSolutions(res))
-            .then(() => setIsModalOpen(false));
-        } else {
-          updateSolution(values, solutionId)
-            .then(() => getSolutions(taskId))
-            .then((res) => updateSolutions(res))
-            .then(() => setIsModalOpen(false));
-        }
+      if (!solutionId) {
+        addSolution(values, taskId, user)
+          .then(() => getSolutions(taskId))
+          .then((res) => updateTaskSolutions(res))
+          .then(() => setIsModalOpen(false));
       } else {
-        console.log('Brak możliwości dodania');
+        updateSolution(values, solutionId)
+          .then(() => getSolutions(taskId))
+          .then((res) => updateTaskSolutions(res))
+          .then(() => setIsModalOpen(false));
       }
     } catch (error) {
       return error.message;
