@@ -18,8 +18,8 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
           Zadania
         </h2>
       </div>
-      <div className="mt-6 grid grid-cols-1 row-gap-8 md:border-gray-400 md:rounded-md md:border">
-        <div className="pt-8 text-center md:border-gray-400">
+      <div className="mt-6 grid grid-cols-1 row-gap-8 border-t">
+        <div className="pt-8 text-center">
           <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Filtry</h3>
           <h3 className="text-lg leading-7 font-medium tracking-tight text-gray-900">Sortowanie</h3>
         </div>

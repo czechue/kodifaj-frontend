@@ -3,6 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { FaGithub } from 'react-icons/fa';
 import { useUser } from '../../context/UserContext';
+import NavMobileItem from './item/NavMobileItem';
 
 interface NavMobileProps {
   isOpen: boolean;
@@ -18,21 +19,10 @@ const NavMobile: React.FC<NavMobileProps> = ({ isOpen }) => {
   return (
     <nav className={navStyles}>
       <ul className="flex flex-col h-full text-2xl sm:text-4xl capitalize font-medium justify-center items-center">
-        <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200">
-          <Link href="/">
-            <a className="">zadania</a>
-          </Link>
-        </li>
-        <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8">
-          <Link href="/">
-            <a className="">ranking</a>
-          </Link>
-        </li>
-        <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8">
-          <Link href="/">
-            <a className="">pomoc</a>
-          </Link>
-        </li>
+        <NavMobileItem>zadania</NavMobileItem>
+        <NavMobileItem>ranking</NavMobileItem>
+        <NavMobileItem>pomoc</NavMobileItem>
+
         <span className="pt-6 border-gray-600 border-b w-6/12" />
         <li className="hover:text-gray-900 hover:text-red-500 transition-colors duration-200 pt-8 flex items-center">
           {user ? (

@@ -10,12 +10,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, title, errorCode }) => {
   return (
-    <div className="font-sans antialiased text-gray-900 bg-gray-200 min-h-screen">
+    <div className="font-sans antialiased text-gray-900 bg-white min-h-screen">
       <Head>
         <title>{title}</title>
       </Head>
       <main className="leading-normal">
-        <div className="mx-auto bg-gray-200 grid grid-cols-1 sm:pb-12">{children}</div>
+        <div className="mx-auto bg-white grid grid-cols-1 sm:pb-12">{children}</div>
         {errorCode && (
           <div className=" -my-24">
             <Error statusCode={errorCode} />
