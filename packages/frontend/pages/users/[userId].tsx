@@ -11,19 +11,14 @@ import UserDetailProvider from '../../components/context/UserDetailContext';
 interface UserDetailsProps {
   user: User;
   errorCode?: number;
-  tasks?: Task[];
 }
 
-const UserDetails: NextPage<UserDetailsProps> = ({tasks, user, errorCode }) => {
+const UserDetails: NextPage<UserDetailsProps> = ({ user, errorCode }) => {
   return (
     <UserDetailProvider initUser={user}>
       <Layout title="User page" errorCode={errorCode}>
         <Header />
-        {user && (
-          <UserComponent
-            tasks={tasks}
-          />
-        )}
+        {user && <UserComponent />}
       </Layout>
     </UserDetailProvider>
   );

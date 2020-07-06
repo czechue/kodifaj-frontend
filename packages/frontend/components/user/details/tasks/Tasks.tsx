@@ -1,17 +1,16 @@
 import React from 'react';
 import Cards from '../../../listing/cards/Cards';
 import { Task } from '@kodifaj/common';
+import { useUserDetailState } from '../../../context/UserDetailContext';
 
-interface TasksProps {
-  tasks?: Task[];
-}
+const UserTasks: React.FC<TasksProps> = () => {
+  const { _tasks } = useUserDetailState();
 
-const UserTasks: React.FC<TasksProps> = ({ tasks }) => {
-  if (!tasks) {
+  if (!_tasks) {
     return null;
   }
 
-  return <Cards tasks={tasks} />;
+  return <Cards tasks={_tasks} />;
 };
 
 export default UserTasks;

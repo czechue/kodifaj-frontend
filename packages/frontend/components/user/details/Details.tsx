@@ -6,11 +6,10 @@ import UserSolutions from './solutions/Solutions';
 import { Task, Solution } from '@kodifaj/common';
 import { useUserDetailState } from '../../context/UserDetailContext';
 
-
 const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TabTitle.tasks);
 
-  const {_solutions, _tasks: tasks, login, photo} = useUserDetailState();
+  const { _solutions, _tasks: tasks, login, photo } = useUserDetailState();
 
   return (
     <>
@@ -42,11 +41,7 @@ const UserDetails: React.FC = () => {
       <div className="max-w-8xl mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-2/3 md:mr-4">
-            {activeTab === TabTitle.tasks ? (
-              <UserTasks tasks={tasks} />
-            ) : (
-              <UserSolutions />
-            )}
+            {activeTab === TabTitle.tasks ? <UserTasks /> : <UserSolutions />}
           </div>
           <UserActivities login={login} photo={photo} />
         </div>

@@ -68,6 +68,35 @@ export function getUserById(userId: string): Promise<null | User> {
           as: '_solutions',
         },
       },
+      {
+        $lookup: {
+          from: 'tasks',
+          let: {
+            tasks: '$_tasks',
+          },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ['$_id', '$$tasks'],
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: 'users',
+                localField: '_user',
+                foreignField: '_id',
+                as: '_user',
+              },
+            },
+            {
+              $unwind: '$_user',
+            },
+          ],
+          as: '_tasks',
+        },
+      },
     ])
     .next();
 }
