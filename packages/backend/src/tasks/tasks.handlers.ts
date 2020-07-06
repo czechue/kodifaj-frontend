@@ -9,6 +9,9 @@ export function getAllTasks(): Promise<Task[]> {
     .collection<Task>('tasks')
     .aggregate([
       { $lookup: { from: 'users', localField: '_user', foreignField: '_id', as: 'user' } },
+      {
+        $unwind: '$user',
+      },
     ])
     .toArray();
 }
@@ -58,6 +61,17 @@ export async function getTaskById(taskId: string): Promise<null | Task> {
           ],
           as: '_solutions',
         },
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: '_user',
+          foreignField: '_id',
+          as: '_user',
+        },
+      },
+      {
+        $unwind: '$_user',
       },
     ])
     .next();

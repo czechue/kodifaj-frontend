@@ -5,7 +5,8 @@ import { useTaskState } from '../../context/TaskDetailContext';
 
 export const Hero: React.FC = () => {
 
-  const { title, _user: author, tags, createdAt } = useTaskState();
+  const { title, _user, tags, createdAt } = useTaskState();
+  const author = _user.login
 
   return (
     <div className="bg-white w-full px-4">

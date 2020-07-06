@@ -65,19 +65,22 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   const updateTaskSolutions = useTaskDispatch();
   const { _id: taskId } = useTaskState();
 
+  const refreshSolutions = async () => {
+    const updatedSolutions = await getSolutions(taskId)
+    await updateTaskSolutions(updatedSolutions)
+    await setIsModalOpen(false)
+  }
+
   const onSubmit = (values: FormValues): void => {
     // todo: do zrefactorowania
     try {
       if (!solutionId) {
         addSolution(values, taskId, user)
-          .then(() => getSolutions(taskId))
-          .then((res) => updateTaskSolutions(res))
-          .then(() => setIsModalOpen(false));
+          .then(() => refreshSolutions())
+        
       } else {
         updateSolution(values, solutionId)
-          .then(() => getSolutions(taskId))
-          .then((res) => updateTaskSolutions(res))
-          .then(() => setIsModalOpen(false));
+        .then(() => refreshSolutions()) 
       }
     } catch (error) {
       return error.message;

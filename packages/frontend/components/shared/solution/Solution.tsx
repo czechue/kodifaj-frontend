@@ -15,7 +15,6 @@ export enum SolutionDetailsLayout {
 }
 interface SolutionProps {
   solution: Solution;
-  updateSolutions?: (solutions: Solution[]) => void;
   layout?: SolutionDetailsLayout;
 }
 

@@ -3,10 +3,10 @@ import { Solution } from '../solution/Solution';
 
 export interface Task {
   _id: string;
-  _user: string;
+  _user: User;
   user: User;
-  _solutions: Solution[];
-  solutions: Solution[];
+  _solutions?: Solution[];
+  solutions?: Solution[];
   title: string;
   repo: string;
   images: string[];

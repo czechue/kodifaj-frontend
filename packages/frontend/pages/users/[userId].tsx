@@ -28,36 +28,19 @@ interface Params extends ParsedUrlQuery {
   userId: string;
 }
 
-// todo: Poprawić na odp. zapytanie z bazy
-const filterTasks = (tasks: Task[], user: User): Task[] => {
-  return tasks.filter((task) => {
-    return user?._tasks?.includes(task._id);
+UserDetails.getInitialProps = async (ctx) => {
+  const url = `${process.env.API_URL}/users/${ctx.query.userId}`;
+  const cookie = String(ctx?.req?.headers.cookie);
+  const res = await fetch(url, {
+    credentials: 'include',
+    ...(ctx.req && { headers: { cookie } }),
   });
-};
 
-// todo: change it to getInitialProps
-export const getServerSideProps: GetServerSideProps<UserDetailsProps, Params> = async ({
-  params,
-}) => {
-  const res = await fetch(`${process.env.API_URL}/users/${params?.userId}`);
-  const res1 = await fetch(`${process.env.API_URL}/tasks`);
+  const user: User = await res.json();
 
-  const errorCode = res.ok ? false : res.status;
-  if (!errorCode) {
-    const user: User = await res.json();
-    const tasks: Task[] = await res1.json();
-    return {
-      props: {
-        user,
-        tasks: await filterTasks(tasks, user),
-      },
-    };
-  } else
-    return {
-      props: {
-        errorCode,
-      },
-    };
+  return {
+    user,
+  };
 };
 
 export default UserDetails;

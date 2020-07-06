@@ -10,9 +10,9 @@ export interface User {
   _id?: string;
   githubId: string;
   login: string;
-  photo?: string;
-  _solutions?: string[];
-  _tasks?: string[];
+  photo: string;
+  _solutions?: Solution[];
+  _tasks?: Task[];
 }
 
 export interface CreateUser {
@@ -26,7 +26,7 @@ export interface Solution {
   createdAt: string;
   demo: string;
   phase: 'review' | 'done';
-  technologies?: string[];
+  technologies: string[];
   repo: string;
   _id: string;
   _task: {
@@ -39,9 +39,9 @@ export interface Solution {
 
 export interface Task {
   _id: string;
-  _user: string;
+  _user: User;
   user: User;
-  _solutions: string[];
+  _solutions?: Solution[];
   solutions?: Solution[];
   title: string;
   repo: string;
@@ -57,7 +57,7 @@ export interface Task {
 
 export interface CreateTask extends CreateTaskRequest {
   _user: string;
-  _solutions: string[];
+  _solutions?: string[];
   title: string;
   repo: string;
   createdAt?: string;

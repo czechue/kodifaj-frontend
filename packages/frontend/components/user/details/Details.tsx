@@ -43,7 +43,7 @@ const UserDetails: React.FC = () => {
           <div className="w-full md:w-2/3 md:mr-4">
             {activeTab === TabTitle.tasks ? <UserTasks /> : <UserSolutions />}
           </div>
-          <UserActivities login={login} photo={photo} />
+          <UserActivities />
         </div>
       </div>
     </>
