@@ -27,17 +27,15 @@ const SolutionDetails: React.FC<SolutionProps> = ({
     repo,
     demo,
     phase,
-    _user: { photo, login, _id },
-    _task: { title, _id: taskId },
+    user: { photo, login, _id },
+    task: { title },
     createdAt,
     technologies,
   } = solution;
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const TitleStyles = clsx(
     layout === SolutionDetailsLayout.Default ? 'hidden' : 'mt-2 mb-4 text-center text-blue-700',
   );
-
   const currentUser = useUser();
   const isEditable = currentUser && currentUser._id === _id;
 

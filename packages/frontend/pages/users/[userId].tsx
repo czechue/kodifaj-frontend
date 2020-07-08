@@ -1,10 +1,9 @@
 import React from 'react';
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage } from 'next';
 import Layout from '../../components/shared/layout/Layout';
 import Header from '../../components/header/Header';
 import { ParsedUrlQuery } from 'querystring';
 import UserComponent from '../../components/user/User';
-import { Task } from '@kodifaj/common';
 import { User } from '@kodifaj/common';
 import UserDetailProvider from '../../components/context/UserDetailContext';
 
@@ -13,12 +12,12 @@ interface UserDetailsProps {
   errorCode?: number;
 }
 
-const UserDetails: NextPage<UserDetailsProps> = ({ user, errorCode }) => {
+const UserDetails: NextPage<UserDetailsProps> = ({ user }) => {
   return (
     <UserDetailProvider initUser={user}>
-      <Layout title="User page" errorCode={errorCode}>
+      <Layout title="User page">
         <Header />
-        {user && <UserComponent />}
+        <UserComponent />
       </Layout>
     </UserDetailProvider>
   );

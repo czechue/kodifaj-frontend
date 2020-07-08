@@ -11,13 +11,13 @@ const Cards: React.FC<CardsProps> = ({ tasks }) => {
 
   return (
     <div className={cardsStyles}>
-      {tasks.map((task) => {
-        const { _id, _user, images, title, tags, createdAt = '' } = task;
+      {tasks.map((task, index) => {
+        const { _id, user, images, title, tags, createdAt = '' } = task;
         return (
           <Card
-            key={_id}
+            key={index}
             _id={_id}
-            user={_user}
+            user={user}
             images={images}
             title={title}
             tags={tags}

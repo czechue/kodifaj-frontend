@@ -4,9 +4,8 @@ import Stars from '../../stars/Stars';
 import { useTaskState } from '../../context/TaskDetailContext';
 
 export const Hero: React.FC = () => {
-
-  const { title, _user, tags, createdAt } = useTaskState();
-  const author = _user.login
+  const { title, user, tags, createdAt } = useTaskState();
+  const author = user.login;
 
   return (
     <div className="bg-white w-full px-4">

@@ -10,6 +10,7 @@ const Listing: React.FC<ListingProps> = ({ tasks = [] }) => {
   if (tasks.length === 0) {
     return null;
   }
+  console.log(tasks)
 
   return (
     <div className="max-w-8xl mt-16 mx-auto sm:px-4 lg:px-8" id="projects-listing">

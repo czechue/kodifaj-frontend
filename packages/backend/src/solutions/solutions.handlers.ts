@@ -1,5 +1,6 @@
 import { ObjectId, UpdateWriteOpResult, MongoClient } from 'mongodb';
 import { Solution } from '@kodifaj/common';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const getDb = require('../services/db').getDb as () => MongoClient;
 
 export function getSolutions(): Promise<Solution[]> {
@@ -17,7 +18,7 @@ export function getSolutionById(solutionId: string): Promise<null | Solution> {
           from: 'tasks',
           localField: '_task',
           foreignField: '_id',
-          as: '_task',
+          as: 'task',
         },
       },
       {
@@ -25,7 +26,7 @@ export function getSolutionById(solutionId: string): Promise<null | Solution> {
           from: 'users',
           localField: '_user',
           foreignField: '_id',
-          as: '_user',
+          as: 'user',
         },
       },
     ])

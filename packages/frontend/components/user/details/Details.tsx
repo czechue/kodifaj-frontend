@@ -9,8 +9,6 @@ import { useUserDetailState } from '../../context/UserDetailContext';
 const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TabTitle.tasks);
 
-  const { _solutions, _tasks: tasks, login, photo } = useUserDetailState();
-
   return (
     <>
       <div className="bg-white w-full px-2 md:pl-4">

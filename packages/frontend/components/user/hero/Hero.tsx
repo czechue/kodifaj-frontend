@@ -3,10 +3,8 @@ import { FaGithub } from 'react-icons/fa';
 import Button, { ButtonLayout } from '../../shared/button/Button';
 import { useUserDetailState } from '../../context/UserDetailContext';
 
-
 const UserHero: React.FC = () => {
-
-  const {photo, login} = useUserDetailState();
+  const { photo, login } = useUserDetailState();
 
   return (
     <div className="bg-white w-full pb-12 px-4">
