@@ -1,24 +1,19 @@
 import React from 'react';
-import Button, { ButtonLayout } from '../button/Button';
 import Select from 'react-select';
 import clsx from 'clsx';
 import { Form, Field } from 'react-final-form';
-import { correctUrlValidator } from '../../../utils/validators/correctUrlValidator';
-import { required } from '../../../utils/validators/requiredValidator';
-import { composeValidators } from '../../../utils/validators/composeValidators';
-import { useUser } from '../../context/UserContext';
-import SolutionFormInput from './solutionFormInput/SolutionFormInput';
-import { formStyles } from './formStyles';
-import { addSolution } from './utils/addSolution';
-import { updateSolution } from './utils/updateSolution';
-import { getSolutions } from './utils/getSolutions';
-import { Solution } from '@kodifaj/common';
-import {
-  TaskDispatchContext,
-  TaskContext,
-  useTaskState,
-  useTaskDispatch,
-} from '../../context/TaskDetailContext';
+import { addSolution } from '../utils/addSolution';
+import { updateSolution } from '../utils/updateSolution';
+import { getSolutions } from '../utils/getSolutions';
+import { useUserDetailDispatch } from '../../../context/UserDetailContext';
+import { composeValidators } from '../../../../utils/validators/composeValidators';
+import { correctUrlValidator } from '../../../../utils/validators/correctUrlValidator';
+import { required } from '../../../../utils/validators/requiredValidator';
+import { useUser } from '../../../context/UserContext';
+import Button, { ButtonLayout } from '../../button/Button';
+import { formStyles } from '../formStyles';
+import SolutionFormInput from '../solutionFormInput/SolutionFormInput';
+import { getUser } from '../utils/getUser';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -31,7 +26,7 @@ export const technologies = [
   { value: 'angular', label: '#angular' },
 ];
 
-interface SolutionFormProps {
+interface SolutionFormForUserProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   repoLink?: string;
   liveLink?: string;
@@ -40,6 +35,7 @@ interface SolutionFormProps {
   techs?: string[];
   phase?: string;
   solutionId?: string;
+  taskId: string;
 }
 
 export interface TechnologiesSelect {
@@ -53,22 +49,21 @@ export interface FormValues {
   reviewCheckbox?: boolean;
 }
 
-const SolutionForm: React.FC<SolutionFormProps> = ({
+const SolutionFormForUser: React.FC<SolutionFormForUserProps> = ({
   setIsModalOpen,
   repoLink,
   liveLink,
   techs,
   phase,
   solutionId,
+  taskId,
 }) => {
   const user = useUser();
-  const updateTaskSolutions = useTaskDispatch();
-  const { _id: taskId } = useTaskState();
+  const updateUserSolutions = useUserDetailDispatch();
 
   const refreshSolutions = async () => {
-    const updatedSolutions = await getSolutions(taskId);
-    console.log(updatedSolutions)
-    await updateTaskSolutions(updatedSolutions);
+    const updatedSolutions = await getUser(user._id);
+    await updateUserSolutions(updatedSolutions);
     await setIsModalOpen(false);
   };
 
@@ -215,4 +210,4 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   );
 };
 
-export default SolutionForm;
+export default SolutionFormForUser;

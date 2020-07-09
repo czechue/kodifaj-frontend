@@ -8,6 +8,7 @@ import { Solution } from '@kodifaj/common';
 import Badges from '../../badges/Badges';
 import { useUser } from '../../context/UserContext';
 import SolutionForm from '../solutionForm/SolutionForm';
+import SolutionFormForUser from '../solutionForm/solutionFormForUser/SolutionFormForUser';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
@@ -16,11 +17,13 @@ export enum SolutionDetailsLayout {
 interface SolutionProps {
   solution: Solution;
   layout?: SolutionDetailsLayout;
+  forUser?: boolean;
 }
 
 const SolutionDetails: React.FC<SolutionProps> = ({
   solution,
   layout = SolutionDetailsLayout.Default,
+  forUser = false,
 }) => {
   const {
     _id: solutionId,
@@ -28,7 +31,7 @@ const SolutionDetails: React.FC<SolutionProps> = ({
     demo,
     phase,
     user: { photo, login, _id },
-    task: { title },
+    task: { title, _id: taskId },
     createdAt,
     technologies,
   } = solution;
@@ -82,14 +85,26 @@ const SolutionDetails: React.FC<SolutionProps> = ({
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <SolutionForm
-          setIsModalOpen={setIsModalOpen}
-          repoLink={repo}
-          liveLink={demo}
-          techs={technologies}
-          phase={phase}
-          solutionId={solutionId}
-        />
+        {forUser ? (
+          <SolutionFormForUser
+            setIsModalOpen={setIsModalOpen}
+            repoLink={repo}
+            liveLink={demo}
+            techs={technologies}
+            phase={phase}
+            solutionId={solutionId}
+            taskId={taskId}
+          />
+        ) : (
+          <SolutionForm
+            setIsModalOpen={setIsModalOpen}
+            repoLink={repo}
+            liveLink={demo}
+            techs={technologies}
+            phase={phase}
+            solutionId={solutionId}
+          />
+        )}
       </Modal>
     </>
   );
