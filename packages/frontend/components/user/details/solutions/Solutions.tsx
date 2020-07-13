@@ -11,7 +11,6 @@ const UserSolutions: React.FC = () => {
         {solutions &&
           solutions.map((solution, index) => (
             <SolutionDetails
-              forUser={true}
               key={index}
               solution={solution}
               layout={SolutionDetailsLayout.WithTitle}

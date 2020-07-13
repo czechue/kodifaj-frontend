@@ -14,16 +14,21 @@ export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
   WithTitle = 'TITLE',
 }
+
+export enum SolutionFormType {
+  User = 'USER',
+  Task = 'TASK',
+}
 interface SolutionProps {
   solution: Solution;
   layout?: SolutionDetailsLayout;
-  forUser?: boolean;
+  type?: SolutionFormType;
 }
 
 const SolutionDetails: React.FC<SolutionProps> = ({
   solution,
   layout = SolutionDetailsLayout.Default,
-  forUser = false,
+  type = SolutionFormType.User,
 }) => {
   const {
     _id: solutionId,
@@ -85,8 +90,8 @@ const SolutionDetails: React.FC<SolutionProps> = ({
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        {forUser ? (
-          <SolutionFormForUser
+        {type === SolutionFormType.Task ? (
+          <SolutionFormForTask
             setIsModalOpen={setIsModalOpen}
             repoLink={repo}
             liveLink={demo}
@@ -96,7 +101,7 @@ const SolutionDetails: React.FC<SolutionProps> = ({
             taskId={taskId}
           />
         ) : (
-          <SolutionFormForTask
+          <SolutionFormForUser
             setIsModalOpen={setIsModalOpen}
             repoLink={repo}
             liveLink={demo}
