@@ -60,7 +60,7 @@ export async function getTaskById(taskId: string): Promise<null | Task> {
               $unwind: '$task',
             },
           ],
-          as: '_solutions',
+          as: 'solutions',
         },
       },
       {

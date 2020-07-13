@@ -1,5 +1,5 @@
-import React, { ReactElement, useContext, useEffect, useState, useCallback } from 'react';
-import { User, Solution } from '@kodifaj/common';
+import React, { ReactElement, useState, useCallback } from 'react';
+import { User } from '@kodifaj/common';
 
 interface UserDetailProviderProps {
   children?: ReactElement;
@@ -36,7 +36,7 @@ export default function UserDetailProvider({
   const handleSetUserState = useCallback(
     (current: Partial<User>): void => {
       setUser((prev: User) => ({
-        ...prev.solutions,
+        ...prev,
         ...current,
       }));
     },

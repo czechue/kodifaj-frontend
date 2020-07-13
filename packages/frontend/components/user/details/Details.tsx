@@ -3,8 +3,6 @@ import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
-import { Task, Solution } from '@kodifaj/common';
-import { useUserDetailState } from '../../context/UserDetailContext';
 
 const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TabTitle.tasks);

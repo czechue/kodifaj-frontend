@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useEffect, useState, useCallback } from 'react';
+import React, { ReactElement, useState, useCallback } from 'react';
 import { Task, Solution } from '@kodifaj/common';
 
 interface TaskProviderProps {
@@ -7,7 +7,9 @@ interface TaskProviderProps {
 }
 
 export const TaskContext = React.createContext<Task | undefined>(undefined);
-export const TaskDispatchContext = React.createContext<((value: Solution[]) => void) | undefined>(undefined);
+export const TaskDispatchContext = React.createContext<((value: Solution[]) => void) | undefined>(
+  undefined,
+);
 
 export function useTaskState() {
   const context = React.useContext(TaskContext);

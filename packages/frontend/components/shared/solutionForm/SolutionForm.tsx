@@ -6,19 +6,11 @@ import { Form, Field } from 'react-final-form';
 import { correctUrlValidator } from '../../../utils/validators/correctUrlValidator';
 import { required } from '../../../utils/validators/requiredValidator';
 import { composeValidators } from '../../../utils/validators/composeValidators';
-import { useUser } from '../../context/UserContext';
 import SolutionFormInput from './solutionFormInput/SolutionFormInput';
 import { formStyles } from './formStyles';
 import { addSolution } from './utils/addSolution';
 import { updateSolution } from './utils/updateSolution';
-import { getSolutions } from './utils/getSolutions';
-import { Solution } from '@kodifaj/common';
-import {
-  TaskDispatchContext,
-  TaskContext,
-  useTaskState,
-  useTaskDispatch,
-} from '../../context/TaskDetailContext';
+import { useUser } from '../../context/UserContext';
 
 export const technologies = [
   { value: 'html', label: '#html' },
@@ -40,6 +32,8 @@ interface SolutionFormProps {
   techs?: string[];
   phase?: string;
   solutionId?: string;
+  taskId: string;
+  refreshSolutions: () => Promise<void>;
 }
 
 export interface TechnologiesSelect {
@@ -60,31 +54,10 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   techs,
   phase,
   solutionId,
+  taskId,
+  refreshSolutions,
 }) => {
   const user = useUser();
-  const updateTaskSolutions = useTaskDispatch();
-  const { _id: taskId } = useTaskState();
-
-  const refreshSolutions = async () => {
-    const updatedSolutions = await getSolutions(taskId);
-    console.log(updatedSolutions)
-    await updateTaskSolutions(updatedSolutions);
-    await setIsModalOpen(false);
-  };
-
-  const onSubmit = (values: FormValues): void => {
-    // todo: do zrefactorowania
-    try {
-      if (!solutionId) {
-        addSolution(values, taskId, user).then(() => refreshSolutions());
-      } else {
-        updateSolution(values, solutionId).then(() => refreshSolutions());
-      }
-    } catch (error) {
-      return error.message;
-    }
-  };
-
   const ReviewCheckboxLabelStyles = (value?: boolean): string =>
     clsx('w-full text-xs text-right', value ? 'text-white' : 'text-gray-600');
 
@@ -100,6 +73,18 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
       technologies.map((item) => item.value === props[i] && initialSelectValues.push(item));
     }
     return initialSelectValues;
+  };
+
+  const onSubmit = (values: FormValues): void => {
+    try {
+      if (!solutionId) {
+        addSolution(values, taskId, user).then(() => refreshSolutions());
+      } else {
+        updateSolution(values, solutionId).then(() => refreshSolutions());
+      }
+    } catch (error) {
+      return error.message;
+    }
   };
 
   return (

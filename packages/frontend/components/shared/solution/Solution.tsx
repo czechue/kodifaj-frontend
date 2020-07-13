@@ -7,8 +7,8 @@ import Modal from '../modal/Modal';
 import { Solution } from '@kodifaj/common';
 import Badges from '../../badges/Badges';
 import { useUser } from '../../context/UserContext';
-import SolutionForm from '../solutionForm/SolutionForm';
 import SolutionFormForUser from '../solutionForm/solutionFormForUser/SolutionFormForUser';
+import SolutionFormForTask from '../solutionForm/solutionFormForTask/SolutionFormForTask';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
@@ -96,13 +96,14 @@ const SolutionDetails: React.FC<SolutionProps> = ({
             taskId={taskId}
           />
         ) : (
-          <SolutionForm
+          <SolutionFormForTask
             setIsModalOpen={setIsModalOpen}
             repoLink={repo}
             liveLink={demo}
             techs={technologies}
             phase={phase}
             solutionId={solutionId}
+            taskId={taskId}
           />
         )}
       </Modal>

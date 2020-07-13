@@ -5,11 +5,12 @@ import { Solution } from '@kodifaj/common';
 import SolutionDetails from '../../../shared/solution/Solution';
 import SolutionForm from '../../../shared/solutionForm/SolutionForm';
 import { useTaskState } from '../../../context/TaskDetailContext';
+import SolutionFormForTask from '../../../shared/solutionForm/solutionFormForTask/SolutionFormForTask';
 
 
 const Solutions: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { _solutions: solutions } = useTaskState();
+  const { solutions, _id: taskId } = useTaskState();
   const numberOfSolutions = solutions ? solutions.length : 0;
 
   return (
@@ -32,7 +33,7 @@ const Solutions: React.FC = () => {
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <SolutionForm setIsModalOpen={setIsModalOpen} />
+        <SolutionFormForTask setIsModalOpen={setIsModalOpen} taskId={taskId} />
       </Modal>
     </>
   );
