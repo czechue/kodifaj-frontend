@@ -1,6 +1,6 @@
-import { Solution } from '@kodifaj/common';
+import { Task } from '@kodifaj/common';
 
-export async function getSolutions(taskId: string): Promise<Solution[]> {
+export async function getSolutions(taskId: string): Promise<Partial<Task>> {
   return await fetch(`${process.env.API_URL}/tasks/${taskId}`, {
     method: 'GET',
     headers: {
@@ -8,7 +8,6 @@ export async function getSolutions(taskId: string): Promise<Solution[]> {
     },
   })
     .then((res) => res.json())
-    .then((data) => data)
     .catch((error) => {
       console.error('Error:', error);
     });

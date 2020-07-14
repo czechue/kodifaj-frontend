@@ -6,10 +6,10 @@ interface UserDetailProviderProps {
   initUser: User;
 }
 
+type Dispatch = (value: Partial<User>) => void;
+
 export const UserDetailContext = React.createContext<User | undefined>(undefined);
-export const UserDetailDispatchContext = React.createContext<((value: User) => void) | undefined>(
-  undefined,
-);
+export const UserDetailDispatchContext = React.createContext<Dispatch | undefined>(undefined);
 
 export function useUserDetailState() {
   const context = React.useContext(UserDetailContext);
@@ -35,7 +35,7 @@ export default function UserDetailProvider({
 
   const handleSetUserState = useCallback(
     (current: Partial<User>): void => {
-      setUser((prev: User) => ({
+      setUser((prev) => ({
         ...prev,
         ...current,
       }));

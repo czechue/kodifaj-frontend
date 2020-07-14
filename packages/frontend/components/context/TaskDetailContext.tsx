@@ -6,10 +6,10 @@ interface TaskProviderProps {
   initTask: Task;
 }
 
+type Dispatch = (value: Partial<Task>) => void;
+
 export const TaskContext = React.createContext<Task | undefined>(undefined);
-export const TaskDispatchContext = React.createContext<((value: Solution[]) => void) | undefined>(
-  undefined,
-);
+export const TaskDispatchContext = React.createContext<Dispatch | undefined>(undefined);
 
 export function useTaskState() {
   const context = React.useContext(TaskContext);
@@ -30,7 +30,7 @@ export default function TaskProvider({ children, initTask }: TaskProviderProps):
   const [task, setTask] = useState<Task>(initTask);
 
   const handleSetTaskState = useCallback(
-    (current: Solution[]): void => {
+    (current: Partial<Task>): void => {
       setTask((prev) => ({
         ...prev,
         ...current,
