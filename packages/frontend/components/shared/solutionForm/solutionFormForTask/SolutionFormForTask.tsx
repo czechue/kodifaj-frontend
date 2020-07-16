@@ -26,7 +26,7 @@ const SolutionFormForTask: React.FC<SolutionFormForTaskProps> = ({
 
   const refreshSolutions = async () => {
     const updatedSolutions = await getSolutions(taskId);
-    updateTaskSolutions(updatedSolutions);
+    updateTaskSolutions({ solutions: updatedSolutions });
     setIsModalOpen(false);
   };
 
