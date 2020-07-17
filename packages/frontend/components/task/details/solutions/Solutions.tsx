@@ -3,7 +3,7 @@ import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button'
 import Modal from '../../../shared/modal/Modal';
 import SolutionDetails, { SolutionFormType } from '../../../shared/solution/Solution';
 import { useTaskState } from '../../../context/TaskDetailContext';
-import SolutionFormForTask from '../../../shared/solutionForm/solutionFormForTask/SolutionFormForTask';
+import SolutionFormForTask from '../../../solutionFormForTask/SolutionFormForTask';
 
 const Solutions: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

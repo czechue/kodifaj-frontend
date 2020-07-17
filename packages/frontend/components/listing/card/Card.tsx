@@ -15,8 +15,8 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ _id, user, images, title, tags, createdAt }) => {
   const creationTime = createdAt.slice(0, 10);
-  const userPhoto = user && user.photo;
-  const userLogin = user && user.login;
+  const userPhoto = user?.photo;
+  const userLogin = user?.login;
 
   return (
     <div className="flex flex-col items-center mt-4">

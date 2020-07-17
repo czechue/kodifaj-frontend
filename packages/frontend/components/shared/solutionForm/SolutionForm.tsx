@@ -12,7 +12,7 @@ import { addSolution } from './utils/addSolution';
 import { updateSolution } from './utils/updateSolution';
 import { useUser } from '../../context/UserContext';
 
-export const technologies = [
+export const technologiesOptions = [
   { value: 'html', label: '#html' },
   { value: 'css', label: '#css' },
   { value: 'js', label: '#js' },
@@ -29,11 +29,10 @@ interface SolutionFormProps {
   liveLink?: string;
   technologies?: string[];
   reviewCheckbox?: boolean;
-  techs?: string[];
   phase?: string;
   solutionId?: string;
   taskId: string;
-  refreshSolutions: () => Promise<void>;
+  refreshSolutions: () => void;
 }
 
 export interface TechnologiesSelect {
@@ -51,7 +50,7 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
   repoLink,
   liveLink,
-  techs,
+  technologies,
   phase,
   solutionId,
   taskId,
@@ -70,7 +69,7 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   const getDefaultSelect = (props: string[]): TechnologiesSelect[] => {
     const initialSelectValues: TechnologiesSelect[] = [];
     for (let i = 0; i < props.length; i++) {
-      technologies.map((item) => item.value === props[i] && initialSelectValues.push(item));
+      technologiesOptions.map((item) => item.value === props[i] && initialSelectValues.push(item));
     }
     return initialSelectValues;
   };
@@ -142,12 +141,12 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
                         Użyte technologie
                       </label>
                       <Select
-                        options={technologies}
+                        options={technologiesOptions}
                         styles={formStyles}
                         id="technologiesSelect"
                         placeholder="Wybierz technologie..."
                         isMulti
-                        defaultValue={techs && getDefaultSelect(techs)}
+                        defaultValue={technologies && getDefaultSelect(technologies)}
                         name={props.input.name}
                         onChange={props.input.onChange}
                       />
