@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({ _id, user, images, title, tags, createdAt }
   return (
     <div className="flex flex-col items-center mt-4">
       <Link href="/tasks/[taskId]" as={`/tasks/${_id}`}>
-        <a className="w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-shadow transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
+        <a className="w-full bg-white transform translate-y-0 shadow-sm rounded-md transition-transform duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg overflow-hidden cursor-pointer">
           <section>
             <div className="h-64 relative">
               <img
