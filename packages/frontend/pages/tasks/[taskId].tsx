@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NextPage } from 'next';
 import Layout from '../../components/shared/layout/Layout';
-import Header from '../../components/header/Header';
-import { Task, Solution } from '@kodifaj/common';
+import { Task } from '@kodifaj/common';
 import { ParsedUrlQuery } from 'querystring';
 import TaskComponent from '../../components/task/Task';
 import TaskProvider from '../../components/context/TaskDetailContext';
@@ -12,7 +11,6 @@ interface TaskDetailsProps {
 }
 
 const TaskDetails: NextPage<TaskDetailsProps> = ({ task }) => {
-  
   return (
     <TaskProvider initTask={task}>
       <Layout title="Home page">

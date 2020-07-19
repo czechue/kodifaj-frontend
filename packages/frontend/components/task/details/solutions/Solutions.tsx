@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Button, { ButtonLayout, ButtonSize } from '../../../shared/button/Button';
 import Modal from '../../../shared/modal/Modal';
-import { Solution } from '@kodifaj/common';
-import SolutionDetails from '../../../shared/solution/Solution';
-import SolutionForm from '../../../shared/solutionForm/SolutionForm';
+import SolutionDetails, { SolutionFormType } from '../../../shared/solution/Solution';
 import { useTaskState } from '../../../context/TaskDetailContext';
-
+import SolutionFormForTask from '../../../solutionFormForTask/SolutionFormForTask';
 
 const Solutions: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { _solutions: solutions } = useTaskState();
+  const { solutions, _id: taskId } = useTaskState();
   const numberOfSolutions = solutions ? solutions.length : 0;
 
   return (
@@ -18,7 +16,9 @@ const Solutions: React.FC = () => {
         <h4 className="text-sm font-bold pb-3">Rozwiązania ({numberOfSolutions})</h4>
         <div className="flex flex-col items-center">
           {solutions &&
-            solutions.map((solution, index) => <SolutionDetails key={index} solution={solution} />)}
+            solutions.map((solution, index) => (
+              <SolutionDetails key={index} solution={solution} type={SolutionFormType.Task} />
+            ))}
         </div>
         <div className="text-center my-8">
           <Button
@@ -32,7 +32,7 @@ const Solutions: React.FC = () => {
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <SolutionForm setIsModalOpen={setIsModalOpen} />
+        <SolutionFormForTask setIsModalOpen={setIsModalOpen} taskId={taskId} />
       </Modal>
     </>
   );

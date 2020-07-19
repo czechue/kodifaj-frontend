@@ -6,21 +6,13 @@ import { Form, Field } from 'react-final-form';
 import { correctUrlValidator } from '../../../utils/validators/correctUrlValidator';
 import { required } from '../../../utils/validators/requiredValidator';
 import { composeValidators } from '../../../utils/validators/composeValidators';
-import { useUser } from '../../context/UserContext';
 import SolutionFormInput from './solutionFormInput/SolutionFormInput';
 import { formStyles } from './formStyles';
 import { addSolution } from './utils/addSolution';
 import { updateSolution } from './utils/updateSolution';
-import { getSolutions } from './utils/getSolutions';
-import { Solution } from '@kodifaj/common';
-import {
-  TaskDispatchContext,
-  TaskContext,
-  useTaskState,
-  useTaskDispatch,
-} from '../../context/TaskDetailContext';
+import { useUser } from '../../context/UserContext';
 
-export const technologies = [
+export const technologiesOptions = [
   { value: 'html', label: '#html' },
   { value: 'css', label: '#css' },
   { value: 'js', label: '#js' },
@@ -37,9 +29,10 @@ interface SolutionFormProps {
   liveLink?: string;
   technologies?: string[];
   reviewCheckbox?: boolean;
-  techs?: string[];
   phase?: string;
   solutionId?: string;
+  taskId: string;
+  refreshSolutions: () => void;
 }
 
 export interface TechnologiesSelect {
@@ -57,33 +50,13 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   setIsModalOpen,
   repoLink,
   liveLink,
-  techs,
+  technologies,
   phase,
   solutionId,
+  taskId,
+  refreshSolutions,
 }) => {
   const user = useUser();
-  const updateTaskSolutions = useTaskDispatch();
-  const { _id: taskId } = useTaskState();
-
-  const onSubmit = (values: FormValues): void => {
-    // todo: do zrefactorowania
-    try {
-      if (!solutionId) {
-        addSolution(values, taskId, user)
-          .then(() => getSolutions(taskId))
-          .then((res) => updateTaskSolutions(res))
-          .then(() => setIsModalOpen(false));
-      } else {
-        updateSolution(values, solutionId)
-          .then(() => getSolutions(taskId))
-          .then((res) => updateTaskSolutions(res))
-          .then(() => setIsModalOpen(false));
-      }
-    } catch (error) {
-      return error.message;
-    }
-  };
-
   const ReviewCheckboxLabelStyles = (value?: boolean): string =>
     clsx('w-full text-xs text-right', value ? 'text-white' : 'text-gray-600');
 
@@ -96,9 +69,21 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
   const getDefaultSelect = (props: string[]): TechnologiesSelect[] => {
     const initialSelectValues: TechnologiesSelect[] = [];
     for (let i = 0; i < props.length; i++) {
-      technologies.map((item) => item.value === props[i] && initialSelectValues.push(item));
+      technologiesOptions.map((item) => item.value === props[i] && initialSelectValues.push(item));
     }
     return initialSelectValues;
+  };
+
+  const onSubmit = (values: FormValues): void => {
+    try {
+      if (!solutionId) {
+        addSolution(values, taskId, user).then(() => refreshSolutions());
+      } else {
+        updateSolution(values, solutionId).then(() => refreshSolutions());
+      }
+    } catch (error) {
+      return error.message;
+    }
   };
 
   return (
@@ -156,12 +141,12 @@ const SolutionForm: React.FC<SolutionFormProps> = ({
                         Użyte technologie
                       </label>
                       <Select
-                        options={technologies}
+                        options={technologiesOptions}
                         styles={formStyles}
                         id="technologiesSelect"
                         placeholder="Wybierz technologie..."
                         isMulti
-                        defaultValue={techs && getDefaultSelect(techs)}
+                        defaultValue={technologies && getDefaultSelect(technologies)}
                         name={props.input.name}
                         onChange={props.input.onChange}
                       />

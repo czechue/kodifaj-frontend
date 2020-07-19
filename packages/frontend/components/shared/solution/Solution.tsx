@@ -7,40 +7,55 @@ import Modal from '../modal/Modal';
 import { Solution } from '@kodifaj/common';
 import Badges from '../../badges/Badges';
 import { useUser } from '../../context/UserContext';
-import SolutionForm from '../solutionForm/SolutionForm';
+import SolutionFormForUser from '../../solutionFormForUser/SolutionFormForUser';
+import SolutionFormForTask from '../../solutionFormForTask/SolutionFormForTask';
 
 export enum SolutionDetailsLayout {
   Default = 'DEFAULT',
   WithTitle = 'TITLE',
 }
+
+export enum SolutionFormType {
+  User = 'USER',
+  Task = 'TASK',
+}
 interface SolutionProps {
   solution: Solution;
-  updateSolutions?: (solutions: Solution[]) => void;
   layout?: SolutionDetailsLayout;
+  type?: SolutionFormType;
 }
 
 const SolutionDetails: React.FC<SolutionProps> = ({
   solution,
   layout = SolutionDetailsLayout.Default,
+  type = SolutionFormType.User,
 }) => {
   const {
     _id: solutionId,
     repo,
     demo,
     phase,
-    _user: { photo, login, _id },
-    _task: { title, _id: taskId },
+    user: { photo, login, _id },
+    task: { title, _id: taskId },
     createdAt,
     technologies,
   } = solution;
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const TitleStyles = clsx(
     layout === SolutionDetailsLayout.Default ? 'hidden' : 'mt-2 mb-4 text-center text-blue-700',
   );
-
   const currentUser = useUser();
   const isEditable = currentUser && currentUser._id === _id;
+
+  const solutionProps = {
+    setIsModalOpen,
+    repoLink: repo,
+    liveLink: demo,
+    technologies,
+    phase,
+    solutionId,
+    taskId,
+  };
 
   return (
     <>
@@ -85,14 +100,11 @@ const SolutionDetails: React.FC<SolutionProps> = ({
         </div>
       </section>
       <Modal setIsOpen={setIsModalOpen} title="Dodaj swoje rozwiązanie" isOpen={isModalOpen}>
-        <SolutionForm
-          setIsModalOpen={setIsModalOpen}
-          repoLink={repo}
-          liveLink={demo}
-          techs={technologies}
-          phase={phase}
-          solutionId={solutionId}
-        />
+        {type === SolutionFormType.Task ? (
+          <SolutionFormForTask {...solutionProps} />
+        ) : (
+          <SolutionFormForUser {...solutionProps} />
+        )}
       </Modal>
     </>
   );

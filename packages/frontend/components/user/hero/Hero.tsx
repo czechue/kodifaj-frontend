@@ -1,13 +1,11 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import Button, { ButtonLayout } from '../../shared/button/Button';
+import { useUserDetailState } from '../../context/UserDetailContext';
 
-interface UserHeroProps {
-  login: string;
-  photo?: string;
-}
+const UserHero: React.FC = () => {
+  const { photo, login } = useUserDetailState();
 
-const UserHero: React.FC<UserHeroProps> = ({ login, photo }) => {
   return (
     <div className="bg-white w-full pb-12 px-4">
       <section className="max-w-8xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center md:px-8">

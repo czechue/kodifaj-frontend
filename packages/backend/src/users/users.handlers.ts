@@ -2,6 +2,7 @@ import { CreateUser } from '@kodifaj/common';
 import { User } from '@kodifaj/common';
 
 import { InsertOneWriteOpResult, ObjectId, WithId, MongoClient } from 'mongodb';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const getDb = require('../services/db').getDb as () => MongoClient;
 
 export function getUsers(): Promise<User[]> {
@@ -47,25 +48,54 @@ export function getUserById(userId: string): Promise<null | User> {
                 from: 'users',
                 localField: '_user',
                 foreignField: '_id',
-                as: '_user',
+                as: 'user',
               },
             },
             {
-              $unwind: '$_user',
+              $unwind: '$user',
             },
             {
               $lookup: {
                 from: 'tasks',
                 localField: '_task',
                 foreignField: '_id',
-                as: '_task',
+                as: 'task',
               },
             },
             {
-              $unwind: '$_task',
+              $unwind: '$task',
             },
           ],
-          as: '_solutions',
+          as: 'solutions',
+        },
+      },
+      {
+        $lookup: {
+          from: 'tasks',
+          let: {
+            tasks: '$_tasks',
+          },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ['$_id', '$$tasks'],
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: 'users',
+                localField: '_user',
+                foreignField: '_id',
+                as: 'user',
+              },
+            },
+            {
+              $unwind: '$user',
+            },
+          ],
+          as: 'tasks',
         },
       },
     ])

@@ -11,15 +11,11 @@ const Cards: React.FC<CardsProps> = ({ tasks }) => {
 
   return (
     <div className={cardsStyles}>
-      {tasks.map((task) => {
+      {tasks.map((task, index) => {
         const { _id, user, images, title, tags, createdAt = '' } = task;
-        // todo: poprawic model Usera w Tasku
-        if (!user) {
-          return null;
-        }
         return (
           <Card
-            key={_id}
+            key={index}
             _id={_id}
             user={user}
             images={images}

@@ -7,11 +7,11 @@ export interface Solution {
   phase: 'review' | 'done';
   repo: string;
   _id: string;
-  _task: {
+  task: {
     _id: string;
     images: string[];
     title: string;
   };
-  _user: User;
+  user: User;
   technologies: string[];
 }

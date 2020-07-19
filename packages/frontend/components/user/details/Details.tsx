@@ -3,16 +3,8 @@ import TabButton, { TabTitle } from './tabButton/TabButton';
 import UserTasks from './tasks/Tasks';
 import UserActivities from './activities/Activities';
 import UserSolutions from './solutions/Solutions';
-import { Task, Solution } from '@kodifaj/common';
 
-interface UserDetailsProps {
-  solutions?: Solution[];
-  tasks?: Task[];
-  login: string;
-  photo?: string;
-}
-
-const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, photo }) => {
+const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TabTitle.tasks);
 
   return (
@@ -45,13 +37,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({ solutions, tasks, login, phot
       <div className="max-w-8xl mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-2/3 md:mr-4">
-            {activeTab === TabTitle.tasks ? (
-              <UserTasks tasks={tasks} />
-            ) : (
-              <UserSolutions solutions={solutions} />
-            )}
+            {activeTab === TabTitle.tasks ? <UserTasks /> : <UserSolutions />}
           </div>
-          <UserActivities login={login} photo={photo} />
+          <UserActivities />
         </div>
       </div>
     </>
